@@ -1,0 +1,28 @@
+@reference "../app/globals.css";
+.footer {
+  @apply bg-white border-t border-slate-100 py-8 mt-auto;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.content {
+  @apply flex flex-col md:flex-row justify-between items-center;
+}
+
+.text {
+  @apply text-slate-500 text-sm mb-4 md:mb-0;
+}
+
+.link {
+  @apply text-slate-600 hover:text-indigo-600 hover:underline transition-colors;
+}
+
+.backToTop {
+  @apply text-sm text-slate-500 hover:text-indigo-600 transition-colors flex items-center gap-1;
+}
+
+
+.footerIcon { @apply w-4 h-4; }
+

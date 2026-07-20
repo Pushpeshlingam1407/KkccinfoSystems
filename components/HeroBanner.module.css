@@ -1,0 +1,13 @@
+@reference "../app/globals.css";
+.bannerWrapper {
+  @apply pt-2;
+}
+
+.bannerContainer {
+  @apply relative w-full h-[180px] rounded-lg overflow-hidden shadow-sm;
+}
+
+.bannerImage {
+  @apply object-cover;
+}
+

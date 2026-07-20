@@ -1,0 +1,83 @@
+@reference "./globals.css";
+.pageContainer {
+  @apply container mx-auto px-4 mt-8;
+}
+
+.divider {
+  @apply my-12 border-slate-200;
+}
+
+.contentWrapper {
+  @apply flex flex-col md:flex-row items-center gap-12 py-8;
+}
+
+.textContent {
+  @apply md:w-7/12;
+}
+
+.pageTitle {
+  @apply text-4xl font-extrabold text-slate-900 tracking-tight mb-6;
+}
+
+.paragraph {
+  @apply text-xl font-light text-slate-600 mb-6 leading-relaxed text-justify;
+}
+
+.imageContainer {
+  @apply md:w-5/12 flex justify-center;
+}
+
+.imageWrapper {
+  @apply relative w-full max-w-md aspect-square rounded-[2rem] overflow-hidden shadow-2xl;
+}
+
+/* Contact specific */
+.contactGrid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-12 py-8;
+}
+
+.contactInfoCard {
+  @apply bg-white p-8 rounded-2xl shadow-sm border border-slate-100;
+}
+
+.contactSubtitle {
+  @apply text-2xl font-bold text-slate-900 mb-6;
+}
+
+.addressText {
+  @apply text-lg text-slate-600 leading-relaxed font-light mb-6;
+}
+
+.contactLink {
+  @apply text-indigo-600 hover:text-indigo-700 hover:underline transition-colors;
+}
+
+/* Privacy specific */
+.privacyContainer {
+  @apply max-w-4xl mx-auto py-8;
+}
+
+.sectionTitle {
+  @apply text-2xl font-bold text-slate-900 mt-8 mb-4;
+}
+
+/* Generic Downloads */
+.downloadContainer {
+  @apply max-w-4xl mx-auto py-16 text-center;
+}
+
+.downloadCard {
+  @apply bg-white p-12 rounded-3xl shadow-sm border border-slate-100 mt-8 transition-all hover:shadow-md;
+}
+
+.downloadSubtitle {
+  @apply text-xl text-slate-600 mb-8 font-light;
+}
+
+.downloadButton {
+  @apply inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-indigo-600 rounded-full hover:bg-indigo-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5;
+}
+
+
+.imageCover { @apply object-cover; }
+
