@@ -1,226 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import styles from "./InterviewQA.module.css";
 
-const qaData = {
-  html: [
-    { q: "What is HTML?", a: "HTML stands for Hyper Text Markup Language. It is the standard markup language for creating Web pages and is the backbone of every website on the internet." },
-    { q: "What is the difference between HTML elements and tags?", a: "Elements represent structure and content (e.g. <p>Hello</p>), whereas tags are the markers that define the start and end of an element (e.g. <p> and </p>)." },
-    { q: "What are HTML attributes?", a: "Attributes provide additional information about HTML elements. They are always specified in the start tag and usually come in name/value pairs like: name=\"value\"." },
-    { q: "What is the purpose of the DOCTYPE declaration?", a: "The <!DOCTYPE html> declaration tells the browser which version of HTML the page is using. It must be the very first line in an HTML document, before the <html> tag." },
-    { q: "What is the difference between <div> and <span>?", a: "<div> is a block-level element used to group larger sections of content. <span> is an inline element used to group smaller pieces of text or inline content within a block." },
-    { q: "What are semantic HTML elements?", a: "Semantic elements clearly describe their meaning to both the browser and the developer. Examples include <header>, <footer>, <article>, <section>, <nav>, and <main>." },
-  ],
-  css: [
-    { q: "What is CSS?", a: "CSS stands for Cascading Style Sheets. It describes how HTML elements are to be displayed on screen, paper, or in other media." },
-    { q: "Explain the CSS Box Model.", a: "The CSS box model is essentially a box that wraps around every HTML element. It consists of: content, padding, borders, and margins - from inside to outside." },
-    { q: "What is the difference between relative and absolute positioning?", a: "Relative positioning moves an element relative to its normal position without removing it from the document flow. Absolute positioning removes it from flow and positions it relative to its closest positioned ancestor." },
-    { q: "What is Flexbox?", a: "Flexbox is a CSS layout model that provides an efficient way to lay out, align and distribute space among items in a container, even when their size is unknown." },
-    { q: "What is the difference between display: none and visibility: hidden?", a: "display: none removes the element from the document flow entirely (no space taken). visibility: hidden hides the element but it still takes up its space in the layout." },
-    { q: "What is CSS specificity?", a: "CSS specificity is the algorithm browsers use to determine which CSS rule takes precedence. Inline styles > IDs > Classes/Attributes/Pseudo-classes > Elements/Pseudo-elements." },
-  ],
-  javascript: [
-    { q: "What is JavaScript?", a: "JavaScript is a lightweight, interpreted programming language primarily known as the scripting language for Web pages. It supports event-driven, functional, and imperative programming styles." },
-    { q: "What are closures in JavaScript?", a: "A closure is a feature where an inner function has access to the outer (enclosing) function's variables even after the outer function has returned. It forms a scope chain." },
-    { q: "Explain let, const, and var.", a: "'var' is function-scoped and hoisted. 'let' and 'const' are block-scoped. 'const' cannot be reassigned after declaration. 'let' can be reassigned but not redeclared in the same scope." },
-    { q: "What is the difference between == and ===?", a: "== compares values with type coercion (e.g., '5' == 5 is true). === compares both value and type without coercion (e.g., '5' === 5 is false). Always prefer ===." },
-    { q: "What is the Event Loop?", a: "The Event Loop is what allows JavaScript to perform non-blocking operations. It continuously checks the call stack and, when it's empty, pushes callbacks from the task queue onto the stack." },
-    { q: "What are Promises in JavaScript?", a: "A Promise is an object representing the eventual completion or failure of an asynchronous operation. It can be in one of three states: pending, fulfilled, or rejected." },
-  ],
-  react: [
-    { q: "What is React?", a: "React is an open-source front-end JavaScript library for building user interfaces or UI components. It's maintained by Meta (Facebook) and a large community of developers." },
-    { q: "What is the Virtual DOM?", a: "The Virtual DOM is a lightweight copy of the actual DOM. React uses it to improve performance by only updating the real DOM where actual changes have occurred, using a diffing algorithm." },
-    { q: "Explain React Hooks.", a: "Hooks are functions that let you 'hook into' React state and lifecycle features from function components. Common hooks include useState, useEffect, useContext, and useRef." },
-    { q: "What is the difference between state and props?", a: "Props are read-only inputs passed from parent to child components. State is internal data managed within a component that can change over time and trigger re-renders when updated." },
-    { q: "What is useEffect used for?", a: "useEffect is a Hook that lets you perform side effects in function components such as data fetching, subscriptions, or manually changing the DOM after each render." },
-    { q: "What is React Context?", a: "React Context provides a way to pass data through the component tree without having to pass props manually at every level. It's designed for sharing 'global' data like theme, locale, or auth." },
-  ],
-  python: [
-    { q: "What is Python?", a: "Python is a high-level, interpreted, general-purpose programming language known for its simple, readable syntax and a philosophy emphasizing code readability (PEP 20)." },
-    { q: "What is the difference between List and Tuple in Python?", a: "Lists are mutable (can be edited) and defined with square brackets []. Tuples are immutable (cannot be changed after creation) and defined with parentheses ()." },
-    { q: "Explain PEP 8.", a: "PEP 8 is Python's official style guide, providing guidelines and best practices for writing clean, readable Python code including indentation (4 spaces), naming conventions, and line length." },
-    { q: "What are Python decorators?", a: "A decorator is a design pattern in Python that allows a user to add new functionality to an existing object without modifying its structure. They are represented by the @ symbol." },
-    { q: "What is a lambda function?", a: "A lambda function is a small anonymous function defined with the 'lambda' keyword. It can take any number of arguments but can only have one expression. E.g., lambda x: x + 1." },
-    { q: "What is the difference between append() and extend()?", a: "append() adds a single element to the end of a list. extend() adds all elements of an iterable (list, tuple, etc.) to the end of the list." },
-  ],
-  java: [
-    { q: "What is Java?", a: "Java is a class-based, object-oriented programming language designed to have as few implementation dependencies as possible. Its WORA (Write Once, Run Anywhere) philosophy makes it platform-independent." },
-    { q: "What are OOPs concepts in Java?", a: "The four core OOP concepts in Java are: Abstraction (hiding complexity), Encapsulation (bundling data/methods), Inheritance (acquiring parent properties), and Polymorphism (many forms)." },
-    { q: "What is JDK, JRE, and JVM?", a: "JVM executes Java bytecode. JRE = JVM + core libraries needed to run Java applications. JDK = JRE + development tools like compiler (javac) needed to build Java applications." },
-    { q: "What is the difference between an interface and an abstract class?", a: "An abstract class can have both abstract and concrete methods and state. An interface can only have abstract methods (pre-Java 8) and constants. A class can implement multiple interfaces but extend only one class." },
-    { q: "What is Exception Handling in Java?", a: "Exception handling is a mechanism to handle runtime errors so the normal flow isn't disrupted. It uses try-catch-finally blocks. Exceptions are objects that extend java.lang.Throwable." },
-    { q: "What is the difference between ArrayList and LinkedList?", a: "ArrayList uses a dynamic array for storage, providing O(1) access but O(n) insertion/deletion. LinkedList uses a doubly linked list, providing O(1) insertion/deletion but O(n) access." },
-  ],
-  mysql: [
-    { q: "What is MySQL?", a: "MySQL is an open-source relational database management system (RDBMS) based on Structured Query Language (SQL). It's one of the most widely used databases powering many web applications." },
-    { q: "What is the difference between Primary Key and Foreign Key?", a: "A Primary Key uniquely identifies a record in a table and cannot contain NULLs. A Foreign Key is a field in one table that refers to the Primary Key in another table to establish a relationship." },
-    { q: "What is a JOIN in SQL?", a: "A JOIN clause combines rows from two or more tables based on a related column between them. Types include INNER JOIN (matching rows), LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN." },
-    { q: "What is the difference between WHERE and HAVING?", a: "WHERE filters rows before grouping (used with SELECT, UPDATE, DELETE). HAVING filters groups after GROUP BY has been applied. You can use HAVING with aggregate functions like COUNT, SUM." },
-    { q: "What is database normalization?", a: "Normalization is the process of organizing database data to reduce redundancy and improve data integrity. Common normal forms are 1NF, 2NF, 3NF and BCNF." },
-    { q: "What are indexes in MySQL?", a: "An index is a data structure that improves the speed of data retrieval. It works like a book's index — instead of scanning all rows, MySQL can jump directly to the relevant rows." },
-  ],
-  clang: [
-    { q: "What is C Language?", a: "C is a general-purpose, procedural programming language developed by Dennis Ritchie in 1972 at Bell Labs. It is foundational to many modern languages including C++, Java, and C#." },
-    { q: "What is a pointer in C?", a: "A pointer is a variable that stores the memory address of another variable. Pointers are declared with * and dereferenced with * to access the value at the stored address." },
-    { q: "What is dynamic memory allocation in C?", a: "Dynamic memory allocation allows programs to request memory at runtime. Key functions are malloc() (allocate), calloc() (allocate + zero-initialize), realloc() (resize), and free() (release)." },
-    { q: "What is the difference between struct and union?", a: "In a struct, each member has its own memory location and the total size is the sum of all members. In a union, all members share the same memory location and the size equals the largest member." },
-    { q: "What are header files in C?", a: "Header files (.h) contain declarations of functions, macros, and data types. They are included with #include directive to allow code reuse across multiple files. E.g., #include <stdio.h>." },
-    { q: "What is the difference between call by value and call by reference?", a: "Call by value passes a copy of the argument; changes do not affect the original. Call by reference passes the address of the argument; changes affect the original variable." },
-  ],
-};
-
-const categories = [
-  { id: "html",       label: "HTML",        icon: "🌐", color: "#f97316" },
-  { id: "css",        label: "CSS",         icon: "🎨", color: "#3b82f6" },
-  { id: "javascript", label: "JavaScript",  icon: "⚡", color: "#eab308" },
-  { id: "react",      label: "React JS",    icon: "⚛️", color: "#06b6d4" },
-  { id: "python",     label: "Python",      icon: "🐍", color: "#22c55e" },
-  { id: "java",       label: "Java",        icon: "☕", color: "#ef4444" },
-  { id: "mysql",      label: "MySQL",       icon: "🗄️", color: "#a855f7" },
-  { id: "clang",      label: "C Language",  icon: "⚙️", color: "#64748b" },
+type Question = { id: string; category: string; difficulty: "Foundation" | "Working knowledge" | "Senior"; question: string; short: string; detail: string; asked: string; mistakes: string; example: string; followUps: string[]; related: string[] };
+const topics = [["javascript", "JavaScript"], ["react", "React"], ["next", "Next.js"], ["typescript", "TypeScript"], ["api", "APIs"]] as const;
+const questions: Question[] = [
+  { id:"closure", category:"javascript", difficulty:"Working knowledge", question:"What is a closure, and where can it surprise you?", short:"A function retains access to the lexical scope where it was created, not where it is called.", detail:"Closures are the mechanism behind callbacks, module-private state, and many React handlers. They become a problem when a callback outlives the values you expected it to see. The bug is rarely that a closure exists; it is that its lifetime was not designed.", asked:"Frontend screens, JavaScript fundamentals, debugging rounds.", mistakes:"Saying closures are only for data hiding, or claiming they copy values at function creation time.", example:"A click handler scheduled with setTimeout can still read an earlier state value. In React, use functional updates or keep the latest mutable value in a ref when that is the contract.", followUps:["How do closures interact with loops?", "How do stale closures appear in hooks?"], related:["Lexical scope", "Event loop", "useRef"] },
+  { id:"eventloop", category:"javascript", difficulty:"Senior", question:"How do tasks and microtasks change the order of async code?", short:"After the current stack clears, JavaScript drains microtasks before it takes the next task.", detail:"Promise reactions and queueMicrotask run in the microtask queue; timers and UI events are tasks. A long chain of microtasks can delay rendering just as effectively as a long synchronous loop. Knowing that ordering matters when coordinating loading states, teardown, and tests.", asked:"Frontend architecture and asynchronous debugging interviews.", mistakes:"Calling every callback a 'thread', or describing setTimeout as a precise timer.", example:"If a promise callback queues another promise callback, both run before a pending setTimeout callback. Use that fact sparingly; application sequencing should still be explicit.", followUps:["What is requestAnimationFrame for?", "Can microtasks starve rendering?"], related:["Promises", "queueMicrotask", "Rendering"] },
+  { id:"render", category:"react", difficulty:"Working knowledge", question:"What causes a React component to render again?", short:"Its state changes, its parent renders, a consumed context value changes, or an external store subscription signals an update.", detail:"A render is React calculating the next UI, not necessarily changing the DOM. Memoization is useful when a measured expensive subtree receives stable inputs; it is not a default response to every render. Most performance issues start with state placed too high in the tree or expensive work in render.", asked:"React implementation and performance conversations.", mistakes:"Saying React only rerenders when props change, or treating React.memo as a guarantee of no rerenders.", example:"Move a search input and its state next to the results that need it instead of keeping it in a top-level shell. Fewer unrelated branches become eligible to render.", followUps:["When does React.memo help?", "What is referential equality?"], related:["State colocation", "useMemo", "React DevTools profiler"] },
+  { id:"effect", category:"react", difficulty:"Senior", question:"When should you use an effect instead of an event handler?", short:"Use an event handler for work caused by a user action; use an effect to synchronize with something outside React after render.", detail:"An effect is appropriate for subscriptions, browser APIs, and keeping an external system aligned with rendered state. If the work happens because the user pressed Save, run it in the Save handler. Effects used as a second event system create duplicate calls and awkward dependency fixes.", asked:"Senior frontend and code-review interviews.", mistakes:"Treating useEffect as a lifecycle bucket or removing dependencies to silence the linter.", example:"Send analytics for a completed purchase in the purchase flow, not in an effect watching a 'purchased' boolean. Subscribe to a WebSocket channel in an effect because that channel follows the rendered view.", followUps:["Why must an effect return cleanup?", "How do you avoid stale requests?"], related:["Effect cleanup", "AbortController", "Dependencies"] },
+  { id:"server-client", category:"next", difficulty:"Working knowledge", question:"How do you decide between a Server and Client Component?", short:"Start on the server; add a client boundary only where state, browser APIs, or event handlers are needed.", detail:"Server Components keep data access and heavy dependencies off the browser bundle. Client Components are for interaction. The important unit is the boundary: placing it high makes everything below it client JavaScript, even if most of the tree is static.", asked:"Next.js system-design and bundle-performance interviews.", mistakes:"Putting 'use client' on a layout for one interactive button, or assuming a Client Component cannot receive server-rendered children.", example:"Render a product page and its data on the server, then pass the rendered description and a small quantity picker into a client component. The picker hydrates; the document-like content does not need to.", followUps:["What crosses the RSC boundary?", "How do you keep a client bundle small?"], related:["RSC", "Hydration", "Code splitting"] },
+  { id:"narrowing", category:"typescript", difficulty:"Foundation", question:"Why is unknown safer than any at an API boundary?", short:"unknown forces validation before use; any turns off the type checker exactly where untrusted data needs it most.", detail:"Values from JSON, storage, URL parameters, and third-party libraries are runtime facts, not TypeScript facts. Start with unknown, validate shape, then narrow. It makes an incorrect assumption visible close to its source instead of becoming a distant runtime failure.", asked:"TypeScript fundamentals and API integration rounds.", mistakes:"Using a type assertion as validation, or assuming JSON.parse returns the declared type.", example:"Check that a response has a string id before passing it into application code. A schema library can help at large boundaries, but a type guard is often enough for a small one.", followUps:["What is a user-defined type guard?", "When is any acceptable?"], related:["Type guards", "Discriminated unions", "Runtime validation"] },
+  { id:"idempotency", category:"api", difficulty:"Senior", question:"What does idempotency mean for an API write?", short:"Repeating the same intended request has the same observable outcome as sending it once.", detail:"Retries are normal: mobile networks drop responses, browsers resubmit, and queues redeliver. A payment or order endpoint needs an idempotency key bound to the caller and request payload, then it should return the original result for a matching retry.", asked:"Backend, payments, and distributed-systems interviews.", mistakes:"Equating idempotency with 'no side effects', or trusting a client-side disabled button as duplicate protection.", example:"Store the key and completed response in the same transactional boundary as the order. If the same key arrives with a different payload, reject it rather than silently reusing the result.", followUps:["Where do you store the key?", "How long should keys live?"], related:["HTTP retries", "Transactions", "Exactly-once semantics"] },
 ];
 
 export default function InterviewQA() {
-  const [activeCategory, setActiveCategory] = useState<keyof typeof qaData>("html");
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const toggleAccordion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const handleCategoryChange = (cat: keyof typeof qaData) => {
-    setActiveCategory(cat);
-    setOpenIndex(0);
-  };
-
-  const currentQA = qaData[activeCategory];
-  const currentCat = categories.find((c) => c.id === activeCategory);
-  const totalQ = Object.values(qaData).reduce((acc, arr) => acc + arr.length, 0);
-
-  return (
-    <div className={styles.pageWrapper}>
-      {/* Hero */}
-      <section className={styles.heroSection}>
-        <div className={styles.heroBadge}>
-          <span className={styles.heroBadgeDot} />
-          Interview Preparation Hub
-        </div>
-        <h1 className={styles.heroTitle}>
-          Crack Your{" "}
-          <span className={styles.heroTitleGradient}>Tech Interview</span>
-        </h1>
-        <p className={styles.heroSubtitle}>
-          Master the most frequently asked interview questions with expert answers across 8 programming domains.
-        </p>
-        <div className={styles.heroStats}>
-          <div className={styles.heroStat}>
-            <span className={styles.heroStatNumber}>{totalQ}+</span>
-            <span className={styles.heroStatLabel}>Questions</span>
-          </div>
-          <div className={styles.heroStat}>
-            <span className={styles.heroStatNumber}>8</span>
-            <span className={styles.heroStatLabel}>Topics</span>
-          </div>
-          <div className={styles.heroStat}>
-            <span className={styles.heroStatNumber}>100%</span>
-            <span className={styles.heroStatLabel}>Free</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Mobile Tabs */}
-      <div className={styles.mobileTabs}>
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => handleCategoryChange(cat.id as keyof typeof qaData)}
-            className={`${styles.mobileTab} ${activeCategory === cat.id ? styles.mobileTabActive : ""}`}
-          >
-            {cat.icon} {cat.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Main Layout */}
-      <div className={styles.mainLayout}>
-        {/* Sidebar */}
-        <aside className={styles.sidebar}>
-          <div className={styles.sidebarCard}>
-            <p className={styles.sidebarTitle}>Topics</p>
-            <nav className={styles.sidebarNav}>
-              {categories.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => handleCategoryChange(cat.id as keyof typeof qaData)}
-                  className={`${styles.sidebarButton} ${activeCategory === cat.id ? styles.sidebarButtonActive : ""}`}
-                >
-                  <span className={styles.sidebarIcon}>{cat.icon}</span>
-                  {cat.label}
-                  <span className={styles.sidebarButtonCount}>
-                    {qaData[cat.id as keyof typeof qaData].length}
-                  </span>
-                </button>
-              ))}
-            </nav>
-            <div className={styles.progressSection}>
-              <p className={styles.progressLabel}>Coverage</p>
-              <div className={styles.progressBar}>
-                <div className={styles.progressFill} style={{ width: "100%" }} />
-              </div>
-            </div>
-          </div>
-        </aside>
-
-        {/* Q&A Content */}
-        <main className={styles.qaContent}>
-          <div className={styles.qaContentHeader}>
-            <h2 className={styles.qaContentTitle}>
-              {currentCat?.icon} {currentCat?.label} Interview Q&A
-            </h2>
-            <span className={styles.qaContentBadge}>{currentQA.length} Questions</span>
-          </div>
-
-          <div className={styles.accordionList}>
-            {currentQA.map((qa, index) => {
-              const isOpen = openIndex === index;
-              return (
-                <div
-                  key={index}
-                  className={`${styles.accordionItem} ${isOpen ? styles.accordionItemOpen : ""}`}
-                >
-                  <button
-                    onClick={() => toggleAccordion(index)}
-                    className={styles.accordionHeader}
-                    aria-expanded={isOpen}
-                  >
-                    <span className={`${styles.accordionNumber} ${isOpen ? styles.accordionNumberActive : ""}`}>
-                      {index + 1}
-                    </span>
-                    <span className={`${styles.questionText} ${isOpen ? styles.questionTextActive : ""}`}>
-                      {qa.q}
-                    </span>
-                    <svg
-                      className={`${styles.accordionArrow} ${isOpen ? styles.accordionArrowOpen : ""}`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-
-                  {isOpen && (
-                    <div className={styles.accordionBody}>
-                      <p className={styles.answerText}>{qa.a}</p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </main>
-      </div>
-    </div>
-  );
+  const params = useSearchParams(); const queryTopic = params.get("tech")?.toLowerCase();
+  const [topic, setTopic] = useState(topics.some(([id]) => id === queryTopic) ? queryTopic! : "javascript");
+  const [open, setOpen] = useState(questions[0].id);
+  const [query, setQuery] = useState("");
+  function selectTopic(nextTopic: string) { setTopic(nextTopic); setOpen(questions.find((item) => item.category === nextTopic)?.id || ""); setQuery(""); }
+  const current = useMemo(() => questions.filter((item) => item.category === topic && `${item.question} ${item.short}`.toLowerCase().includes(query.toLowerCase())), [topic, query]);
+  return <section className={styles.page} aria-labelledby="qa-title"><header className={styles.hero}><p className={styles.eyebrow}>Interview notes</p><h1 id="qa-title">Know the answer. Explain the trade-off.</h1><p>Practical prompts with enough context to hold up after the first follow-up.</p></header><div className={styles.layout}><aside className={styles.sidebar}><p>Topics</p><nav>{topics.map(([id, label]) => <button key={id} className={topic === id ? styles.selected : ""} onClick={() => selectTopic(id)}><span>{label}</span><small>{questions.filter((q) => q.category === id).length}</small></button>)}</nav><div className={styles.sidebarNote}>Answers are written for discussion, not memorization. Start with the short answer, then add context.</div></aside><main><div className={styles.contentHead}><div><p className={styles.eyebrow}>{topics.find(([id]) => id === topic)?.[1]}</p><h2>Questions to work through</h2></div><label className={styles.search}><span aria-hidden="true">⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Filter this topic" aria-label="Filter questions" />{query && <button onClick={() => setQuery("")} aria-label="Clear filter">×</button>}</label></div><div className={styles.list}>{current.map((item, index) => { const expanded = open === item.id; return <article className={`${styles.item} ${expanded ? styles.expanded : ""}`} key={item.id}><button className={styles.question} onClick={() => setOpen(expanded ? "" : item.id)} aria-expanded={expanded}><span className={styles.number}>{String(index + 1).padStart(2,"0")}</span><span><em className={styles.level}>{item.difficulty}</em><strong>{item.question}</strong><b>{item.short}</b></span><i aria-hidden="true">⌄</i></button>{expanded && <div className={styles.answer}><section><h3>Detailed explanation</h3><p>{item.detail}</p></section><div className={styles.answerGrid}><section><h3>Where it comes up</h3><p>{item.asked}</p></section><section><h3>Common mistake</h3><p>{item.mistakes}</p></section></div><section className={styles.example}><h3>Production example</h3><p>{item.example}</p></section><footer><div><span>Follow-up prompts</span>{item.followUps.map((followUp) => <button key={followUp} onClick={() => setQuery(followUp)}>{followUp}</button>)}</div><p>Related: {item.related.join(" · ")}</p></footer></div>}</article>})}</div>{!current.length && <div className={styles.empty}><strong>No question matches that filter.</strong><button onClick={() => setQuery("")}>Clear filter</button></div>}</main></div></section>;
 }

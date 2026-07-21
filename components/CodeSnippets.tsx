@@ -1,526 +1,116 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import styles from "./CodeSnippets.module.css";
 
+type Snippet = {
+  id: string; category: string; language: string; filename: string; title: string;
+  context: string; code: string; explanation: string; production: string;
+  mistakes: string; performance?: string; related: string[];
+};
+
 const categories = [
-  { id: "all",        label: "All Snippets",   icon: "⚡" },
-  { id: "html",       label: "HTML",            icon: "🌐" },
-  { id: "css",        label: "CSS",             icon: "🎨" },
-  { id: "javascript", label: "JavaScript",      icon: "🟡" },
-  { id: "react",      label: "React JS",        icon: "⚛️" },
-  { id: "python",     label: "Python",          icon: "🐍" },
-  { id: "java",       label: "Java",            icon: "☕" },
-  { id: "sql",        label: "MySQL / SQL",     icon: "🗄️" },
-  { id: "clang",      label: "C Language",      icon: "⚙️" },
-];
+  ["all", "All"], ["javascript", "JavaScript"], ["typescript", "TypeScript"],
+  ["react", "React"], ["next", "Next.js"], ["api", "API"], ["css", "CSS"], ["git", "Git"],
+] as const;
 
-const snippets = [
-  // HTML
-  {
-    id: "html-template",
-    category: "html",
-    language: "HTML5",
-    title: "HTML5 Starter Boilerplate",
-    code: (
-      <>
-        <span className={styles.keyword}>&lt;!DOCTYPE html&gt;</span><br/>
-        &lt;<span className={styles.function}>html</span> <span className={styles.variable}>lang</span>=<span className={styles.string}>&quot;en&quot;</span>&gt;<br/>
-        &nbsp;&nbsp;&lt;<span className={styles.function}>head</span>&gt;<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.function}>meta</span> <span className={styles.variable}>charset</span>=<span className={styles.string}>&quot;UTF-8&quot;</span> /&gt;<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.function}>meta</span> <span className={styles.variable}>name</span>=<span className={styles.string}>&quot;viewport&quot;</span> <span className={styles.variable}>content</span>=<span className={styles.string}>&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.function}>title</span>&gt;My Page&lt;/<span className={styles.function}>title</span>&gt;<br/>
-        &nbsp;&nbsp;&lt;/<span className={styles.function}>head</span>&gt;<br/>
-        &nbsp;&nbsp;&lt;<span className={styles.function}>body</span>&gt;<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.function}>h1</span>&gt;Hello World&lt;/<span className={styles.function}>h1</span>&gt;<br/>
-        &nbsp;&nbsp;&lt;/<span className={styles.function}>body</span>&gt;<br/>
-        &lt;/<span className={styles.function}>html</span>&gt;
-      </>
-    ),
-    rawCode: `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Page</title>
-  </head>
-  <body>
-    <h1>Hello World</h1>
-  </body>
-</html>`
-  },
-  {
-    id: "html-form",
-    category: "html",
-    language: "HTML5",
-    title: "Accessible Form Template",
-    code: (
-      <>
-        &lt;<span className={styles.function}>form</span> <span className={styles.variable}>action</span>=<span className={styles.string}>&quot;/submit&quot;</span> <span className={styles.variable}>method</span>=<span className={styles.string}>&quot;POST&quot;</span>&gt;<br/>
-        &nbsp;&nbsp;&lt;<span className={styles.function}>label</span> <span className={styles.variable}>for</span>=<span className={styles.string}>&quot;email&quot;</span>&gt;Email&lt;/<span className={styles.function}>label</span>&gt;<br/>
-        &nbsp;&nbsp;&lt;<span className={styles.function}>input</span> <span className={styles.variable}>type</span>=<span className={styles.string}>&quot;email&quot;</span> <span className={styles.variable}>id</span>=<span className={styles.string}>&quot;email&quot;</span> <span className={styles.variable}>name</span>=<span className={styles.string}>&quot;email&quot;</span> <span className={styles.variable}>required</span> /&gt;<br/>
-        &nbsp;&nbsp;&lt;<span className={styles.function}>button</span> <span className={styles.variable}>type</span>=<span className={styles.string}>&quot;submit&quot;</span>&gt;Submit&lt;/<span className={styles.function}>button</span>&gt;<br/>
-        &lt;/<span className={styles.function}>form</span>&gt;
-      </>
-    ),
-    rawCode: `<form action="/submit" method="POST">
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email" required />
-  <button type="submit">Submit</button>
-</form>`
-  },
-  // CSS
-  {
-    id: "css-flex-center",
-    category: "css",
-    language: "CSS3",
-    title: "Centering with Flexbox",
-    code: (
-      <>
-        .<span className={styles.function}>centered</span> {"{"}<br/>
-        &nbsp;&nbsp;<span className={styles.variable}>display</span>: <span className={styles.string}>flex</span>;<br/>
-        &nbsp;&nbsp;<span className={styles.variable}>justify-content</span>: <span className={styles.string}>center</span>;<br/>
-        &nbsp;&nbsp;<span className={styles.variable}>align-items</span>: <span className={styles.string}>center</span>;<br/>
-        &nbsp;&nbsp;<span className={styles.variable}>min-height</span>: <span className={styles.string}>100vh</span>;<br/>
-        {"}"}
-      </>
-    ),
-    rawCode: `.centered {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}`
-  },
-  {
-    id: "css-variables",
-    category: "css",
-    language: "CSS3",
-    title: "CSS Custom Properties (Variables)",
-    code: (
-      <>
-        :<span className={styles.function}>root</span> {"{"}<br/>
-        &nbsp;&nbsp;<span className={styles.variable}>--primary</span>: <span className={styles.string}>#6366f1</span>;<br/>
-        &nbsp;&nbsp;<span className={styles.variable}>--bg</span>: <span className={styles.string}>#0f172a</span>;<br/>
-        &nbsp;&nbsp;<span className={styles.variable}>--text</span>: <span className={styles.string}>#f8fafc</span>;<br/>
-        {"}"}<br/><br/>
-        .<span className={styles.function}>btn</span> {"{"}<br/>
-        &nbsp;&nbsp;<span className={styles.variable}>background</span>: <span className={styles.function}>var</span>(<span className={styles.string}>--primary</span>);<br/>
-        &nbsp;&nbsp;<span className={styles.variable}>color</span>: <span className={styles.function}>var</span>(<span className={styles.string}>--text</span>);<br/>
-        {"}"}
-      </>
-    ),
-    rawCode: `:root {
-  --primary: #6366f1;
-  --bg: #0f172a;
-  --text: #f8fafc;
-}
-.btn {
-  background: var(--primary);
-  color: var(--text);
-}`
-  },
-  // JavaScript
-  {
-    id: "js-fetch",
-    category: "javascript",
-    language: "JavaScript",
-    title: "Fetch API Wrapper",
-    code: (
-      <>
-        <span className={styles.keyword}>const</span> <span className={styles.function}>fetchData</span> <span className={styles.operator}>=</span> <span className={styles.keyword}>async</span> (<span className={styles.variable}>url</span>) <span className={styles.operator}>=&gt;</span> {"{"}<br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>try</span> {"{"}<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.keyword}>const</span> <span className={styles.variable}>res</span> <span className={styles.operator}>=</span> <span className={styles.keyword}>await</span> <span className={styles.function}>fetch</span>(<span className={styles.variable}>url</span>);<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.keyword}>const</span> <span className={styles.variable}>data</span> <span className={styles.operator}>=</span> <span className={styles.keyword}>await</span> <span className={styles.variable}>res</span>.<span className={styles.function}>json</span>();<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.keyword}>return</span> <span className={styles.variable}>data</span>;<br/>
-        &nbsp;&nbsp;{"}"} <span className={styles.keyword}>catch</span> (<span className={styles.variable}>err</span>) {"{"}<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.variable}>console</span>.<span className={styles.function}>error</span>(<span className={styles.string}>&quot;Error:&quot;</span>, <span className={styles.variable}>err</span>);<br/>
-        &nbsp;&nbsp;{"}"}<br/>
-        {"}"};
-      </>
-    ),
-    rawCode: `const fetchData = async (url) => {
-  try {
-    const res = await fetch(url);
-    const data = await res.json();
-    return data;
-  } catch (err) {
-    console.error("Error:", err);
+const snippets: Snippet[] = [
+  { id: "fetch", category: "javascript", language: "JavaScript", filename: "request.js", title: "Fetch JSON without hiding failures", context: "A small boundary for browser requests. It distinguishes an HTTP failure from a successful response with an error-shaped body, which is where many client bugs start.", code: `export async function request(path, options) {
+  const response = await fetch(path, {
+    headers: { Accept: "application/json", ...options?.headers },
+    ...options,
+  });
+
+  if (!response.ok) {
+    throw new Error(\`Request failed: \${response.status}\`);
   }
-};`
-  },
-  {
-    id: "js-debounce",
-    category: "javascript",
-    language: "JavaScript",
-    title: "Debounce Function",
-    code: (
-      <>
-        <span className={styles.keyword}>function</span> <span className={styles.function}>debounce</span>(<span className={styles.variable}>fn</span>, <span className={styles.variable}>delay</span>) {"{"}<br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>let</span> <span className={styles.variable}>timer</span>;<br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>return</span> <span className={styles.keyword}>function</span>(...<span className={styles.variable}>args</span>) {"{"}<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.function}>clearTimeout</span>(<span className={styles.variable}>timer</span>);<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.variable}>timer</span> <span className={styles.operator}>=</span> <span className={styles.function}>setTimeout</span>(() <span className={styles.operator}>=&gt;</span> <span className={styles.variable}>fn</span>.<span className={styles.function}>apply</span>(<span className={styles.keyword}>this</span>, <span className={styles.variable}>args</span>), <span className={styles.variable}>delay</span>);<br/>
-        &nbsp;&nbsp;{"}"};<br/>
-        {"}"}
-      </>
-    ),
-    rawCode: `function debounce(fn, delay) {
-  let timer;
-  return function(...args) {
-    clearTimeout(timer);
-    timer = setTimeout(() => fn.apply(this, args), delay);
-  };
-}`
-  },
-  // React
-  {
-    id: "react-counter",
-    category: "react",
-    language: "React",
-    title: "useState Counter Hook",
-    code: (
-      <>
-        <span className={styles.keyword}>import</span> {"{ "}<span className={styles.variable}>useState</span>{" }"} <span className={styles.keyword}>from</span> <span className={styles.string}>&quot;react&quot;</span>;<br/><br/>
-        <span className={styles.keyword}>export default function</span> <span className={styles.function}>Counter</span>() {"{"}<br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>const</span> [<span className={styles.variable}>count</span>, <span className={styles.function}>setCount</span>] <span className={styles.operator}>=</span> <span className={styles.function}>useState</span>(<span className={styles.operator}>0</span>);<br/><br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>return</span> (<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className={styles.function}>button</span> <span className={styles.variable}>onClick</span>={"{"}<span className={styles.operator}>{`() => setCount(c => c + 1)`}</span>{"}"}&gt;<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Count: {"{"}<span className={styles.variable}>count</span>{"}"}<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span className={styles.function}>button</span>&gt;<br/>
-        &nbsp;&nbsp;);<br/>
-        {"}"}
-      </>
-    ),
-    rawCode: `import { useState } from "react";
 
-export default function Counter() {
-  const [count, setCount] = useState(0);
+  return response.json();
+}` , explanation: "Use this when callers should handle a rejected promise for non-2xx responses. Native fetch only rejects for network failures.", production: "Add an AbortSignal for navigations and map known status codes to product-level errors at the edge of the UI.", mistakes: "Calling response.json() before checking response.ok makes error handling inconsistent.", related: ["AbortController", "Response.ok", "HTTP status codes"] },
+  { id: "result", category: "typescript", language: "TypeScript", filename: "result.ts", title: "Return an explicit result from a fallible boundary", context: "Useful when failure is expected and local: parsing input, validating a token, or reading optional configuration. The caller can’t accidentally ignore the unhappy path.", code: `type Result<T> =
+  | { ok: true; value: T }
+  | { ok: false; error: string };
 
-  return (
-    <button onClick={() => setCount(c => c + 1)}>
-      Count: {count}
-    </button>
+export function parsePort(value: string): Result<number> {
+  const port = Number(value);
+  if (!Number.isInteger(port) || port < 1 || port > 65535) {
+    return { ok: false, error: "Port must be 1–65535" };
+  }
+  return { ok: true, value: port };
+}` , explanation: "A discriminated union narrows cleanly on ok. It is more honest than returning NaN or throwing for ordinary invalid input.", production: "Keep the error payload structured if the result crosses a service boundary. Don’t use Result for truly exceptional failures that should halt the request.", mistakes: "Adding optional value and error fields loses the compiler’s narrowing help.", related: ["Discriminated unions", "Type guards"] },
+  { id: "effect", category: "react", language: "TSX", filename: "use-user.ts", title: "Cancel stale work in an effect", context: "Effects that fetch can finish after the user has moved on. Abort the request during cleanup so old work doesn’t update a new screen.", code: `useEffect(() => {
+  const controller = new AbortController();
+
+  loadUser(id, { signal: controller.signal })
+    .then(setUser)
+    .catch((error) => {
+      if (error.name !== "AbortError") setError(error);
+    });
+
+  return () => controller.abort();
+}, [id]);` , explanation: "The cleanup runs before the dependency changes and when the component unmounts. That makes the lifetime of the request match the lifetime of the view.", production: "For shared server state, prefer the cache/data layer your app already uses. This pattern is for a focused local effect.", mistakes: "Marking the effect callback async prevents React from receiving the cleanup function.", related: ["useEffect", "AbortController", "Race conditions"] },
+  { id: "params", category: "next", language: "TypeScript", filename: "app/products/page.tsx", title: "Validate search params at the route boundary", context: "URL input is user input. Parse it once at the page boundary instead of letting stringly typed values leak through the component tree.", code: `export default async function Page({ searchParams }: PageProps<"/products">) {
+  const { page = "1" } = await searchParams;
+  const currentPage = Math.max(1, Number.parseInt(page as string, 10) || 1);
+
+  const products = await getProducts({ page: currentPage });
+  return <ProductList products={products} page={currentPage} />;
+}` , explanation: "This keeps URL semantics in the server page and leaves the list component with a real number.", production: "Set an upper page limit and preserve filter state in pagination links. Dynamic input should never be forwarded directly to a database query.", mistakes: "Assuming search params are always strings; repeated keys can be arrays.", related: ["PageProps", "Server Components", "URLSearchParams"] },
+  { id: "handler", category: "api", language: "TypeScript", filename: "app/api/health/route.ts", title: "Return a deliberate health response", context: "A health endpoint should prove only what your load balancer needs it to prove. It is not a public status dashboard and should not leak dependency details.", code: `import { NextResponse } from "next/server";
+
+export async function GET() {
+  const healthy = await canReachDatabase();
+  return NextResponse.json(
+    { status: healthy ? "ok" : "unavailable" },
+    { status: healthy ? 200 : 503, headers: { "Cache-Control": "no-store" } }
   );
-}`
-  },
-  {
-    id: "react-useeffect",
-    category: "react",
-    language: "React",
-    title: "useEffect Data Fetch",
-    code: (
-      <>
-        <span className={styles.keyword}>import</span> {"{ "}<span className={styles.variable}>useState</span>, <span className={styles.variable}>useEffect</span>{" }"} <span className={styles.keyword}>from</span> <span className={styles.string}>&quot;react&quot;</span>;<br/><br/>
-        <span className={styles.keyword}>export default function</span> <span className={styles.function}>DataList</span>() {"{"}<br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>const</span> [<span className={styles.variable}>data</span>, <span className={styles.function}>setData</span>] <span className={styles.operator}>=</span> <span className={styles.function}>useState</span>([]);<br/><br/>
-        &nbsp;&nbsp;<span className={styles.function}>useEffect</span>(() <span className={styles.operator}>=&gt;</span> {"{"}<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.function}>fetch</span>(<span className={styles.string}>&quot;/api/data&quot;</span>).<span className={styles.function}>then</span>(<span className={styles.variable}>r</span> <span className={styles.operator}>=&gt;</span> <span className={styles.variable}>r</span>.<span className={styles.function}>json</span>()).<span className={styles.function}>then</span>(<span className={styles.function}>setData</span>);<br/>
-        &nbsp;&nbsp;{"}"}, []);<br/><br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>return</span> &lt;<span className={styles.function}>ul</span>&gt;{"{"}<span className={styles.variable}>data</span>.<span className={styles.function}>map</span>((<span className={styles.variable}>item</span>, <span className={styles.variable}>i</span>) <span className={styles.operator}>=&gt;</span> &lt;<span className={styles.function}>li</span> <span className={styles.variable}>key</span>={"{"}<span className={styles.variable}>i</span>{"}"}&gt;{"{"}<span className={styles.variable}>item</span>{"}"}&lt;/<span className={styles.function}>li</span>&gt;){"}"}&lt;/<span className={styles.function}>ul</span>&gt;;<br/>
-        {"}"}
-      </>
-    ),
-    rawCode: `import { useState, useEffect } from "react";
+}` , explanation: "A 503 lets infrastructure remove an unhealthy instance. no-store prevents an intermediary from serving a stale success.", production: "Use separate readiness and liveness checks when startup and dependency health have different meanings.", mistakes: "Returning 200 with an error field makes automated checks useless.", related: ["Route Handlers", "HTTP 503", "Caching"] },
+  { id: "focus", category: "css", language: "CSS", filename: "controls.css", title: "A focus ring that works on light surfaces", context: "Keyboard focus is part of the control, not an optional decoration. This ring remains visible beside subtle borders without changing layout.", code: `.control:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
 
-export default function DataList() {
-  const [data, setData] = useState([]);
+.control:focus:not(:focus-visible) {
+  outline: none;
+}` , explanation: "focus-visible avoids showing a ring for every pointer click while preserving it for keyboard users.", production: "Use one focus color across the product and test it against every surface, including disabled-looking controls.", mistakes: "Removing outlines globally without replacing them.", related: [":focus-visible", "Keyboard navigation"] },
+  { id: "rebase", category: "git", language: "Shell", filename: "terminal", title: "Rebase a feature branch before review", context: "Rebasing onto the current target branch reveals integration conflicts while the change is still yours to reason about.", code: `git fetch origin
+git rebase origin/main
 
-  useEffect(() => {
-    fetch("/api/data").then(r => r.json()).then(setData);
-  }, []);
-
-  return <ul>{data.map((item, i) => <li key={i}>{item}</li>)}</ul>;
-}`
-  },
-  // Python
-  {
-    id: "python-list-comp",
-    category: "python",
-    language: "Python",
-    title: "List Comprehension",
-    code: (
-      <>
-        <span className={styles.comment}># Square even numbers in a list</span><br/>
-        <span className={styles.variable}>numbers</span> <span className={styles.operator}>=</span> [<span className={styles.operator}>1</span>, <span className={styles.operator}>2</span>, <span className={styles.operator}>3</span>, <span className={styles.operator}>4</span>, <span className={styles.operator}>5</span>, <span className={styles.operator}>6</span>]<br/>
-        <span className={styles.variable}>squared_evens</span> <span className={styles.operator}>=</span> [<span className={styles.variable}>x</span> ** <span className={styles.operator}>2</span> <span className={styles.keyword}>for</span> <span className={styles.variable}>x</span> <span className={styles.keyword}>in</span> <span className={styles.variable}>numbers</span> <span className={styles.keyword}>if</span> <span className={styles.variable}>x</span> % <span className={styles.operator}>2</span> == <span className={styles.operator}>0</span>]<br/>
-        <span className={styles.function}>print</span>(<span className={styles.variable}>squared_evens</span>) <span className={styles.comment}># [4, 16, 36]</span>
-      </>
-    ),
-    rawCode: `# Square even numbers in a list
-numbers = [1, 2, 3, 4, 5, 6]
-squared_evens = [x**2 for x in numbers if x % 2 == 0]
-print(squared_evens) # [4, 16, 36]`
-  },
-  {
-    id: "python-decorator",
-    category: "python",
-    language: "Python",
-    title: "Simple Decorator",
-    code: (
-      <>
-        <span className={styles.keyword}>def</span> <span className={styles.function}>logger</span>(<span className={styles.variable}>func</span>):<br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>def</span> <span className={styles.function}>wrapper</span>(*<span className={styles.variable}>args</span>, **<span className={styles.variable}>kwargs</span>):<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.function}>print</span>(<span className={styles.string}>f"Calling {"{"}{`{func.__name__}`}{"}"}"</span>)<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.keyword}>return</span> <span className={styles.function}>func</span>(*<span className={styles.variable}>args</span>, **<span className={styles.variable}>kwargs</span>)<br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>return</span> <span className={styles.variable}>wrapper</span><br/><br/>
-        @<span className={styles.function}>logger</span><br/>
-        <span className={styles.keyword}>def</span> <span className={styles.function}>greet</span>(<span className={styles.variable}>name</span>):<br/>
-        &nbsp;&nbsp;<span className={styles.function}>print</span>(<span className={styles.string}>f"Hello, {"{"}{`{name}`}{"}"}"</span>)
-      </>
-    ),
-    rawCode: `def logger(func):
-  def wrapper(*args, **kwargs):
-    print(f"Calling {func.__name__}")
-    return func(*args, **kwargs)
-  return wrapper
-
-@logger
-def greet(name):
-  print(f"Hello, {name}")`
-  },
-  // Java
-  {
-    id: "java-singleton",
-    category: "java",
-    language: "Java",
-    title: "Singleton Pattern (Thread-Safe)",
-    code: (
-      <>
-        <span className={styles.keyword}>public class</span> <span className={styles.function}>Singleton</span> {"{"}<br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>private static volatile</span> <span className={styles.function}>Singleton</span> <span className={styles.variable}>instance</span>;<br/><br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>private</span> <span className={styles.function}>Singleton</span>() {"{}"}<br/><br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>public static</span> <span className={styles.function}>Singleton</span> <span className={styles.function}>getInstance</span>() {"{"}<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.keyword}>if</span> (<span className={styles.variable}>instance</span> <span className={styles.operator}>==</span> <span className={styles.keyword}>null</span>) {"{"}<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.keyword}>synchronized</span> (<span className={styles.function}>Singleton</span>.<span className={styles.keyword}>class</span>) {"{"}<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.keyword}>if</span> (<span className={styles.variable}>instance</span> <span className={styles.operator}>==</span> <span className={styles.keyword}>null</span>) <span className={styles.variable}>instance</span> <span className={styles.operator}>=</span> <span className={styles.keyword}>new</span> <span className={styles.function}>Singleton</span>();<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"}<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;{"}"}<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.keyword}>return</span> <span className={styles.variable}>instance</span>;<br/>
-        &nbsp;&nbsp;{"}"}<br/>
-        {"}"}
-      </>
-    ),
-    rawCode: `public class Singleton {
-  private static volatile Singleton instance;
-
-  private Singleton() {}
-
-  public static Singleton getInstance() {
-    if (instance == null) {
-      synchronized (Singleton.class) {
-        if (instance == null) instance = new Singleton();
-      }
-    }
-    return instance;
-  }
-}`
-  },
-  // SQL
-  {
-    id: "sql-join",
-    category: "sql",
-    language: "MySQL",
-    title: "INNER JOIN Query",
-    code: (
-      <>
-        <span className={styles.keyword}>SELECT</span> <span className={styles.variable}>u.id</span>, <span className={styles.variable}>u.name</span>, <span className={styles.variable}>o.total</span><br/>
-        <span className={styles.keyword}>FROM</span> <span className={styles.function}>users</span> <span className={styles.variable}>u</span><br/>
-        <span className={styles.keyword}>INNER JOIN</span> <span className={styles.function}>orders</span> <span className={styles.variable}>o</span> <span className={styles.keyword}>ON</span> <span className={styles.variable}>u.id</span> <span className={styles.operator}>=</span> <span className={styles.variable}>o.user_id</span><br/>
-        <span className={styles.keyword}>WHERE</span> <span className={styles.variable}>o.status</span> <span className={styles.operator}>=</span> <span className={styles.string}>&apos;COMPLETED&apos;</span><br/>
-        <span className={styles.keyword}>ORDER BY</span> <span className={styles.variable}>o.total</span> <span className={styles.keyword}>DESC</span>;
-      </>
-    ),
-    rawCode: `SELECT u.id, u.name, o.total
-FROM users u
-INNER JOIN orders o ON u.id = o.user_id
-WHERE o.status = 'COMPLETED'
-ORDER BY o.total DESC;`
-  },
-  {
-    id: "sql-stored-proc",
-    category: "sql",
-    language: "MySQL",
-    title: "Stored Procedure",
-    code: (
-      <>
-        <span className={styles.keyword}>DELIMITER</span> $$<br/>
-        <span className={styles.keyword}>CREATE PROCEDURE</span> <span className={styles.function}>GetUserOrders</span>(<span className={styles.keyword}>IN</span> <span className={styles.variable}>userId</span> <span className={styles.string}>INT</span>)<br/>
-        <span className={styles.keyword}>BEGIN</span><br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>SELECT</span> * <span className={styles.keyword}>FROM</span> <span className={styles.function}>orders</span><br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>WHERE</span> <span className={styles.variable}>user_id</span> <span className={styles.operator}>=</span> <span className={styles.variable}>userId</span>;<br/>
-        <span className={styles.keyword}>END</span>$$<br/>
-        <span className={styles.keyword}>DELIMITER</span> ;
-      </>
-    ),
-    rawCode: `DELIMITER $$
-CREATE PROCEDURE GetUserOrders(IN userId INT)
-BEGIN
-  SELECT * FROM orders
-  WHERE user_id = userId;
-END$$
-DELIMITER ;`
-  },
-  // C Language
-  {
-    id: "clang-pointer",
-    category: "clang",
-    language: "C",
-    title: "Pointer Basics",
-    code: (
-      <>
-        <span className={styles.keyword}>#include</span> <span className={styles.string}>&lt;stdio.h&gt;</span><br/><br/>
-        <span className={styles.keyword}>int</span> <span className={styles.function}>main</span>() {"{"}<br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>int</span> <span className={styles.variable}>x</span> <span className={styles.operator}>=</span> <span className={styles.operator}>10</span>;<br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>int</span> *<span className={styles.variable}>ptr</span> <span className={styles.operator}>=</span> &<span className={styles.variable}>x</span>;<br/><br/>
-        &nbsp;&nbsp;<span className={styles.function}>printf</span>(<span className={styles.string}>"Value: %d\n"</span>, *<span className={styles.variable}>ptr</span>);<br/>
-        &nbsp;&nbsp;<span className={styles.function}>printf</span>(<span className={styles.string}>"Address: %p\n"</span>, <span className={styles.variable}>ptr</span>);<br/>
-        &nbsp;&nbsp;<span className={styles.keyword}>return</span> <span className={styles.operator}>0</span>;<br/>
-        {"}"}
-      </>
-    ),
-    rawCode: `#include <stdio.h>
-
-int main() {
-  int x = 10;
-  int *ptr = &x;
-
-  printf("Value: %d\\n", *ptr);
-  printf("Address: %p\\n", ptr);
-  return 0;
-}`
-  },
+# resolve conflicts, then
+git add <resolved-files>
+git rebase --continue` , explanation: "A clean rebase gives reviewers a diff against current main. Use it only on branches you own or after coordinating with collaborators.", production: "Run the relevant test suite after each meaningful conflict resolution. Force-push with --force-with-lease, never bare --force.", mistakes: "Resolving conflicts by choosing one side without understanding both changes.", related: ["git rebase", "git rerere", "force-with-lease"] },
 ];
+
+function highlight(text: string, query: string) {
+  if (!query) return text;
+  const parts = text.split(new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "ig"));
+  return parts.map((part, index) => part.toLowerCase() === query.toLowerCase() ? <mark key={index}>{part}</mark> : part);
+}
 
 export default function CodeSnippets() {
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const params = useSearchParams();
+  const requested = params.get("tech")?.toLowerCase() || "all";
+  const [category, setCategory] = useState(categories.some(([id]) => id === requested) ? requested : "all");
+  const [query, setQuery] = useState("");
+  const [selected, setSelected] = useState<Snippet | null>(null);
+  const [copied, setCopied] = useState<string | null>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
-  const handleCopy = (id: string, text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedId(id);
-    setTimeout(() => setCopiedId(null), 2000);
-  };
+  useEffect(() => { if (selected) closeRef.current?.focus(); }, [selected]);
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => event.key === "Escape" && setSelected(null);
+    window.addEventListener("keydown", onKey); return () => window.removeEventListener("keydown", onKey);
+  }, []);
+  const results = useMemo(() => snippets.filter((item) => (category === "all" || item.category === category) && `${item.title} ${item.context} ${item.language}`.toLowerCase().includes(query.toLowerCase())), [category, query]);
+  async function copy(snippet: Snippet) { await navigator.clipboard.writeText(snippet.code); setCopied(snippet.id); window.setTimeout(() => setCopied(null), 1600); }
 
-  const filteredSnippets =
-    activeCategory === "all"
-      ? snippets
-      : snippets.filter((s) => s.category === activeCategory);
-
-  const totalSnippets = snippets.length;
-
-  return (
-    <div className={styles.pageWrapper}>
-      {/* Hero */}
-      <section className={styles.heroSection}>
-        <div className={styles.heroBadge}>
-          <span className={styles.heroBadgeDot} />
-          Production-Ready Snippets
-        </div>
-        <h1 className={styles.heroTitle}>
-          Code{" "}
-          <span className={styles.heroTitleGradient}>Snippets</span>
-        </h1>
-        <p className={styles.heroSubtitle}>
-          Copy-paste ready snippets for HTML, CSS, JavaScript, React, Python, Java, MySQL & C — all in one place.
-        </p>
-        <div className={styles.heroStats}>
-          <div className={styles.heroStat}>
-            <span className={styles.heroStatNumber}>{totalSnippets}+</span>
-            <span className={styles.heroStatLabel}>Snippets</span>
-          </div>
-          <div className={styles.heroStat}>
-            <span className={styles.heroStatNumber}>8</span>
-            <span className={styles.heroStatLabel}>Languages</span>
-          </div>
-          <div className={styles.heroStat}>
-            <span className={styles.heroStatNumber}>1-Click</span>
-            <span className={styles.heroStatLabel}>Copy</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Filter Bar */}
-      <div className={styles.filterBar}>
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => setActiveCategory(cat.id)}
-            className={`${styles.filterButton} ${
-              activeCategory === cat.id ? styles.filterButtonActive : ""
-            }`}
-          >
-            <span className={styles.filterIcon}>{cat.icon}</span>
-            {cat.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Snippets Grid */}
-      <div className={styles.container}>
-        <p className={styles.resultCount}>
-          Showing <span className={styles.resultCountHighlight}>{filteredSnippets.length}</span> snippet{filteredSnippets.length !== 1 ? "s" : ""}
-        </p>
-
-        <div className={styles.grid}>
-          {filteredSnippets.length === 0 ? (
-            <div className={styles.emptyState}>
-              <span className={styles.emptyStateIcon}>🔍</span>
-              <p className={styles.emptyStateText}>No snippets found for this filter.</p>
-            </div>
-          ) : (
-            filteredSnippets.map((snippet) => (
-              <div key={snippet.id} className={styles.snippetCard}>
-                {/* Card Header */}
-                <div className={styles.snippetHeader}>
-                  <div className={styles.snippetHeaderLeft}>
-                    <div className={styles.terminalDots}>
-                      <span className={`${styles.dot} ${styles.dotRed}`} />
-                      <span className={`${styles.dot} ${styles.dotYellow}`} />
-                      <span className={`${styles.dot} ${styles.dotGreen}`} />
-                    </div>
-                    <div className={styles.snippetMeta}>
-                      <span className={styles.languageLabel}>{snippet.language}</span>
-                      <span className={styles.snippetTitle}>{snippet.title}</span>
-                    </div>
-                  </div>
-                  <div className={styles.snippetHeaderRight}>
-                    <span className={styles.langBadge}>{snippet.language}</span>
-                    <button
-                      onClick={() => handleCopy(snippet.id, snippet.rawCode)}
-                      className={`${styles.copyButton} ${copiedId === snippet.id ? styles.copyButtonCopied : ""}`}
-                      aria-label="Copy code"
-                    >
-                      {copiedId === snippet.id ? (
-                        <>
-                          <svg className={styles.copyIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          Copied!
-                        </>
-                      ) : (
-                        <>
-                          <svg className={styles.copyIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                          </svg>
-                          Copy
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </div>
-
-                {/* Code Body */}
-                <div className={styles.snippetBody}>
-                  <pre className={styles.codeBlock}>
-                    <code>{snippet.code}</code>
-                  </pre>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-    </div>
-  );
+  return <section className={styles.page} aria-labelledby="snippets-title">
+    <header className={styles.hero}><p className={styles.eyebrow}>Engineering reference</p><h1 id="snippets-title">Patterns worth keeping close.</h1><p>Small, production-minded examples for the moments where a familiar API has an unfamiliar edge.</p></header>
+    <div className={styles.toolbar}><label className={styles.search}><span aria-hidden="true">⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search patterns, APIs, and notes" aria-label="Search snippets" />{query && <button onClick={() => setQuery("")} aria-label="Clear search">×</button>}</label><span className={styles.count}>{results.length} references</span></div>
+    <nav className={styles.filters} aria-label="Snippet categories">{categories.map(([id, label]) => <button key={id} onClick={() => setCategory(id)} aria-pressed={category === id} className={category === id ? styles.activeFilter : ""}>{label}</button>)}</nav>
+    <div className={styles.grid}>{results.map((item) => <article key={item.id} className={styles.card}><div className={styles.cardTop}><span>{item.language}</span><span className={styles.filename}>{item.filename}</span></div><h2>{highlight(item.title, query)}</h2><p>{highlight(item.context, query)}</p><pre><code>{item.code}</code></pre><div className={styles.cardActions}><button className={styles.copy} onClick={() => copy(item)}>{copied === item.id ? "Copied" : "Copy code"}</button><button className={styles.inspect} onClick={() => setSelected(item)}>Read notes <span>→</span></button></div></article>)}</div>
+    {!results.length && <div className={styles.empty}><strong>No matching reference.</strong><span>Try a broader term or reset the category filter.</span><button onClick={() => { setCategory("all"); setQuery(""); }}>Reset filters</button></div>}
+    {selected && <div className={styles.backdrop} onMouseDown={(e) => e.currentTarget === e.target && setSelected(null)} role="presentation"><section className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="snippet-notes"><button ref={closeRef} className={styles.close} onClick={() => setSelected(null)} aria-label="Close notes">×</button><p className={styles.eyebrow}>{selected.language} · {selected.filename}</p><h2 id="snippet-notes">{selected.title}</h2><div className={styles.notes}><div><h3>Why use it</h3><p>{selected.explanation}</p></div><div><h3>Production note</h3><p>{selected.production}</p></div><div><h3>Common mistake</h3><p>{selected.mistakes}</p></div>{selected.performance && <div><h3>Performance</h3><p>{selected.performance}</p></div>}</div><footer><span>Related: {selected.related.join(" · ")}</span><button className={styles.copy} onClick={() => copy(selected)}>{copied === selected.id ? "Copied" : "Copy code"}</button></footer></section></div>}
+  </section>;
 }

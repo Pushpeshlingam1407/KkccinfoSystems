@@ -69,14 +69,11 @@ export default function Navbar() {
                 {qaDropdownOpen && (
                   <div className={styles.dropdownMenu}>
                     <div className={styles.dropdownMenuInner}>
-                      <Link href="/interview-qa?tech=html"       onClick={() => setQaDropdownOpen(false)} className={styles.dropdownItem}>HTML</Link>
-                      <Link href="/interview-qa?tech=css"        onClick={() => setQaDropdownOpen(false)} className={styles.dropdownItem}>CSS</Link>
                       <Link href="/interview-qa?tech=javascript" onClick={() => setQaDropdownOpen(false)} className={styles.dropdownItem}>JavaScript</Link>
-                      <Link href="/interview-qa?tech=react"      onClick={() => setQaDropdownOpen(false)} className={styles.dropdownItem}>React JS</Link>
-                      <Link href="/interview-qa?tech=java"       onClick={() => setQaDropdownOpen(false)} className={styles.dropdownItem}>Java</Link>
-                      <Link href="/interview-qa?tech=python"     onClick={() => setQaDropdownOpen(false)} className={styles.dropdownItem}>Python</Link>
-                      <Link href="/interview-qa?tech=mysql"      onClick={() => setQaDropdownOpen(false)} className={styles.dropdownItem}>MySQL</Link>
-                      <Link href="/interview-qa?tech=clang"      onClick={() => setQaDropdownOpen(false)} className={styles.dropdownItem}>C Language</Link>
+                      <Link href="/interview-qa?tech=react"      onClick={() => setQaDropdownOpen(false)} className={styles.dropdownItem}>React</Link>
+                      <Link href="/interview-qa?tech=next"       onClick={() => setQaDropdownOpen(false)} className={styles.dropdownItem}>Next.js</Link>
+                      <Link href="/interview-qa?tech=typescript" onClick={() => setQaDropdownOpen(false)} className={styles.dropdownItem}>TypeScript</Link>
+                      <Link href="/interview-qa?tech=api"        onClick={() => setQaDropdownOpen(false)} className={styles.dropdownItem}>APIs</Link>
                     </div>
                   </div>
                 )}
@@ -106,14 +103,13 @@ export default function Navbar() {
                 {dropdownOpen && (
                   <div className={styles.dropdownMenu}>
                     <div className={styles.dropdownMenuInner}>
-                      <Link href="/code-snippets?tech=html"       onClick={() => setDropdownOpen(false)} className={styles.dropdownItem}>HTML</Link>
-                      <Link href="/code-snippets?tech=css"        onClick={() => setDropdownOpen(false)} className={styles.dropdownItem}>CSS</Link>
                       <Link href="/code-snippets?tech=javascript" onClick={() => setDropdownOpen(false)} className={styles.dropdownItem}>JavaScript</Link>
-                      <Link href="/code-snippets?tech=react"      onClick={() => setDropdownOpen(false)} className={styles.dropdownItem}>React JS</Link>
-                      <Link href="/code-snippets?tech=clang"      onClick={() => setDropdownOpen(false)} className={styles.dropdownItem}>C Language</Link>
-                      <Link href="/code-snippets?tech=java"       onClick={() => setDropdownOpen(false)} className={styles.dropdownItem}>Java</Link>
-                      <Link href="/code-snippets?tech=python"     onClick={() => setDropdownOpen(false)} className={styles.dropdownItem}>Python</Link>
-                      <Link href="/code-snippets?tech=sql"        onClick={() => setDropdownOpen(false)} className={styles.dropdownItem}>MySQL / SQL</Link>
+                      <Link href="/code-snippets?tech=typescript" onClick={() => setDropdownOpen(false)} className={styles.dropdownItem}>TypeScript</Link>
+                      <Link href="/code-snippets?tech=react"      onClick={() => setDropdownOpen(false)} className={styles.dropdownItem}>React</Link>
+                      <Link href="/code-snippets?tech=next"       onClick={() => setDropdownOpen(false)} className={styles.dropdownItem}>Next.js</Link>
+                      <Link href="/code-snippets?tech=api"        onClick={() => setDropdownOpen(false)} className={styles.dropdownItem}>APIs</Link>
+                      <Link href="/code-snippets?tech=css"        onClick={() => setDropdownOpen(false)} className={styles.dropdownItem}>CSS</Link>
+                      <Link href="/code-snippets?tech=git"        onClick={() => setDropdownOpen(false)} className={styles.dropdownItem}>Git</Link>
                     </div>
                   </div>
                 )}

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import CodeSnippets from "../../components/CodeSnippets";
 
 export const metadata = {
@@ -6,5 +7,5 @@ export const metadata = {
 };
 
 export default function CodeSnippetsPage() {
-  return <CodeSnippets />;
+  return <Suspense fallback={null}><CodeSnippets /></Suspense>;
 }

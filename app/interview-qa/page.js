@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import InterviewQA from "../../components/InterviewQA";
 
 export const metadata = {
@@ -6,5 +7,5 @@ export const metadata = {
 };
 
 export default function InterviewQAPage() {
-  return <InterviewQA />;
+  return <Suspense fallback={null}><InterviewQA /></Suspense>;
 }
