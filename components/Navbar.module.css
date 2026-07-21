@@ -72,14 +72,72 @@
   @apply text-slate-300 hover:text-white hover:bg-slate-700 block px-3 py-3 rounded-md text-base font-medium transition-colors border-b border-slate-700 last:border-0;
 }
 
-.dropdownContainer { @apply relative inline-block text-left; }
-.dropdownButton { @apply inline-flex justify-center w-full bg-transparent text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all focus:outline-none items-center; }
-.dropdownIcon { @apply ml-1 w-4 h-4; }
-.dropdownMenu { @apply origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-slate-800 ring-1 ring-black/5 divide-y divide-slate-700 focus:outline-none border border-slate-700 z-50; }
-.dropdownItem { @apply block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white transition-colors; }
+.dropdownContainer { position: relative; display: inline-block; text-align: left; }
 
+.dropdownButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: transparent;
+  color: #cbd5e1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  position: relative;
+  border: none;
+  cursor: pointer;
+}
 
-.dropdownButton { @apply relative; }
-.dropdownButton::after { content: ''; @apply absolute left-1/2 bottom-0 w-0 h-[2px] bg-red-500 transition-all duration-300 -translate-x-1/2; }
-.dropdownButton:hover::after, .dropdownContainer:hover .dropdownButton::after { @apply w-[80%]; }
+.dropdownButton:hover { color: #fff; }
+
+.dropdownButton::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #ef4444;
+  transition: all 0.3s;
+  transform: translateX(-50%);
+}
+
+.dropdownButton:hover::after { width: 80%; }
+
+.dropdownIcon { margin-left: 0.25rem; width: 1rem; height: 1rem; transition: transform 0.2s; }
+.dropdownIconOpen { transform: rotate(180deg); }
+
+/* Bridge: invisible padding fills the gap so the mouse never leaves the container */
+.dropdownMenu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  padding-top: 8px; /* bridge gap - matches the visual mt */
+  width: 12rem;
+  z-index: 50;
+  /* Keep it open by making the full padded area part of the element */
+}
+
+.dropdownMenuInner {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+
+.dropdownItem {
+  display: block;
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  color: #cbd5e1;
+  transition: background 0.15s, color 0.15s;
+  border-bottom: 1px solid #1e293b;
+}
+
+.dropdownItem:last-child { border-bottom: none; }
+.dropdownItem:hover { background: #334155; color: #fff; }
 

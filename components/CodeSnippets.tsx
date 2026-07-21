@@ -293,7 +293,7 @@ def greet(name):
         &nbsp;&nbsp;<span className={styles.keyword}>public static</span> <span className={styles.function}>Singleton</span> <span className={styles.function}>getInstance</span>() {"{"}<br/>
         &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.keyword}>if</span> (<span className={styles.variable}>instance</span> <span className={styles.operator}>==</span> <span className={styles.keyword}>null</span>) {"{"}<br/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.keyword}>synchronized</span> (<span className={styles.function}>Singleton</span>.<span className={styles.keyword}>class</span>) {"{"}<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.keyword}>if</span> (<span className={styles.variable}>instance</span> <span className={styles.operator}>==</span> <span className={styles.keyword}>null</span>) <span className={styles.variable}>instance</span> <span className={styles.operator">=</span> <span className={styles.keyword}>new</span> <span className={styles.function}>Singleton</span>();<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.keyword}>if</span> (<span className={styles.variable}>instance</span> <span className={styles.operator}>==</span> <span className={styles.keyword}>null</span>) <span className={styles.variable}>instance</span> <span className={styles.operator}>=</span> <span className={styles.keyword}>new</span> <span className={styles.function}>Singleton</span>();<br/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"}"}<br/>
         &nbsp;&nbsp;&nbsp;&nbsp;{"}"}<br/>
         &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.keyword}>return</span> <span className={styles.variable}>instance</span>;<br/>
