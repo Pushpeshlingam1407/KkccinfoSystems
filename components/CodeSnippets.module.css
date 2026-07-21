@@ -16,12 +16,32 @@
   @apply text-lg md:text-xl text-slate-600 font-light max-w-3xl mx-auto;
 }
 
+.categoriesWrapper {
+  @apply flex flex-wrap justify-center gap-3 mb-12;
+}
+
+.categoryButton {
+  @apply px-6 py-2.5 rounded-full border transition-all text-sm font-semibold whitespace-nowrap;
+}
+
+.categoryActive {
+  @apply bg-indigo-600 text-white border-indigo-600 shadow-md transform -translate-y-0.5;
+}
+
+.categoryInactive {
+  @apply bg-white text-slate-600 border-slate-200 hover:border-indigo-300 hover:text-indigo-600 hover:shadow transform hover:-translate-y-0.5;
+}
+
+.snippetTitle {
+  @apply text-slate-400 text-xs font-normal ml-3 border-l border-slate-600 pl-3 inline-block;
+}
+
 .grid {
-  @apply grid grid-cols-1 lg:grid-cols-2 gap-8;
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[400px];
 }
 
 .snippetCard {
-  @apply bg-slate-900 rounded-2xl overflow-hidden shadow-xl border border-slate-700 flex flex-col transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl;
+  @apply bg-slate-900 rounded-2xl overflow-hidden shadow-xl border border-slate-700 flex flex-col transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl h-full;
 }
 
 .snippetHeader {
@@ -29,11 +49,11 @@
 }
 
 .languageLabel {
-  @apply text-slate-300 text-sm font-semibold tracking-wider uppercase;
+  @apply text-indigo-400 text-sm font-bold tracking-wider uppercase;
 }
 
 .copyButton {
-  @apply flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-medium focus:outline-none;
+  @apply flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-medium focus:outline-none bg-slate-700/50 hover:bg-slate-700 px-3 py-1.5 rounded-lg;
 }
 
 .copyIcon {
@@ -41,20 +61,21 @@
 }
 
 .snippetBody {
-  @apply p-6 overflow-x-auto;
+  @apply p-6 overflow-x-auto flex-grow bg-slate-950/50;
 }
 
 .codeBlock {
   @apply font-mono text-sm leading-relaxed text-slate-100;
 }
 
-.keyword { @apply text-pink-400; }
-.string { @apply text-emerald-400; }
-.function { @apply text-blue-400; }
+.keyword { @apply text-pink-400 font-semibold; }
+.string { @apply text-emerald-300; }
+.function { @apply text-blue-400 font-medium; }
 .comment { @apply text-slate-500 italic; }
-.variable { @apply text-purple-400; }
-.operator { @apply text-slate-300; }
+.variable { @apply text-purple-300; }
+.operator { @apply text-slate-400; }
 
 .pageWrapper {
   @apply bg-slate-50 min-h-screen pt-16;
 }
+

@@ -24,6 +24,26 @@ const qaData = {
     { q: "What is React?", a: "React is an open-source front-end JavaScript library for building user interfaces or UI components, maintained by Facebook." },
     { q: "What is the Virtual DOM?", a: "The Virtual DOM is a lightweight copy of the actual DOM. React uses it to improve performance by only updating the real DOM where changes have occurred." },
     { q: "Explain React Hooks.", a: "Hooks are functions that let you 'hook into' React state and lifecycle features from function components." }
+  ],
+  python: [
+    { q: "What is Python?", a: "Python is a high-level, interpreted, general-purpose programming language known for its simple syntax and high readability." },
+    { q: "What is the difference between List and Tuple in Python?", a: "Lists are mutable (can be edited), defined with brackets []. Tuples are immutable (cannot be changed), defined with parentheses ()." },
+    { q: "Explain PEP 8.", a: "PEP 8 is Python's official style guide, providing guidelines and best practices for writing readable Python code." }
+  ],
+  java: [
+    { q: "What is Java?", a: "Java is a class-based, object-oriented programming language designed to have as few implementation dependencies as possible (WORA - Write Once, Run Anywhere)." },
+    { q: "What are OOPs concepts in Java?", a: "The four main OOP concepts in Java are Abstraction, Encapsulation, Inheritance, and Polymorphism." },
+    { q: "What is JDK, JRE, and JVM?", a: "JVM executes bytecode. JRE contains JVM + core libraries to run apps. JDK contains JRE + development tools (compiler, etc.) to develop Java apps." }
+  ],
+  mysql: [
+    { q: "What is MySQL?", a: "MySQL is an open-source relational database management system (RDBMS) based on Structured Query Language (SQL)." },
+    { q: "What is the difference between Primary Key and Foreign Key?", a: "A Primary Key uniquely identifies a record in a table and cannot contain NULLs. A Foreign Key points to the Primary Key in another table to establish relationships." },
+    { q: "What is a JOIN in SQL?", a: "A JOIN clause combines rows from two or more tables based on a related column between them (e.g. INNER JOIN, LEFT JOIN, RIGHT JOIN)." }
+  ],
+  clang: [
+    { q: "What is C Language?", a: "C is a procedural, general-purpose programming language developed by Dennis Ritchie in 1972 at Bell Labs." },
+    { q: "What is a pointer in C?", a: "A pointer is a variable that stores the memory address of another variable." },
+    { q: "What is dynamic memory allocation in C?", a: "Dynamic memory allocation allows programs to request memory at runtime using functions like malloc(), calloc(), realloc(), and free()." }
   ]
 };
 
@@ -32,6 +52,10 @@ const categories = [
   { id: "css", label: "CSS Q&A" },
   { id: "javascript", label: "JavaScript Q&A" },
   { id: "react", label: "React Js Q&A" },
+  { id: "python", label: "Python Q&A" },
+  { id: "java", label: "Java Q&A" },
+  { id: "mysql", label: "MySQL Q&A" },
+  { id: "clang", label: "C Language Q&A" },
 ];
 
 export default function InterviewQA() {
