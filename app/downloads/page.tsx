@@ -40,7 +40,7 @@ const downloads = [
   },
   {
     id: "clang",
-    title: "C Lang",
+    title: "C",
     path: "/clang",
     colorClass: styles.cardClang,
     icon: "⚙️",
