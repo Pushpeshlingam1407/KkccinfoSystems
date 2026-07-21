@@ -118,8 +118,6 @@ export default function Navbar() {
             </div>
 
             <div className={styles.desktopActions}>
-              <a href="https://telugututorial.in/" target="_blank" rel="noopener noreferrer" className={styles.secondaryButton}>Quizz Login</a>
-              <a href="https://telugututorial.in/admin-register" target="_blank" rel="noopener noreferrer" className={styles.primaryButton}>Register</a>
             </div>
 
             <div className={styles.mobileMenuContainer}>
@@ -169,8 +167,6 @@ export default function Navbar() {
 
               <Link href="/about" onClick={() => setIsOpen(false)} className={styles.mobileNavLink}>About</Link>
               <Link href="/contact" onClick={() => setIsOpen(false)} className={styles.mobileNavLink}>Contact</Link>
-              <a href="https://telugututorial.in/" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)} className={styles.mobileNavLink}>Quizz Login</a>
-              <a href="https://telugututorial.in/admin-register" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)} className={styles.mobileNavLink}>Register</a>
             </div>
           </div>
         )}
