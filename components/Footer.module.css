@@ -2,7 +2,7 @@
 
 .footer {
   @apply py-8 mt-auto;
-  background-color: var(--color-bg-primary);
+  background: linear-gradient(135deg, #f5f9fa 0%, #e7f1f4 100%);
   border-top: 1px solid var(--color-border);
 }
 
@@ -41,6 +41,8 @@
 .backToTop:hover {
   color: var(--color-brand);
 }
+
+.footer { margin-top: 0; }.content { min-height: 30px; }.backToTop { border-radius: 7px; padding: 7px 9px; }.backToTop:hover { background: rgba(255,255,255,.68); }
 
 .footerIcon {
   @apply w-4 h-4;

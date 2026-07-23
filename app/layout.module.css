@@ -5,4 +5,7 @@
 
 .main {
   @apply flex-grow flex flex-col;
+  animation: page-enter 0.55s cubic-bezier(.2,.75,.3,1) both;
 }
+
+@media (prefers-reduced-motion: reduce) { .main { animation: none; } }

@@ -33,3 +33,6 @@
 .item:hover,.expanded { box-shadow:none; }
 .search { border-radius:9px; min-height:44px; }
 .showMore,.empty button { border-radius:9px; min-height:40px; }
+
+.page { background:radial-gradient(circle at 86% 0, #e5f4f7 0, transparent 30rem), #fbfcfd; }.heroWrap { background:transparent; border-bottom:0; }.hero { background:linear-gradient(135deg, #e9f5f7, #fbfcfd 70%); border:1px solid #cddfe6; border-radius:0 0 18px 18px; box-shadow:var(--shadow-subtle); margin:0 auto; padding:36px 32px 48px; }.heroGrid { gap:48px; }.workspace { margin-top:30px; }.sidebar { border-radius:12px; box-shadow:var(--shadow-subtle); }.topicNav a { transition:background-color .2s ease,color .2s ease; }.topicNav a:hover { background:#eff8fa; }.content { padding-top:0; }.contentTop { background:rgba(255,255,255,.62); border:1px solid #dbe7eb; border-radius:12px; padding:18px; }.list { gap:12px; }.item { border-radius:10px; box-shadow:0 6px 16px rgba(20,52,72,.04); transition:border-color .2s ease,box-shadow .2s ease; }.item:hover,.expanded { box-shadow:0 10px 24px rgba(20,52,72,.08); }.question { min-height:68px; }.showMore { background:#fff; box-shadow:0 5px 13px rgba(20,52,72,.07); }
+@media (max-width:780px) { .hero { border-radius:0 0 12px 12px; padding:28px 20px 36px; }.contentTop { padding:14px; }.sidebar { border-radius:10px; } }

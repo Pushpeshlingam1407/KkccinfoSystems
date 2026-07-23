@@ -88,3 +88,5 @@
 }
 
 .pageContainer { @apply py-12 lg:py-16; }.pageTitle { @apply text-3xl lg:text-4xl; }.contentWrapper { @apply gap-12; }.imageWrapper,.contactInfoCard,.mapFrame { @apply rounded-none; }.contactInfoCard { @apply p-7 lg:p-8; }.privacyContainer { @apply py-4; }
+
+.pageContainer { position:relative; }.imageWrapper { border-radius:14px; box-shadow:var(--shadow-raised); }.contactInfoCard { background:linear-gradient(145deg, #ffffff, #f3f8fa); border-radius:14px; box-shadow:var(--shadow-subtle); }.mapFrame { border-radius:14px; box-shadow:var(--shadow-subtle); }.privacyContainer { background:rgba(255,255,255,.7); border:1px solid var(--color-border); border-radius:14px; box-shadow:var(--shadow-subtle); padding:32px; }

@@ -66,3 +66,5 @@
 }
 
 .marketingContainer { @apply py-12 lg:py-16; }.headerSection { @apply text-left max-w-2xl mb-10; }.pageTitle { @apply text-3xl lg:text-4xl mb-3; }.pageSubtitle { @apply mx-0 text-base; }.cardsGrid { @apply gap-0 border-t border-l border-(--color-border); }.cardLink { @apply rounded-none; }.circularCard { @apply rounded-none border-t-0 border-l-0 p-5; }.circularCard:hover { @apply bg-(--color-bg-secondary) border-(--color-border); }.cardIcon { @apply rounded-none text-xl; }
+
+.headerSection { position:relative; }.cardsGrid { background:rgba(255,255,255,.76); border-radius:14px; box-shadow:var(--shadow-subtle); overflow:hidden; }.circularCard { min-height:142px; transition:background-color .22s ease,border-color .22s ease; }.cardLink:hover .circularCard { background:linear-gradient(145deg,#f7fbfc,#eaf5f7); border-color:#c0dbe5; }.cardIcon { background:var(--color-brand-subtle); border-color:#cde4eb; color:var(--color-brand); }
