@@ -25,6 +25,118 @@ const categories = [
 
 type CategoryId = (typeof categories)[number]["id"];
 
+function formatCode(code: string, language: string): string {
+  const lines = code.split("\n");
+  let indentLevel = 0;
+  const indentStr = "  "; // 2 spaces is standard and fits better on mobile/web layouts
+  const formattedLines: string[] = [];
+  const langLower = language.toLowerCase();
+
+  const isCurlyBraceLanguage = ["c", "java", "javascript"].includes(langLower);
+
+  if (isCurlyBraceLanguage) {
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line) {
+        if (
+          formattedLines.length > 0 &&
+          formattedLines[formattedLines.length - 1] !== ""
+        ) {
+          formattedLines.push("");
+        }
+        continue;
+      }
+
+      // Strip comments and strings to count braces accurately
+      const stripped = line
+        .replace(/\/\*[\s\S]*?\*\//g, "")
+        .replace(/\/\/.*/g, "")
+        .replace(/"(\\.|[^"\\])*"/g, '""')
+        .replace(/'(\\.|[^'\\])*'/g, "''");
+
+      const openCount = (stripped.match(/\{/g) || []).length;
+      const closeCount = (stripped.match(/\}/g) || []).length;
+      const netBraces = openCount - closeCount;
+
+      if (line.startsWith("}")) {
+        indentLevel = Math.max(0, indentLevel - 1);
+        formattedLines.push(indentStr.repeat(indentLevel) + line);
+        if (openCount > 0) {
+          indentLevel += openCount;
+        }
+      } else {
+        if (netBraces < 0) {
+          indentLevel = Math.max(0, indentLevel + netBraces);
+        }
+        formattedLines.push(indentStr.repeat(indentLevel) + line);
+        if (netBraces > 0) {
+          indentLevel += netBraces;
+        }
+      }
+    }
+  } else if (langLower === "python") {
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line) {
+        if (
+          formattedLines.length > 0 &&
+          formattedLines[formattedLines.length - 1] !== ""
+        ) {
+          formattedLines.push("");
+        }
+        continue;
+      }
+
+      const stripped = line
+        .replace(/#.*/g, "")
+        .replace(/"""[\s\S]*?"""/g, "")
+        .replace(/'''[\s\S]*?'''/g, "")
+        .replace(/"(\\.|[^"\\])*"/g, '""')
+        .replace(/'(\\.|[^'\\])*'/g, "''");
+
+      const endsWithColon = stripped.trim().endsWith(":");
+      const isDedentWord = /^(elif|else|except|finally)\b/.test(line);
+
+      if (isDedentWord) {
+        indentLevel = Math.max(0, indentLevel - 1);
+      }
+
+      formattedLines.push(indentStr.repeat(indentLevel) + line);
+
+      if (endsWithColon) {
+        indentLevel++;
+      }
+    }
+  } else {
+    // For HTML, CSS or unknown languages, return clean trimmed/minimal formatting
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (
+        !line &&
+        formattedLines.length > 0 &&
+        formattedLines[formattedLines.length - 1] === ""
+      ) {
+        continue;
+      }
+      formattedLines.push(line);
+    }
+    return formattedLines.join("\n");
+  }
+
+  // Remove leading/trailing empty lines
+  while (formattedLines.length > 0 && formattedLines[0] === "") {
+    formattedLines.shift();
+  }
+  while (
+    formattedLines.length > 0 &&
+    formattedLines[formattedLines.length - 1] === ""
+  ) {
+    formattedLines.pop();
+  }
+
+  return formattedLines.join("\n");
+}
+
 function parseSnippets(markup: string): Snippet[] {
   const doc = new DOMParser().parseFromString(markup, "text/html");
   let section = doc.querySelector("main h1")?.textContent?.trim() || "Programs";
@@ -33,14 +145,16 @@ function parseSnippets(markup: string): Snippet[] {
     if (el.tagName === "H1") section = el.textContent?.trim() || section;
     if (el.classList.contains("code-window")) {
       const code = el.querySelector("code")?.textContent?.trim();
-      if (code)
+      if (code) {
+        const language =
+          el.querySelector("code")?.className.replace("language-", "") ||
+          "code";
         snippets.push({
           section,
-          code,
-          language:
-            el.querySelector("code")?.className.replace("language-", "") ||
-            "code",
+          code: formatCode(code, language),
+          language,
         });
+      }
     }
   });
   return snippets;

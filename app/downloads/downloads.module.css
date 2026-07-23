@@ -50,10 +50,17 @@
 }
 
 /* Removed neon gradient colors, leaving classes for compatibility with JSX but empty */
-.cardJava {}
-.cardPython {}
-.cardHtml {}
-.cardCss {}
-.cardMysql {}
-.cardClang {}
-.cardJavascript {}
+.cardJava {
+}
+.cardPython {
+}
+.cardHtml {
+}
+.cardCss {
+}
+.cardMysql {
+}
+.cardClang {
+}
+.cardJavascript {
+}
