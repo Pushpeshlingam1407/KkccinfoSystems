@@ -167,6 +167,74 @@ function formatCode(code: string, language: string): string {
   return formattedLines.join("\n");
 }
 
+function cleanCodeLines(code: string): string[] {
+  const lines = code.replace(/\r\n/g, "\n").split("\n");
+  while (!lines[0]?.trim()) lines.shift();
+  while (!lines.at(-1)?.trim()) lines.pop();
+
+  return lines.reduce<string[]>((result, line) => {
+    const cleaned = line.replace(/[\t ]+$/g, "");
+    if (cleaned.trim() || result.at(-1) !== "") result.push(cleaned);
+    return result;
+  }, []);
+}
+
+function codeWithoutStringsAndComments(line: string): string {
+  return line
+    .replace(/\/\/.*$/g, "")
+    .replace(/\/\*.*?\*\//g, "")
+    .replace(/"(?:\\.|[^"\\])*"/g, '""')
+    .replace(/'(?:\\.|[^'\\])*'/g, "''");
+}
+
+function prettifyCurlyCode(code: string): string {
+  let indentation = 0;
+  const indent = "    ";
+
+  return cleanCodeLines(code)
+    .map((raw) => {
+      const line = raw.trim();
+      if (!line) return "";
+
+      const structural = codeWithoutStringsAndComments(line);
+      const opens = (structural.match(/\{/g) || []).length;
+      const closes = (structural.match(/\}/g) || []).length;
+      const closesFirst = line.startsWith("}");
+
+      if (closesFirst) indentation = Math.max(0, indentation - 1);
+      const formatted = `${indent.repeat(indentation)}${line}`;
+      indentation = Math.max(
+        0,
+        indentation + opens - closes + (closesFirst ? 1 : 0),
+      );
+      return formatted;
+    })
+    .join("\n");
+}
+
+function prettifyPythonCode(code: string): string {
+  const lines = cleanCodeLines(code);
+  const nonBlank = lines.filter((line) => line.trim());
+  const commonIndent = Math.min(
+    ...nonBlank.map((line) => line.match(/^[\t ]*/)?.[0].length || 0),
+  );
+
+  return lines
+    .map((line) => {
+      if (!line.trim()) return "";
+      const leading = line.match(/^[\t ]*/)?.[0] || "";
+      const normalizedIndent = leading.slice(commonIndent).replace(/\t/g, "    ");
+      return `${normalizedIndent}${line.trim()}`;
+    })
+    .join("\n");
+}
+
+function prettifyCode(code: string, language: string): string {
+  return ["c", "java", "javascript"].includes(language.toLowerCase())
+    ? prettifyCurlyCode(code)
+    : prettifyPythonCode(code);
+}
+
 function parseSnippets(markup: string): Snippet[] {
   const doc = new DOMParser().parseFromString(markup, "text/html");
   let section = cleanLearningText(
@@ -185,7 +253,7 @@ function parseSnippets(markup: string): Snippet[] {
           "code";
         snippets.push({
           section,
-          code: formatCode(code, language),
+          code: prettifyCode(code, language),
           language,
         });
       }
