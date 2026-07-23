@@ -9,7 +9,10 @@ interface DownloadTemplateProps {
   totalPrograms?: number;
 }
 
-export default function DownloadTemplate({ title, totalPrograms = 80 }: DownloadTemplateProps) {
+export default function DownloadTemplate({
+  title,
+  totalPrograms = 80,
+}: DownloadTemplateProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   // Generate an array of programs based on the totalPrograms prop
@@ -50,19 +53,26 @@ export default function DownloadTemplate({ title, totalPrograms = 80 }: Download
                 >
                   <span className={styles.accordionTitle}>{prog.title}</span>
                   <svg
-                    className={openIndex === index ? styles.accordionIconRotated : styles.accordionIcon}
+                    className={
+                      openIndex === index
+                        ? styles.accordionIconRotated
+                        : styles.accordionIcon
+                    }
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
                 {openIndex === index && (
-                  <div className={styles.accordionContent}>
-                    {prog.content}
-                  </div>
+                  <div className={styles.accordionContent}>{prog.content}</div>
                 )}
               </div>
             ))}

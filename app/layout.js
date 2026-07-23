@@ -5,7 +5,8 @@ import styles from "./layout.module.css";
 
 export const metadata = {
   title: "KKCC INFO SYSTEMS",
-  description: "KKCC INFO SYSTEMS is a Software and Hardware Training and Servicing centre",
+  description:
+    "KKCC INFO SYSTEMS is a Software and Hardware Training and Servicing centre",
 };
 
 export default function RootLayout({ children }) {
@@ -13,9 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={styles.body}>
         <Navbar />
-        <main className={styles.main}>
-          {children}
-        </main>
+        <main className={styles.main}>{children}</main>
         <Footer />
       </body>
     </html>

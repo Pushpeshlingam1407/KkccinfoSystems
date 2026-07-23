@@ -6,18 +6,18 @@ interface HeroBannerProps {
   altText?: string;
 }
 
-export default function HeroBanner({ 
-  imageSrc = "/images/banner1.jpg", 
-  altText = "Banner" 
+export default function HeroBanner({
+  imageSrc = "/images/banner1.jpg",
+  altText = "Banner",
 }: HeroBannerProps) {
   return (
     <div className={styles.bannerWrapper}>
       <div className={styles.bannerContainer}>
-        <Image 
-          src={imageSrc} 
-          alt={altText} 
-          fill 
-          className={styles.bannerImage} 
+        <Image
+          src={imageSrc}
+          alt={altText}
+          fill
+          className={styles.bannerImage}
         />
       </div>
     </div>

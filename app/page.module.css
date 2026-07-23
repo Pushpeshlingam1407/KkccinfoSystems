@@ -119,12 +119,24 @@
   @apply object-cover;
 }
 
-
-.alignCenter { @apply text-center mx-auto; }
-.alignLeft { @apply text-left ml-0; }
-.alignRight { @apply text-right mr-0 ml-auto; }
-.slideImageWrapper { @apply absolute inset-0 z-0; }
-.textWrapper { @apply max-w-4xl; }
-.navIcon { @apply w-6 h-6; }
-.featureImage { @apply object-cover; }
-
+.alignCenter {
+  @apply text-center mx-auto;
+}
+.alignLeft {
+  @apply text-left ml-0;
+}
+.alignRight {
+  @apply text-right mr-0 ml-auto;
+}
+.slideImageWrapper {
+  @apply absolute inset-0 z-0;
+}
+.textWrapper {
+  @apply max-w-4xl;
+}
+.navIcon {
+  @apply w-6 h-6;
+}
+.featureImage {
+  @apply object-cover;
+}

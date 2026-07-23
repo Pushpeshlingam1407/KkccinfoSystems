@@ -60,7 +60,7 @@ export default function DownloadsPage() {
       <HeroBanner />
       <div className={styles.marketingContainer}>
         <hr className={styles.divider} />
-        
+
         <div className={styles.headerSection}>
           <h2 className={styles.pageTitle}>Download Resources</h2>
           <p className={styles.pageSubtitle}>
@@ -75,7 +75,9 @@ export default function DownloadsPage() {
                 <div className={styles.circularCard}>
                   <div className={styles.cardIcon}>{item.icon}</div>
                   <span className={styles.cardTitle}>{item.title}</span>
-                  <div className={`${styles.cardGlow} ${item.colorClass}`}></div>
+                  <div
+                    className={`${styles.cardGlow} ${item.colorClass}`}
+                  ></div>
                 </div>
               </Link>
             ))}

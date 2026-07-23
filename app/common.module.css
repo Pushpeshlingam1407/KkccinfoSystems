@@ -78,6 +78,6 @@
   @apply inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-indigo-600 rounded-full hover:bg-indigo-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5;
 }
 
-
-.imageCover { @apply object-cover; }
-
+.imageCover {
+  @apply object-cover;
+}
