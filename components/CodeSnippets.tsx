@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./CodeSnippets.module.css";
 
 type Snippet = { section: string; code: string; language: string };
@@ -26,6 +26,34 @@ const categories = [
 type CategoryId = (typeof categories)[number]["id"];
 
 function formatCode(code: string, language: string): string {
+  // Keep the source's relative indentation intact. Reconstructing indentation
+  // from braces/colons breaks valid nested Python and multiline statements.
+  const sourceLines = code.replace(/\r\n/g, "\n").split("\n");
+  while (!sourceLines[0]?.trim()) sourceLines.shift();
+  while (!sourceLines.at(-1)?.trim()) sourceLines.pop();
+
+  if (sourceLines.length) {
+    const nonBlankLines = sourceLines.filter((line) => line.trim());
+    const sharedIndent = Math.min(
+      ...nonBlankLines.map(
+        (line) => line.match(/^[\t ]*/)?.[0].length || 0,
+      ),
+    );
+
+    return sourceLines
+      .map((line) =>
+        line
+          .slice(sharedIndent)
+          .replace(/\t/g, "  ")
+          .replace(/[ \t]+$/g, ""),
+      )
+      .reduce<string[]>((formatted, line) => {
+        if (line || formatted.at(-1) !== "") formatted.push(line);
+        return formatted;
+      }, [])
+      .join("\n");
+  }
+
   const lines = code.split("\n");
   let indentLevel = 0;
   const indentStr = "  "; // 2 spaces is standard and fits better on mobile/web layouts
@@ -160,29 +188,50 @@ function parseSnippets(markup: string): Snippet[] {
   return snippets;
 }
 
-/** Extract the first comment line as a short description */
-function briefFromCode(code: string): string {
+function sourceHeadingFromCode(code: string): string {
   for (const raw of code.split("\n")) {
     const line = raw.trim();
-    // Match //1. Foo, //2 Bar, # comment, /* comment */
-    const match =
-      line.match(/^\/\/\d*[\.\s]*(.*)/)?.[1]?.trim() ||
-      line.match(/^#\s+(.*)/)?.[1]?.trim() ||
-      line.match(/^\/\*+\s*(.*?)\s*\*+\//)?.[1]?.trim();
-    if (match && match.length > 3) return match;
+    if (/^#(?:include|define|pragma)\b/.test(line)) continue;
+
+    const heading = line.match(
+      /^(?:\/\/|#|\/\*+|\*)\s*(?:\d+\s*[.)-]?\s*)?(.*?)(?:\s*\*\/)?$/,
+    )?.[1]?.trim();
+
+    if (heading && heading.length > 3 && !/^(or|start|end)$/i.test(heading)) {
+      return heading.replace(/\s+/g, " ").replace(/[.]+$/, "");
+    }
   }
   return "";
 }
 
-/** Strip the leading number + comment from the first line of code */
 function titleFromCode(code: string): string {
-  const brief = briefFromCode(code);
-  if (brief) return brief;
-  for (const raw of code.split("\n")) {
-    const line = raw.trim();
-    if (line && !line.startsWith("//") && !line.startsWith("#")) return line;
+  const heading = sourceHeadingFromCode(code);
+  if (heading) return heading;
+
+  return (
+    code
+      .split("\n")
+      .map((line) => line.trim())
+      .find(
+        (line) =>
+          line &&
+          !line.startsWith("#include") &&
+          !line.startsWith("import ") &&
+          !line.startsWith("from "),
+      ) || "Code example"
+  );
+}
+
+function summaryFromCode(code: string, section: string, language: string): string {
+  const heading = sourceHeadingFromCode(code);
+  if (heading) {
+    return `Demonstrates ${heading.charAt(0).toLowerCase()}${heading.slice(1)}.`;
   }
-  return "Code Snippet";
+
+  const statement = titleFromCode(code);
+  return statement !== "Code example"
+    ? `Runs the statement: ${statement.slice(0, 72)}${statement.length > 72 ? "…" : ""}`
+    : `${language} example from ${section}.`;
 }
 
 /* Add line numbers to code */
@@ -191,6 +240,7 @@ function withLineNumbers(code: string): { num: number; text: string }[] {
 }
 
 export default function CodeSnippets() {
+  const router = useRouter();
   const params = useSearchParams();
   const requested = (params.get("tech") || "c").toLowerCase() as CategoryId;
   const [categoryId, setCategoryId] = useState<CategoryId>(
@@ -202,6 +252,12 @@ export default function CodeSnippets() {
   const [loadedId, setLoadedId] = useState<string>("");
 
   const active = categories.find((c) => c.id === categoryId) || categories[0];
+
+  useEffect(() => {
+    if (categories.some((category) => category.id === requested)) {
+      setCategoryId(requested);
+    }
+  }, [requested]);
 
   useEffect(() => {
     let live = true;
@@ -231,7 +287,18 @@ export default function CodeSnippets() {
   );
 
   async function copy(code: string, idx: number) {
-    await navigator.clipboard.writeText(code);
+    try {
+      await navigator.clipboard.writeText(code);
+    } catch {
+      const textarea = document.createElement("textarea");
+      textarea.value = code;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      textarea.remove();
+    }
     setCopied(idx);
     setTimeout(() => setCopied(null), 1600);
   }
@@ -290,7 +357,7 @@ export default function CodeSnippets() {
         {categories.map((cat) => (
           <button
             key={cat.id}
-            onClick={() => setCategoryId(cat.id)}
+            onClick={() => router.replace(`/code-snippets?tech=${cat.id}`, { scroll: false })}
             className={`${styles.filterBtn} ${categoryId === cat.id ? styles.filterActive : ""}`}
             style={
               categoryId === cat.id
@@ -385,8 +452,12 @@ export default function CodeSnippets() {
                   <div className={styles.grid}>
                     {group.items.map((item) => {
                       const idx = globalIdx++;
-                      const brief = briefFromCode(item.code);
                       const title = titleFromCode(item.code);
+                      const summary = summaryFromCode(
+                        item.code,
+                        item.section,
+                        item.language || active.label,
+                      );
                       const lines = withLineNumbers(item.code);
                       return (
                         <article
@@ -432,12 +503,10 @@ export default function CodeSnippets() {
                           <div className={styles.cardMeta}>
                             <div className={styles.cardMetaLeft}>
                               <h2 className={styles.cardTitle}>{title}</h2>
-                              {brief && (
-                                <p className={styles.cardBrief}>
-                                  <span className={styles.briefDot} />
-                                  {brief}
-                                </p>
-                              )}
+                              <p className={styles.cardBrief}>
+                                <span className={styles.briefLabel}>What it does</span>
+                                <span>{summary}</span>
+                              </p>
                             </div>
                             <span className={styles.langTag}>
                               {item.language || active.label}
