@@ -20,3 +20,14 @@
 @media (max-width: 780px) { .hero { padding: 25px 20px 58px; }.heroGrid { display: block; margin-top: 38px; }.heroStat { display: none; }.workspace { display: block; margin-top: -20px; padding: 0 16px; }.sidebar { margin-bottom: 23px; position: static; }.topicNav { display: flex; overflow-x: auto; padding-bottom: 3px; }.topicNav a { flex: 0 0 auto; }.topicNav small,.arrow,.tip { display: none; }.content { padding-top: 0; }.contentTop { align-items: flex-start; flex-direction: column; }.search { width: 100%; }.answer { grid-template-columns: 1fr; padding: 17px 18px 20px; gap: 6px; } }
 @media (max-width: 450px) { .hero h1 { font-size: 36px; }.heroCopy { font-size: 15px; }.contentTop h2 { font-size: 22px; }.question { gap: 10px; padding: 10px 12px; }.questionText { font-size: 13px; } }
 @media (prefers-reduced-motion: reduce) { .item,.topicNav a,.arrow { transition: none; }.loading span { animation: none; } }
+
+/* Use a light reading surface instead of a dark product-hero treatment. */
+.page { background:#fff; padding-bottom:76px; }
+.heroWrap { background:#fff; border-bottom:1px solid #dbe5eb; color:#172033; }
+.hero { padding:32px 32px 48px; }
+.crumb { color:#668092; }.crumb span { color:#9aabb7; }
+.hero h1 { color:#1d3445; font-size:clamp(34px,4.5vw,52px); letter-spacing:-.045em; line-height:1.08; }
+.heroCopy { color:#526d7e; font-size:16px; margin-top:18px; }
+.heroStat { border-left-color:#dbe5eb; }.heroStat strong { color:#25465b; }.heroStat p { color:#667f90; }.statIcon { color:#1682b5; }
+.sidebar { border-radius:8px; box-shadow:none; }
+.item:hover,.expanded { box-shadow:none; }

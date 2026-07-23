@@ -99,3 +99,10 @@
 .aboutImage {
   @apply object-cover;
 }
+
+/* Editorial institute layout: calm spacing, plain surfaces, and no decorative motion. */
+.heroSection { @apply pt-20 pb-18 md:pt-28 md:pb-24; }
+.heroTitle { @apply text-4xl md:text-5xl; max-width: 760px; margin-left:auto; margin-right:auto; }
+.heroDescription { @apply text-base md:text-lg max-w-xl; }
+.marketingSection,.aboutSection { @apply py-16 md:py-20; }
+.sectionHeader { @apply mb-10; }.sectionTitle,.aboutTitle { @apply text-3xl; }.featuresGrid { @apply gap-0 border-t border-l border-(--color-border); }.featureCard { @apply rounded-none border-t-0 border-l-0 p-7; }.featureCard:hover { @apply bg-(--color-bg-secondary) border-(--color-border); }.featureIcon { @apply w-8 h-8 mb-4; }.aboutGrid { @apply gap-12; }.aboutImageWrapper { @apply rounded-none; }

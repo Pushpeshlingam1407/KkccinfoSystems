@@ -10,3 +10,22 @@
 .emptyState { align-items:center; color:#6b8393; display:flex; flex-direction:column; justify-content:center; padding:70px 24px; text-align:center; }.emptyIcon { height:54px; margin-bottom:7px; width:54px; }.emptyState p { margin:0 0 12px; }.clearLink { background:#fff; border:1px solid #c9d9e2; border-radius:7px; color:#28749d; cursor:pointer; font-size:12px; font-weight:800; padding:8px 12px; }
 @media (max-width:760px) { .page { padding:35px 16px 70px; }.hero { border-radius:13px; margin-bottom:20px; padding:34px 25px; }.heroSub { font-size:14px; }.toolbar { align-items:stretch; flex-direction:column; }.search { max-width:none; }.count { padding-left:3px; }.filters { flex-wrap:nowrap; margin:0 -16px 28px; overflow:auto; padding:0 16px 4px; }.filterBtn { flex:none; }.grid,.loadingGrid { grid-template-columns:1fr; }.sectionDividerLine { display:none; }.sectionDivider { justify-content:flex-start; }.cardTitle { white-space:normal; } }
 @media (prefers-reduced-motion:reduce) { .card,.filterBtn { transition:none; }.skeletonBar,.skeletonTitle,.skeletonCode { animation:none; } }
+
+/* Calm, paper-like code workspace: keep the existing interactions without dashboard styling. */
+.page { background:#fff; padding-top:52px; }
+.hero { background:#fff; border-bottom:1px solid #dce7ee; border-radius:0; box-shadow:none; color:#1f3443; margin-bottom:28px; padding:0 0 32px; }
+.hero::after,.windowBar::before { display:none; }
+.eyebrow { color:var(--color-brand); }
+.heroTitle { color:#1f3443; font-size:clamp(32px,4vw,46px); line-height:1.1; margin-top:10px; }
+.heroSub { color:#5e7383; font-size:16px; }
+.filterBtn:hover { background:#f7fafc; border-color:#9ab8ca; transform:none; }
+.filterActive { background:#e7f3f8; border-color:#8bc3dc; box-shadow:none; color:#155979; }
+.card { border-radius:8px; box-shadow:none; transition:border-color .15s,background-color .15s; }
+.card:hover { background:#fcfdfe; border-color:#a9c7d6; box-shadow:none; transform:none; }
+.windowBar { background:#f8fafb; justify-content:flex-end; padding:9px 12px; }
+.windowTitle { margin-left:0; margin-right:auto; padding-left:0; text-align:left; }
+.copyBtn:hover { background:#f4f8fa; }
+.codePane { background:#f7f9fa; }
+.pre,.lineCode { color:#284557; }
+.lineNum { border-right-color:#dce7ec; color:#849ba9; }
+.codeLine:hover .lineCode,.codeLine:hover .lineNum { background:#eef5f8; }

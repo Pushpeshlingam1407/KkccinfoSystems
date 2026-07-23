@@ -55,3 +55,5 @@
 .accordionContent {
   @apply px-6 py-4 border-t border-slate-100 text-slate-600 leading-relaxed bg-white;
 }
+
+.container { @apply max-w-5xl mt-0 py-12; }.divider { @apply hidden; }.contentWrapper { @apply max-w-3xl py-0; }.pageTitle { @apply text-3xl text-left mb-4; }.downloadSection { @apply text-left rounded-none shadow-none border-x-0 p-6 mb-8; }.downloadSubtitle { @apply text-base font-normal mb-4; }.downloadButton { @apply rounded-md shadow-none hover:shadow-none hover:translate-y-0 bg-(--color-brand) hover:bg-(--color-brand-hover) px-5 py-2.5; }.accordionContainer { @apply space-y-0 border-t border-l border-slate-200; }.accordionItem { @apply rounded-none shadow-none border-t-0 border-l-0; }.accordionHeader { @apply hover:bg-slate-50 px-5 py-4; }.accordionTitle { @apply text-base; }.accordionIcon,.accordionIconRotated { @apply transition-none; }.accordionContent { @apply px-5; }

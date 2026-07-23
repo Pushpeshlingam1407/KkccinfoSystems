@@ -35,8 +35,11 @@ export default function Navbar() {
               <Link href="/" className={styles.navLink}>
                 Home
               </Link>
+              <Link href="/about" className={styles.navLink}>
+                About
+              </Link>
               <Link href="/training" className={styles.navLink}>
-                Training
+                Courses
               </Link>
 
               {/* Interview Q&A Dropdown */}
@@ -141,9 +144,6 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <Link href="/about" className={styles.navLink}>
-                About
-              </Link>
               <Link href="/contact" className={styles.navLink}>
                 Contact
               </Link>
@@ -209,6 +209,13 @@ export default function Navbar() {
               >
                 Training
               </Link>
+              <Link
+                href="/about"
+                onClick={() => setIsOpen(false)}
+                className={styles.mobileNavLink}
+              >
+                About
+              </Link>
 
               <div className={styles.mobileSection}>
                 <span className={styles.mobileSectionTitle}>Resources</span>
@@ -219,6 +226,9 @@ export default function Navbar() {
                 >
                   Interview Q&A
                 </Link>
+                <Link href="/interview-qa?tech=html" onClick={() => setIsOpen(false)} className={styles.mobileNavLink}>
+                  HTML, CSS, JavaScript & React Q&A
+                </Link>
                 <Link
                   href="/code-snippets"
                   onClick={() => setIsOpen(false)}
@@ -226,15 +236,10 @@ export default function Navbar() {
                 >
                   Code Snippets
                 </Link>
+                <Link href="/code-snippets?tech=python" onClick={() => setIsOpen(false)} className={styles.mobileNavLink}>
+                  C, Java, Python & JavaScript programs
+                </Link>
               </div>
-
-              <Link
-                href="/about"
-                onClick={() => setIsOpen(false)}
-                className={styles.mobileNavLink}
-              >
-                About
-              </Link>
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}

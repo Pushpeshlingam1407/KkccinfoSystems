@@ -1,6 +1,6 @@
 @reference "tailwindcss";
 .body {
-  @apply antialiased min-h-screen flex flex-col pt-16 bg-slate-50 text-slate-900;
+  @apply antialiased min-h-screen flex flex-col bg-slate-50 text-slate-900;
 }
 
 .main {

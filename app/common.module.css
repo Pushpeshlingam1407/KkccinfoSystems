@@ -86,3 +86,5 @@
 .imageCover {
   @apply object-cover;
 }
+
+.pageContainer { @apply py-12 lg:py-16; }.pageTitle { @apply text-3xl lg:text-4xl; }.contentWrapper { @apply gap-12; }.imageWrapper,.contactInfoCard,.mapFrame { @apply rounded-none; }.contactInfoCard { @apply p-7 lg:p-8; }.privacyContainer { @apply py-4; }

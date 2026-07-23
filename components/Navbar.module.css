@@ -1,7 +1,8 @@
 @reference "tailwindcss";
 
 .header {
-  @apply fixed top-0 left-0 right-0 z-50 bg-(--color-background) border-b border-(--color-border);
+  @apply sticky top-0 left-0 right-0 z-50 bg-(--color-background) border-b border-(--color-border);
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.02);
 }
 
 .container {
@@ -18,6 +19,7 @@
 
 .logo {
   @apply text-(--color-foreground) text-lg font-bold tracking-tight transition-colors hover:text-(--color-brand);
+  text-decoration: none;
 }
 
 .desktopMenu {
@@ -25,7 +27,8 @@
 }
 
 .navLink {
-  @apply text-(--color-text-secondary) hover:text-(--color-brand) hover:bg-(--color-bg-secondary) px-3 py-2 rounded-md text-sm font-medium transition-colors;
+  @apply text-(--color-text-secondary) hover:text-(--color-brand) px-3 py-2 text-sm font-medium transition-colors;
+  border-radius: 4px;
 }
 
 .desktopActions {
@@ -34,6 +37,13 @@
 
 .primaryButton {
   @apply text-white bg-(--color-brand) hover:bg-(--color-brand-hover) px-4 py-2 rounded-md text-sm font-medium transition-colors border border-transparent;
+}
+
+.primaryButton:hover,
+.secondaryButton:hover,
+.dropdownButton:hover,
+.logo:hover {
+  text-decoration: none;
 }
 
 .secondaryButton {
@@ -73,6 +83,10 @@
   display: block;
 }
 
+.dropdownContainer:focus-within .dropdownMenu {
+  display: block;
+}
+
 .dropdownButton {
   display: inline-flex;
   align-items: center;
@@ -92,7 +106,7 @@
 
 .dropdownButton:hover {
   color: var(--color-brand);
-  background-color: var(--color-bg-secondary);
+  background-color: #f8fafc;
 }
 
 .dropdownIcon {
@@ -116,7 +130,7 @@
 .dropdownMenuInner {
   background: var(--color-background);
   border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
+  border-radius: 6px;
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.05),
     0 2px 4px -1px rgba(0, 0, 0, 0.03);
@@ -138,8 +152,10 @@
 }
 
 .dropdownItem:hover {
-  background-color: var(--color-bg-secondary);
+  background-color: #f7fafc;
   color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .mobileSection {
