@@ -4,43 +4,48 @@ import { useState } from "react";
 import Image from "next/image";
 import HeroBanner from "../../components/HeroBanner";
 import styles from "./training.module.css";
+import { SYLLABUS_DATA } from "./syllabusData";
 
 export default function Training() {
   const [activeTab, setActiveTab] = useState("CLanguage");
 
   const courses = [
-    { id: "CLanguage", name: "C Language" },
-    { id: "CPP", name: "CPP" },
-    { id: "Java", name: "Java" },
-    { id: "Python", name: "Python" },
-    { id: "PHP", name: "PHP" },
-    { id: "Laravel", name: "Laravel" },
-    { id: "DotNet", name: "Dot Net" },
-    { id: "WebDesigning", name: "Web Designing" },
-    { id: "MySql", name: "My Sql" },
-    { id: "MsSql", name: "Ms Sql" },
-    { id: "Oracle", name: "Oracle(SQL, PLSQL)" },
-    { id: "MSOffice", name: "MS-Office" },
-    { id: "DTP", name: "DTP" },
-    { id: "LiveProjects", name: "Live Projects" },
+    { id: "CLanguage", name: "C Language", tag: "Foundational" },
+    { id: "CPP", name: "C++", tag: "OOP & DSA" },
+    { id: "Java", name: "Java", tag: "Enterprise" },
+    { id: "Python", name: "Python", tag: "Full Stack" },
+    { id: "PHP", name: "PHP", tag: "Web Backend" },
+    { id: "Laravel", name: "Laravel", tag: "Framework" },
+    { id: "DotNet", name: ".NET Core", tag: "C# Enterprise" },
+    { id: "WebDesigning", name: "Web Design", tag: "UI/UX & React" },
+    { id: "MySql", name: "MySQL", tag: "Database" },
+    { id: "MsSql", name: "MS SQL", tag: "SQL Server" },
+    { id: "Oracle", name: "Oracle DB", tag: "PL/SQL" },
+    { id: "MSOffice", name: "MS Office", tag: "Productivity" },
+    { id: "DTP", name: "DTP", tag: "Graphic Design" },
+    { id: "LiveProjects", name: "Live Projects", tag: "Internship" },
   ];
 
+  const currentSyllabus = SYLLABUS_DATA[activeTab];
+
   return (
-    <div>
+    <div className={styles.pageWrapper}>
       <HeroBanner />
 
       <div className={styles.marketingContainer}>
-        <hr className={styles.divider} />
-
+        {/* Course Header Banner */}
         <div className={styles.heroSection}>
           <div className={styles.heroContent}>
-            <h2 className={styles.heroTitle}>Training</h2>
+            <div className={styles.heroHeaderTag}>
+              Professional Training Programs
+            </div>
+            <h2 className={styles.heroTitle}>
+              Master Industry Skills with Real-World Projects
+            </h2>
             <p className={styles.heroText}>
-              KKCC INFO SYSTEMS Training the all types of Languages and
-              packages. KKCC trained students ready to use the corporate
-              organizations. The training style always follows to corporte
-              level. Students involves directly in live projects.KKCC provides
-              Network administration both Windows,Linux full fledged training.
+              Designed by veteran engineers with 20+ years of software industry
+              experience. Our curriculum blends essential theory with practical,
+              hands-on lab sessions to make you job-ready.
             </p>
             <a
               href="/basiccontrols.html"
@@ -48,7 +53,7 @@ export default function Training() {
               rel="noopener noreferrer"
               className={styles.heroLink}
             >
-              Testing Practice{" "}
+              Interactive Practice Lab{" "}
               <svg
                 className={styles.trainingIcon}
                 fill="none"
@@ -59,7 +64,7 @@ export default function Training() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
                 />
               </svg>
             </a>
@@ -68,7 +73,7 @@ export default function Training() {
             <div className={styles.heroImageWrapper}>
               <Image
                 src="/images/training.jpg"
-                alt="Training"
+                alt="Software Training"
                 fill
                 className={styles.imageCover}
               />
@@ -76,9 +81,20 @@ export default function Training() {
           </div>
         </div>
 
+        {/* Syllabus Section */}
         <div className={styles.coursesSection}>
-          <h4 className={styles.coursesTitle}>Courses Offered</h4>
+          <div className={styles.sectionHeaderGroup}>
+            <h3 className={styles.coursesTitle}>
+              Courses & Curriculum Roadmap
+            </h3>
+            <p className={styles.coursesSubtitle}>
+              Select a track below to explore module details, prerequisites, and
+              practical projects.
+            </p>
+          </div>
+
           <div className={styles.coursesGrid}>
+            {/* Custom Tab Navigation Bar */}
             <div className={styles.tabsContainer}>
               <div className={styles.tabsList}>
                 {courses.map((course) => (
@@ -91,116 +107,129 @@ export default function Training() {
                         : styles.tabInactive
                     }`}
                   >
-                    {course.name}
+                    <span className={styles.tabName}>{course.name}</span>
+                    <span className={styles.tabSubTag}>{course.tag}</span>
                   </button>
                 ))}
               </div>
             </div>
+
+            {/* Syllabus Viewer Area */}
             <div className={styles.contentContainer}>
-              {activeTab === "CLanguage" && (
-                <div className={styles.courseHeader}>Introuduction of C</div>
-              )}
-              {activeTab === "CPP" && (
-                <div className={styles.courseHeader}>C++</div>
-              )}
-              {activeTab === "Java" && (
-                <div className={styles.courseHeader}>Java</div>
-              )}
-              {activeTab === "Python" && (
-                <div>
-                  <h3 className={styles.courseHeader}>
-                    Python Basic Programs Questions
-                  </h3>
-                  <div className={styles.questionList}>
-                    <div className={styles.questionItem}>
-                      <p className={styles.questionText}>
-                        1) Write a program that take a word W as input and
-                        prints &quot;Hello&quot; followed by the given word W
-                      </p>
-                      <div className={styles.codeBlock}>
-                        <span className={styles.comment}>
-                          # Write a program that take a word W as input and
-                          prints &quot;Hello&quot; followed by the given word W
+              {currentSyllabus ? (
+                <div className={styles.syllabusMainView}>
+                  {/* Top Info Banner */}
+                  <div className={styles.syllabusHeader}>
+                    <div>
+                      <div className={styles.badgeRow}>
+                        <span className={styles.syllabusBadge}>
+                          {currentSyllabus.badge || "Core Track"}
                         </span>
-                        W = input()
-                        <br />
-                        print(&quot;Hello &quot; + W)
+                        <span className={styles.durationPill}>
+                          ⏱️ {currentSyllabus.duration}
+                        </span>
                       </div>
-                    </div>
-                    <div className={styles.questionItem}>
-                      <p className={styles.questionText}>
-                        2) Write a program that reads a single line of input and
-                        print the given input
+                      <h2 className={styles.courseHeader}>
+                        {currentSyllabus.name}
+                      </h2>
+                      <p className={styles.courseDescription}>
+                        {currentSyllabus.description}
                       </p>
-                      <div className={styles.codeBlock}>
-                        s = input()
-                        <br />
-                        print(s)
-                      </div>
                     </div>
-                    <div className={styles.questionItem}>
-                      <p className={styles.questionText}>
-                        3) For this problem, you need to write code to read a
-                        single line of input and print the line after the
-                        message &quot;Given Input:&quot;
-                      </p>
-                      <div className={styles.codeBlock}>
-                        s = input()
-                        <br />
-                        print(&quot;Given input: &quot; + s)
-                      </div>
-                    </div>
-                    <div className={styles.questionItem}>
-                      <p className={styles.questionText}>
-                        4) For this problem, you need to write code to read two
-                        lines of input and print the second line of input
-                      </p>
-                      <div className={styles.codeBlock}>
-                        d = input()
-                        <br />
-                        d = input()
-                        <br />
-                        print(d)
-                      </div>
+
+                    <div className={styles.prereqBox}>
+                      <span className={styles.prereqTitle}>
+                        Prerequisite Knowledge
+                      </span>
+                      <span className={styles.prereqValue}>
+                        {currentSyllabus.prerequisites}
+                      </span>
                     </div>
                   </div>
+
+                  {/* Syllabus Overview */}
+                  <div className={styles.overviewBox}>
+                    <h4 className={styles.overviewHeader}>Course Summary</h4>
+                    <p className={styles.overviewText}>
+                      {currentSyllabus.overview}
+                    </p>
+                  </div>
+
+                  {/* Modules Display */}
+                  <div className={styles.modulesSection}>
+                    <div className={styles.moduleSectionHeader}>
+                      <h3 className={styles.sectionTitle}>
+                        Course Syllabus & Learning Modules
+                      </h3>
+                      <span className={styles.moduleCountTag}>
+                        {currentSyllabus.modules.length} Modules Included
+                      </span>
+                    </div>
+
+                    <div className={styles.modulesGrid}>
+                      {currentSyllabus.modules.map((mod, idx) => (
+                        <div key={idx} className={styles.moduleCard}>
+                          <div className={styles.moduleHeaderBar}>
+                            <span className={styles.moduleIndex}>
+                              Module {idx + 1}
+                            </span>
+                          </div>
+                          <h4 className={styles.moduleTitle}>{mod.title}</h4>
+                          <ul className={styles.topicsList}>
+                            {mod.topics.map((topic, tIdx) => (
+                              <li key={tIdx} className={styles.topicItem}>
+                                <svg
+                                  className={styles.checkIcon}
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                                <span>{topic}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Practical Assignments / Projects */}
+                  {currentSyllabus.projects &&
+                    currentSyllabus.projects.length > 0 && (
+                      <div className={styles.projectsSection}>
+                        <div className={styles.projectSectionHeader}>
+                          <h3 className={styles.sectionTitle}>
+                            Hands-On Projects & Labs
+                          </h3>
+                          <p className={styles.projectSectionDesc}>
+                            Gain actual industry experience by building these
+                            real-world applications under mentor supervision:
+                          </p>
+                        </div>
+                        <div className={styles.projectsGrid}>
+                          {currentSyllabus.projects.map((project, pIdx) => (
+                            <div key={pIdx} className={styles.projectCard}>
+                              <div className={styles.projectBadge}>
+                                Project #{pIdx + 1}
+                              </div>
+                              <h5 className={styles.projectText}>{project}</h5>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                 </div>
-              )}
-              {activeTab === "PHP" && (
-                <div className={styles.courseHeader}>PHP</div>
-              )}
-              {activeTab === "Laravel" && (
-                <div className={styles.courseHeader}>Laravel</div>
-              )}
-              {activeTab === "DotNet" && (
-                <div className={styles.courseHeader}>Dot Net</div>
-              )}
-              {activeTab === "WebDesigning" && (
-                <div className={styles.courseHeader}>Web Designing</div>
-              )}
-              {activeTab === "MySql" && (
-                <div className={styles.courseHeader}>My Sql</div>
-              )}
-              {activeTab === "MsSql" && (
-                <div className={styles.courseHeader}>Ms Sql</div>
-              )}
-              {activeTab === "Oracle" && (
-                <div className={styles.courseHeader}>Oracle(SQL, PLSQL)</div>
-              )}
-              {activeTab === "MSOffice" && (
-                <div className={styles.courseHeader}>MS-Office</div>
-              )}
-              {activeTab === "DTP" && (
-                <div className={styles.courseHeader}>DTP</div>
-              )}
-              {activeTab === "LiveProjects" && (
-                <div className={styles.courseHeader}>Live Projects</div>
+              ) : (
+                <div className={styles.courseHeader}>{activeTab}</div>
               )}
             </div>
           </div>
         </div>
-
-        <hr className={styles.divider} />
       </div>
     </div>
   );

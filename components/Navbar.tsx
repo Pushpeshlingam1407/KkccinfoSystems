@@ -57,18 +57,14 @@ export default function Navbar() {
               </Link>
 
               {/* ── Interview Q&A Dropdown ── */}
-              <div className={styles.dropdownContainer} ref={qaDropdownRef}>
-                <button
-                  onClick={() => {
-                    setQaDropdownOpen((v) => !v);
-                    setDropdownOpen(false);
-                  }}
+              <div className={styles.dropdownContainer}>
+                <Link
+                  href="/interview-qa"
                   className={styles.dropdownButton}
-                  aria-expanded={qaDropdownOpen}
                 >
                   Interview Q&A
                   <svg
-                    className={`${styles.dropdownIcon} ${qaDropdownOpen ? styles.dropdownIconOpen : ""}`}
+                    className={styles.dropdownIcon}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -80,45 +76,41 @@ export default function Navbar() {
                       d="M19 9l-7 7-7-7"
                     />
                   </svg>
-                </button>
+                </Link>
 
-                {qaDropdownOpen && (
-                  <div className={styles.dropdownMenu}>
-                    <div className={styles.dropdownMenuInner}>
-                      {[
-                        ["html", "HTML"],
-                        ["css", "CSS"],
-                        ["javascript", "JavaScript"],
-                        ["react", "React JS"],
-                        ["java", "Java"],
-                      ].map(([tech, label]) => (
-                        <Link
-                          key={tech}
-                          href={`/interview-qa?tech=${tech}`}
-                          onClick={() => setQaDropdownOpen(false)}
-                          className={styles.dropdownItem}
-                        >
-                          {label}
-                        </Link>
-                      ))}
-                    </div>
+                <div className={styles.dropdownMenu}>
+                  <div className={styles.dropdownMenuInner}>
+                    {[
+                      ["html", "HTML Interview Q&A"],
+                      ["css", "CSS Interview Q&A"],
+                      ["javascript", "JavaScript Q&A"],
+                      ["react", "React JS Q&A"],
+                      ["java", "Java Interview Q&A"],
+                      ["python", "Python Q&A"],
+                      ["mysql", "MySQL Q&A"],
+                      ["clang", "C Programming Q&A"],
+                    ].map(([tech, label]) => (
+                      <Link
+                        key={tech}
+                        href={`/interview-qa?tech=${tech}`}
+                        className={styles.dropdownItem}
+                      >
+                        {label}
+                      </Link>
+                    ))}
                   </div>
-                )}
+                </div>
               </div>
 
               {/* ── Code Snippets Dropdown ── */}
-              <div className={styles.dropdownContainer} ref={dropdownRef}>
-                <button
-                  onClick={() => {
-                    setDropdownOpen((v) => !v);
-                    setQaDropdownOpen(false);
-                  }}
+              <div className={styles.dropdownContainer}>
+                <Link
+                  href="/code-snippets"
                   className={styles.dropdownButton}
-                  aria-expanded={dropdownOpen}
                 >
                   Code Snippets
                   <svg
-                    className={`${styles.dropdownIcon} ${dropdownOpen ? styles.dropdownIconOpen : ""}`}
+                    className={styles.dropdownIcon}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -130,29 +122,26 @@ export default function Navbar() {
                       d="M19 9l-7 7-7-7"
                     />
                   </svg>
-                </button>
+                </Link>
 
-                {dropdownOpen && (
-                  <div className={styles.dropdownMenu}>
-                    <div className={styles.dropdownMenuInner}>
-                      {[
-                        ["c", "C Language"],
-                        ["java", "Java"],
-                        ["python", "Python"],
-                        ["javascript", "JavaScript"],
-                      ].map(([tech, label]) => (
-                        <Link
-                          key={tech}
-                          href={`/code-snippets?tech=${tech}`}
-                          onClick={() => setDropdownOpen(false)}
-                          className={styles.dropdownItem}
-                        >
-                          {label}
-                        </Link>
-                      ))}
-                    </div>
+                <div className={styles.dropdownMenu}>
+                  <div className={styles.dropdownMenuInner}>
+                    {[
+                      ["c", "C Programs & Snippets"],
+                      ["java", "Java Programs & Snippets"],
+                      ["python", "Python Code Snippets"],
+                      ["javascript", "JavaScript Snippets"],
+                    ].map(([tech, label]) => (
+                      <Link
+                        key={tech}
+                        href={`/code-snippets?tech=${tech}`}
+                        className={styles.dropdownItem}
+                      >
+                        {label}
+                      </Link>
+                    ))}
                   </div>
-                )}
+                </div>
               </div>
 
               <Link href="/about" className={styles.navLink}>
