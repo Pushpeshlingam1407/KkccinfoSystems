@@ -59,7 +59,7 @@ export default function CodeSnippets() {
     return () => {
       current = false;
     };
-  }, [active]);
+  }, [active, category]);
   const loading = loadedCategory !== category;
   const results = useMemo(
     () =>

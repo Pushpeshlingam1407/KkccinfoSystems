@@ -51,7 +51,7 @@ export default function InterviewQA() {
     return () => {
       current = false;
     };
-  }, [active]);
+  }, [active, topic]);
   const loading = loadedTopic !== topic;
   const filtered = useMemo(
     () =>
