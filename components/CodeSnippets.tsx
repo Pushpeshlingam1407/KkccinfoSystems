@@ -222,88 +222,150 @@ export default function CodeSnippets() {
           </button>
         </div>
       ) : (
-        <div className={styles.grid}>
-          {results.map((item, idx) => {
-            const brief = briefFromCode(item.code);
-            const title = titleFromCode(item.code);
-            const lines = withLineNumbers(item.code);
-            return (
-              <article key={`${item.section}-${idx}`} className={styles.card}>
-                {/* macOS Window Chrome */}
-                <div className={styles.windowBar}>
-                  <div className={styles.trafficLights}>
-                    <span className={`${styles.dot} ${styles.dotRed}`} />
-                    <span className={`${styles.dot} ${styles.dotYellow}`} />
-                    <span className={`${styles.dot} ${styles.dotGreen}`} />
-                  </div>
-                  <span className={styles.windowTitle}>{item.section}</span>
-                  <button
-                    className={`${styles.copyBtn} ${copied === idx ? styles.copyBtnDone : ""}`}
-                    onClick={() => copy(item.code, idx)}
-                    aria-label="Copy code"
-                  >
-                    {copied === idx ? (
-                      <>
-                        <svg
-                          viewBox="0 0 16 16"
-                          fill="currentColor"
-                          className={styles.copyIcon}
-                        >
-                          <path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z" />
-                        </svg>
-                        Copied
-                      </>
-                    ) : (
-                      <>
-                        <svg
-                          viewBox="0 0 16 16"
-                          fill="currentColor"
-                          className={styles.copyIcon}
-                        >
-                          <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" />
-                          <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" />
-                        </svg>
-                        Copy
-                      </>
-                    )}
-                  </button>
-                </div>
+        (() => {
+          // Group results by their section/concept
+          const grouped: { section: string; items: typeof results }[] = [];
+          results.forEach((item) => {
+            const last = grouped[grouped.length - 1];
+            if (last && last.section === item.section) {
+              last.items.push(item);
+            } else {
+              grouped.push({ section: item.section, items: [item] });
+            }
+          });
 
-                {/* Card Meta — title + brief description */}
-                <div className={styles.cardMeta}>
-                  <div className={styles.cardMetaLeft}>
-                    <h2 className={styles.cardTitle}>{title}</h2>
-                    {brief && (
-                      <p className={styles.cardBrief}>
-                        <span className={styles.briefDot} />
-                        {brief}
-                      </p>
-                    )}
-                  </div>
-                  <span className={styles.langTag}>
-                    {item.language || active.label}
-                  </span>
-                </div>
+          // Global index for copy state tracking across groups
+          let globalIdx = 0;
 
-                {/* Code Block with Line Numbers */}
-                <div className={styles.codePane}>
-                  <pre className={styles.pre}>
-                    <table className={styles.codeTable}>
-                      <tbody>
-                        {lines.map(({ num, text }) => (
-                          <tr key={num} className={styles.codeLine}>
-                            <td className={styles.lineNum}>{num}</td>
-                            <td className={styles.lineCode}>{text || " "}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </pre>
+          return (
+            <div className={styles.sectionsWrapper}>
+              {grouped.map((group) => (
+                <div key={group.section} className={styles.conceptSection}>
+                  {/* Concept Section Divider */}
+                  <div className={styles.sectionDivider}>
+                    <div className={styles.sectionDividerLine} />
+                    <div className={styles.sectionDividerLabel}>
+                      <svg
+                        className={styles.sectionIcon}
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span className={styles.sectionName}>
+                        {group.section}
+                      </span>
+                      <span className={styles.sectionCount}>
+                        {group.items.length} program
+                        {group.items.length !== 1 ? "s" : ""}
+                      </span>
+                    </div>
+                    <div className={styles.sectionDividerLine} />
+                  </div>
+
+                  {/* Cards for this section */}
+                  <div className={styles.grid}>
+                    {group.items.map((item) => {
+                      const idx = globalIdx++;
+                      const brief = briefFromCode(item.code);
+                      const title = titleFromCode(item.code);
+                      const lines = withLineNumbers(item.code);
+                      return (
+                        <article
+                          key={`${item.section}-${idx}`}
+                          className={styles.card}
+                        >
+                          <div className={styles.windowBar}>
+                            <div className={styles.trafficLights}>
+                              <span
+                                className={`${styles.dot} ${styles.dotRed}`}
+                              />
+                              <span
+                                className={`${styles.dot} ${styles.dotYellow}`}
+                              />
+                              <span
+                                className={`${styles.dot} ${styles.dotGreen}`}
+                              />
+                            </div>
+                            <span className={styles.windowTitle}>
+                              {item.section}
+                            </span>
+                            <button
+                              className={`${styles.copyBtn} ${copied === idx ? styles.copyBtnDone : ""}`}
+                              onClick={() => copy(item.code, idx)}
+                              aria-label="Copy code"
+                            >
+                              {copied === idx ? (
+                                <>
+                                  <svg
+                                    viewBox="0 0 16 16"
+                                    fill="currentColor"
+                                    className={styles.copyIcon}
+                                  >
+                                    <path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z" />
+                                  </svg>
+                                  Copied
+                                </>
+                              ) : (
+                                <>
+                                  <svg
+                                    viewBox="0 0 16 16"
+                                    fill="currentColor"
+                                    className={styles.copyIcon}
+                                  >
+                                    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" />
+                                    <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" />
+                                  </svg>
+                                  Copy
+                                </>
+                              )}
+                            </button>
+                          </div>
+
+                          <div className={styles.cardMeta}>
+                            <div className={styles.cardMetaLeft}>
+                              <h2 className={styles.cardTitle}>{title}</h2>
+                              {brief && (
+                                <p className={styles.cardBrief}>
+                                  <span className={styles.briefDot} />
+                                  {brief}
+                                </p>
+                              )}
+                            </div>
+                            <span className={styles.langTag}>
+                              {item.language || active.label}
+                            </span>
+                          </div>
+
+                          <div className={styles.codePane}>
+                            <pre className={styles.pre}>
+                              <table className={styles.codeTable}>
+                                <tbody>
+                                  {lines.map(({ num, text }) => (
+                                    <tr key={num} className={styles.codeLine}>
+                                      <td className={styles.lineNum}>{num}</td>
+                                      <td className={styles.lineCode}>
+                                        {text || " "}
+                                      </td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </pre>
+                          </div>
+                        </article>
+                      );
+                    })}
+                  </div>
                 </div>
-              </article>
-            );
-          })}
-        </div>
+              ))}
+            </div>
+          );
+        })()
       )}
     </section>
   );

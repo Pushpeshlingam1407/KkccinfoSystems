@@ -146,6 +146,65 @@
   opacity: 0.9;
 }
 
+.sectionsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.conceptSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sectionDivider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sectionDividerLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #2d3a4e, transparent);
+}
+
+.sectionDividerLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #151d2a;
+  border: 1px solid #2a3546;
+  border-radius: 10px;
+  padding: 7px 14px;
+  flex-shrink: 0;
+}
+
+.sectionIcon {
+  width: 15px;
+  height: 15px;
+  color: #4a7fa5;
+  flex-shrink: 0;
+}
+
+.sectionName {
+  font-size: 13px;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.01em;
+}
+
+.sectionCount {
+  font-size: 11px;
+  font-weight: 600;
+  color: #4b6280;
+  background: #1e2837;
+  border: 1px solid #2d3a4e;
+  border-radius: 20px;
+  padding: 1px 8px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
