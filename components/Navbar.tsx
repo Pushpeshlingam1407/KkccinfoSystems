@@ -6,30 +6,16 @@ import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [qaDropdownOpen, setQaDropdownOpen] = useState(false);
-
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const qaDropdownRef = useRef<HTMLDivElement>(null);
-
-  // Close dropdowns when clicking outside
+  
+  // Close menu on resize if it goes back to desktop
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setDropdownOpen(false);
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsOpen(false);
       }
-      if (
-        qaDropdownRef.current &&
-        !qaDropdownRef.current.contains(event.target as Node)
-      ) {
-        setQaDropdownOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -40,7 +26,7 @@ export default function Navbar() {
             {/* Logo */}
             <div className={styles.logoContainer}>
               <Link href="/" className={styles.logo}>
-                KKCC
+                KKCC Info Systems
               </Link>
             </div>
 
@@ -52,88 +38,41 @@ export default function Navbar() {
               <Link href="/training" className={styles.navLink}>
                 Training
               </Link>
-              <Link href="/downloads" className={styles.navLink}>
-                Downloads
-              </Link>
 
-              {/* ── Interview Q&A Dropdown ── */}
+              {/* Interview Q&A Dropdown */}
               <div className={styles.dropdownContainer}>
                 <Link href="/interview-qa" className={styles.dropdownButton}>
                   Interview Q&A
-                  <svg
-                    className={styles.dropdownIcon}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    />
+                  <svg className={styles.dropdownIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </Link>
-
                 <div className={styles.dropdownMenu}>
                   <div className={styles.dropdownMenuInner}>
-                    {[
-                      ["html", "HTML Interview Q&A"],
-                      ["css", "CSS Interview Q&A"],
-                      ["javascript", "JavaScript Q&A"],
-                      ["react", "React JS Q&A"],
-                      ["java", "Java Interview Q&A"],
-                      ["python", "Python Q&A"],
-                      ["mysql", "MySQL Q&A"],
-                      ["clang", "C Programming Q&A"],
-                    ].map(([tech, label]) => (
-                      <Link
-                        key={tech}
-                        href={`/interview-qa?tech=${tech}`}
-                        className={styles.dropdownItem}
-                      >
-                        {label}
-                      </Link>
-                    ))}
+                    <Link href="/interview-qa?tech=java" className={styles.dropdownItem}>Java</Link>
+                    <Link href="/interview-qa?tech=python" className={styles.dropdownItem}>Python</Link>
+                    <Link href="/interview-qa?tech=javascript" className={styles.dropdownItem}>JavaScript</Link>
+                    <Link href="/interview-qa?tech=react" className={styles.dropdownItem}>React JS</Link>
+                    <Link href="/interview-qa?tech=mysql" className={styles.dropdownItem}>MySQL</Link>
+                    <Link href="/interview-qa?tech=html" className={styles.dropdownItem}>HTML & CSS</Link>
                   </div>
                 </div>
               </div>
 
-              {/* ── Code Snippets Dropdown ── */}
+              {/* Code Snippets Dropdown */}
               <div className={styles.dropdownContainer}>
                 <Link href="/code-snippets" className={styles.dropdownButton}>
                   Code Snippets
-                  <svg
-                    className={styles.dropdownIcon}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    />
+                  <svg className={styles.dropdownIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </Link>
-
                 <div className={styles.dropdownMenu}>
                   <div className={styles.dropdownMenuInner}>
-                    {[
-                      ["c", "C Programs & Snippets"],
-                      ["java", "Java Programs & Snippets"],
-                      ["python", "Python Code Snippets"],
-                      ["javascript", "JavaScript Snippets"],
-                    ].map(([tech, label]) => (
-                      <Link
-                        key={tech}
-                        href={`/code-snippets?tech=${tech}`}
-                        className={styles.dropdownItem}
-                      >
-                        {label}
-                      </Link>
-                    ))}
+                    <Link href="/code-snippets?tech=java" className={styles.dropdownItem}>Java</Link>
+                    <Link href="/code-snippets?tech=python" className={styles.dropdownItem}>Python</Link>
+                    <Link href="/code-snippets?tech=javascript" className={styles.dropdownItem}>JavaScript</Link>
+                    <Link href="/code-snippets?tech=c" className={styles.dropdownItem}>C Language</Link>
                   </div>
                 </div>
               </div>
@@ -146,33 +85,26 @@ export default function Navbar() {
               </Link>
             </div>
 
+            {/* Desktop Actions */}
+            <div className={styles.desktopActions}>
+              <Link href="/training" className={styles.primaryButton}>
+                Explore Courses
+              </Link>
+            </div>
+
             {/* Mobile toggle */}
             <div className={styles.mobileMenuContainer}>
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={styles.mobileMenuButton}
                 aria-label="Toggle menu"
+                aria-expanded={isOpen}
               >
-                <svg
-                  className={styles.mobileMenuIcon}
-                  stroke="currentColor"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
+                <svg className={styles.mobileMenuIcon} stroke="currentColor" fill="none" viewBox="0 0 24 24">
                   {isOpen ? (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                   ) : (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                   )}
                 </svg>
               </button>
@@ -184,164 +116,23 @@ export default function Navbar() {
         {isOpen && (
           <div className={styles.mobileDropdown}>
             <div className={styles.mobileDropdownInner}>
-              <Link
-                href="/"
-                onClick={() => setIsOpen(false)}
-                className={styles.mobileNavLink}
-              >
-                Home
-              </Link>
-              <Link
-                href="/training"
-                onClick={() => setIsOpen(false)}
-                className={styles.mobileNavLink}
-              >
-                Training
-              </Link>
-              <Link
-                href="/downloads"
-                onClick={() => setIsOpen(false)}
-                className={styles.mobileNavLink}
-              >
-                Downloads
-              </Link>
-
-              {/* Interview Q&A section */}
+              <Link href="/" onClick={() => setIsOpen(false)} className={styles.mobileNavLink}>Home</Link>
+              <Link href="/training" onClick={() => setIsOpen(false)} className={styles.mobileNavLink}>Training</Link>
+              
               <div className={styles.mobileSection}>
-                <span className={styles.mobileSectionTitle}>Interview Q&A</span>
-                <Link
-                  href="/interview-qa?tech=html"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― HTML
-                </Link>
-                <Link
-                  href="/interview-qa?tech=css"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― CSS
-                </Link>
-                <Link
-                  href="/interview-qa?tech=javascript"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― JavaScript
-                </Link>
-                <Link
-                  href="/interview-qa?tech=react"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― React JS
-                </Link>
-                <Link
-                  href="/interview-qa?tech=java"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― Java
-                </Link>
-                <Link
-                  href="/interview-qa?tech=python"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― Python
-                </Link>
-                <Link
-                  href="/interview-qa?tech=mysql"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― MySQL
-                </Link>
-                <Link
-                  href="/interview-qa?tech=clang"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― C Language
-                </Link>
+                <span className={styles.mobileSectionTitle}>Resources</span>
+                <Link href="/interview-qa" onClick={() => setIsOpen(false)} className={styles.mobileNavLink}>Interview Q&A</Link>
+                <Link href="/code-snippets" onClick={() => setIsOpen(false)} className={styles.mobileNavLink}>Code Snippets</Link>
               </div>
 
-              {/* Code Snippets section */}
-              <div className={styles.mobileSection}>
-                <span className={styles.mobileSectionTitle}>Code Snippets</span>
-                <Link
-                  href="/code-snippets?tech=html"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― HTML
-                </Link>
-                <Link
-                  href="/code-snippets?tech=css"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― CSS
-                </Link>
-                <Link
-                  href="/code-snippets?tech=javascript"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― JavaScript
-                </Link>
-                <Link
-                  href="/code-snippets?tech=react"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― React JS
-                </Link>
-                <Link
-                  href="/code-snippets?tech=clang"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― C Language
-                </Link>
-                <Link
-                  href="/code-snippets?tech=java"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― Java
-                </Link>
-                <Link
-                  href="/code-snippets?tech=python"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― Python
-                </Link>
-                <Link
-                  href="/code-snippets?tech=sql"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileNavLink}
-                >
-                  ― MySQL / SQL
+              <Link href="/about" onClick={() => setIsOpen(false)} className={styles.mobileNavLink}>About</Link>
+              <Link href="/contact" onClick={() => setIsOpen(false)} className={styles.mobileNavLink}>Contact</Link>
+              
+              <div className="mt-4 pb-2 px-3">
+                 <Link href="/training" onClick={() => setIsOpen(false)} className="w-full inline-flex justify-center items-center text-white bg-blue-600 hover:bg-blue-700 px-4 py-2.5 rounded-md text-base font-medium transition-colors">
+                  Explore Courses
                 </Link>
               </div>
-
-              <Link
-                href="/about"
-                onClick={() => setIsOpen(false)}
-                className={styles.mobileNavLink}
-              >
-                About
-              </Link>
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className={styles.mobileNavLink}
-              >
-                Contact
-              </Link>
             </div>
           </div>
         )}
