@@ -1,86 +1,86 @@
 @reference "tailwindcss";
+
 .pageContainer {
-  @apply container mx-auto px-4 mt-8;
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20;
 }
 
 .divider {
-  @apply my-12 border-slate-200;
+  @apply border-t border-(--color-border) my-12;
 }
 
 .contentWrapper {
-  @apply flex flex-col md:flex-row items-center gap-12 py-8;
+  @apply flex flex-col md:flex-row items-start gap-16;
 }
 
 .textContent {
-  @apply md:w-7/12;
+  @apply md:w-1/2 flex flex-col gap-6;
 }
 
 .pageTitle {
-  @apply text-4xl font-extrabold text-slate-900 tracking-tight mb-6;
+  @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-(--color-foreground) tracking-tight leading-tight;
 }
 
 .paragraph {
-  @apply text-xl font-light text-slate-600 mb-6 leading-relaxed text-justify;
+  @apply text-lg text-(--color-text-secondary) leading-relaxed;
 }
 
 .imageContainer {
-  @apply md:w-5/12 flex justify-center;
+  @apply md:w-1/2 w-full flex justify-center;
 }
 
 .imageWrapper {
-  @apply relative w-full max-w-md aspect-square rounded-[2rem] overflow-hidden shadow-2xl;
+  @apply relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-(--color-border) bg-(--color-bg-secondary);
 }
 
 /* Contact specific */
 .contactGrid {
-  @apply grid grid-cols-1 md:grid-cols-2 gap-12 py-8;
+  @apply grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start;
 }
 
 .contactInfoCard {
-  @apply bg-white p-8 rounded-2xl shadow-sm border border-slate-100;
+  @apply bg-(--color-background) p-8 lg:p-10 rounded-2xl border border-(--color-border) flex flex-col gap-6;
 }
 
 .contactSubtitle {
-  @apply text-2xl font-bold text-slate-900 mb-6;
+  @apply text-2xl font-bold text-(--color-foreground);
 }
 
 .addressText {
-  @apply text-lg text-slate-600 leading-relaxed font-light mb-6;
+  @apply text-base text-(--color-text-secondary) leading-relaxed;
 }
 
 .contactLink {
-  @apply text-indigo-600 hover:text-indigo-700 hover:underline transition-colors;
+  @apply text-(--color-brand) hover:text-(--color-brand-hover) font-medium transition-colors hover:underline underline-offset-4;
 }
 
 .mapFrame {
-  border: 0;
-  border-radius: 1rem;
+  @apply w-full h-[400px] lg:h-[500px] border border-(--color-border) rounded-2xl bg-(--color-bg-secondary);
 }
 
 /* Privacy specific */
 .privacyContainer {
-  @apply max-w-4xl mx-auto py-8;
+  @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16;
 }
 
 .sectionTitle {
-  @apply text-2xl font-bold text-slate-900 mt-8 mb-4;
+  @apply text-2xl font-bold text-(--color-foreground) mt-12 mb-6;
 }
 
 /* Generic Downloads */
 .downloadContainer {
-  @apply max-w-4xl mx-auto py-16 text-center;
+  @apply max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center;
 }
 
 .downloadCard {
-  @apply bg-white p-12 rounded-3xl shadow-sm border border-slate-100 mt-8 transition-all hover:shadow-md;
+  @apply bg-(--color-background) border border-(--color-border) p-10 lg:p-16 rounded-2xl mt-12 flex flex-col items-center;
 }
 
 .downloadSubtitle {
-  @apply text-xl text-slate-600 mb-8 font-light;
+  @apply text-lg text-(--color-text-secondary) mb-10 leading-relaxed;
 }
 
 .downloadButton {
-  @apply inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-indigo-600 rounded-full hover:bg-indigo-700 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5;
+  @apply inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-white bg-(--color-brand) rounded-md hover:bg-(--color-brand-hover) transition-colors;
 }
 
 .imageCover {

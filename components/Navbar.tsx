@@ -49,12 +49,11 @@ export default function Navbar() {
                 </Link>
                 <div className={styles.dropdownMenu}>
                   <div className={styles.dropdownMenuInner}>
-                    <Link href="/interview-qa?tech=java" className={styles.dropdownItem}>Java</Link>
-                    <Link href="/interview-qa?tech=python" className={styles.dropdownItem}>Python</Link>
+                    <Link href="/interview-qa?tech=html" className={styles.dropdownItem}>HTML</Link>
+                    <Link href="/interview-qa?tech=css" className={styles.dropdownItem}>CSS</Link>
                     <Link href="/interview-qa?tech=javascript" className={styles.dropdownItem}>JavaScript</Link>
                     <Link href="/interview-qa?tech=react" className={styles.dropdownItem}>React JS</Link>
-                    <Link href="/interview-qa?tech=mysql" className={styles.dropdownItem}>MySQL</Link>
-                    <Link href="/interview-qa?tech=html" className={styles.dropdownItem}>HTML & CSS</Link>
+                    <Link href="/interview-qa?tech=java" className={styles.dropdownItem}>Java</Link>
                   </div>
                 </div>
               </div>

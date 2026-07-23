@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import styles from "./InterviewQA.module.css";
 
 type QA = { question: string; answer: string };
@@ -24,6 +25,7 @@ function parseQuestions(markup: string): QA[] {
 }
 
 export default function InterviewQA() {
+  const router = useRouter();
   const params = useSearchParams();
   const requested = params.get("tech")?.toLowerCase() || "html";
   const [topic, setTopic] = useState(
@@ -81,13 +83,14 @@ export default function InterviewQA() {
           <p>Topics</p>
           <nav>
             {topics.map(([id, label]) => (
-              <button
+              <Link
                 key={id}
+                href={`/interview-qa?tech=${id}`}
                 className={topic === id ? styles.selected : ""}
                 onClick={() => chooseTopic(id)}
               >
                 <span>{label}</span>
-              </button>
+              </Link>
             ))}
           </nav>
           <div className={styles.sidebarNote}>
