@@ -280,17 +280,6 @@ export default function CodeSnippets() {
                           className={styles.card}
                         >
                           <div className={styles.windowBar}>
-                            <div className={styles.trafficLights}>
-                              <span
-                                className={`${styles.dot} ${styles.dotRed}`}
-                              />
-                              <span
-                                className={`${styles.dot} ${styles.dotYellow}`}
-                              />
-                              <span
-                                className={`${styles.dot} ${styles.dotGreen}`}
-                              />
-                            </div>
                             <span className={styles.windowTitle}>
                               {item.section}
                             </span>
