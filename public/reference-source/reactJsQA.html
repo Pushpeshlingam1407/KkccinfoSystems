@@ -1,0 +1,553 @@
+Exit code: 0
+Wall time: 5.9 seconds
+Total output lines: 710
+Output:
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Telugu It Tutorials.com ReactJS Interview Questions and Answers - A comprehensive guide for preparing for ReactJS developer interviews. Includes tricky coding challenges, core React concepts, hooks, lifecycle methods, and more.">
+    <meta name="keywords" content="Telugu It Tutorials.com ReactJS interview questions, ReactJS coding questions, ReactJS developer interview, ReactJS technical interview, ReactJS challenges, ReactJS hooks, ReactJS lifecycle methods, ReactJS components, ReactJS state management, ReactJS interview guide, ReactJS exam, ReactJS certification, ReactJS developer Q&A, ReactJS programming, ReactJS Redux, ReactJS performance optimization, ReactJS routing">
+    <title>Telugu It Tutorials.com |ReactJS Interview Questions and Answers</title>
+<meta name="description" content="Telugu IT Tutorials offers live virtual full-stack development courses in Telugu (HTML, CSS, JavaScript, React, Node.js, SQL) with 100% job placement support and lifetime access." />
+<meta name="google-adsense-account" content="ca-pub-9880499509623369">
+  <!-- Primary Keywords -->
+  <meta name="keywords" content="Telugu IT Tutorials, IT training in Telugu, Telugu web development tutorials, Full stack development courses in Telugu, Online coding classes in Telugu, Programming tutorials Telugu, ReactJS tutorials in Telugu, Node.js course in Telugu, SpringBoot tutorials Telugu, Git and Docker training in Telugu, SQL courses for beginners Telugu, HTML CSS JavaScript in Telugu, Best Telugu online coding institute, Interview Q&A preparation Telugu" />
+
+  <!-- Open Graph (Facebook/LinkedIn) -->
+  <meta property="og:title" content="Telugu IT Tutorials â€” Learn Full Stack Development in Telugu" />
+  <meta property="og:description" content="Learn programming in Telugu with live virtual courses on React, Node.js, SQL, Git, Docker & more. Lifetime access + 100% job placement support." />
+  <meta property="og:url" content="https://teluguittutorials.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://teluguittutorials.com/images/banner.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Telugu IT Tutorials â€” Learn Full Stack Development in Telugu" />
+  <meta name="twitter:description" content="Master full-stack development in Telugu with lifetime access & job support. Courses include HTML, CSS, JavaScript, React, Node.js, SQL." />
+  <meta name="twitter:image" content="https://teluguittutorials.com/images/banner.jpg" />
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon" />
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Libraries CSS Files -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/venobox/venobox.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9880499509623369"
+     crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="./css/questions.css">
+     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(q => {
+                q.addEventListener('click', function () {
+                    const answer = this.nextElementSibling;
+                    answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
+  </head>
+
+  <body>
+    <header id="header" class="header-scrolled">
+      <div class="container">
+        <div id="logo" class="pull-left">
+        
+          <h2>
+            <a href="index.html">Telugu <span>IT</span> Tutorials</a>
+          </h2>
+       
+        </div>
+        <nav id="nav-menu-container">
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#speakers">Videos</a></li>
+              <li class="menu-has-children">
+      <a href="articles.html">Interview Q&amp;A</a>
+      <ul>
+        <li><a href="htmlQA.html">HTML</a></li>
+  <li><a href="cssQA.html">CSS</a></li>
+  <li><a href="javascriptQA.html">JavaScript</a></li>
+   <li><a href="reactJsQA.html">ReactJs</a></li>
+     <li><a href="javaQA.html">Java</a></li>
+      </ul>
+    </li>
+                <li class="menu-has-children">
+              <a class="menu-active" href="#">Code Snipets</a>
+              <ul>
+                <li><a href="c_programs.html">C Language</a></li>
+                <li><a href="java_programs.html">Java</a></li>
+                <li><a href="python_programs.html">Python</a></li>
+                <li><a href="javascript_programs.html">JavaScript</a></li>
+              </ul>
+            </li>
+            <li><a href="index.html#courses">Courses</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+
+          </ul>
+        </nav>
+
+      </div>
+    </header>
+
+    <main id="main" style=" padding:10%;">
+         <h1>ReactJs Interview QA</h1>
+<div class="container mb-5" style="background: #f9f9f9; padding: 20px; border-radius: 5px;"><p style="font-size:1.1rem; line-height: 1.6; text-align: justify; color: #444;">Welcome to the React.js interview guide. React has revolutionized front-end development with its component-based architecture and virtual DOM. Companies actively seek developers who understand how to manage state efficiently, handle side effects using Hooks, and optimize rendering performance. This section covers critical React concepts including JSX, Context API, Redux integration, and the component lifecycle. Mastering these topics will give you a significant edge in modern frontend engineering interviews.</p></div>
+        <div class="qa">
+            <div class="question">1. What is React?</div>
+            <div class="answer">React is a JavaScript library for building user interfaces, developed by Facebook. It allows developers to build single-page applications with a component-based architecture.</div>
+        </div>
+        <div class="qa">
+            <div class="question">2. What are the key features of React?</div>
+            <div class="answer">The key features of React are: 
+                <ul>
+                    <li>Component-based architecture</li>
+                    <li>Virtual DOM</li>
+                    <li>Unidirectional data flow</li>
+                    <li>Declarative syntax</li>
+                    <li>JSX (JavaScript XML)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">3. What is JSX in React?</div>
+            <div class="answer">JSX (JavaScript XML) is a syntax extension for JavaScript that allows you to write HTML-like code inside JavaScript. JSX is transpired into regular JavaScript using tools like Babel.</div>
+        </div>
+        <div class="qa">
+            <div class="question">4. What is the Virtual DOM?</div>
+            <div class="answer">The Virtual DOM is a lightweight copy of the actual DOM in memory. React uses the Virtual DOM to improve performance by minimizing direct manipulation of the real DOM. React updates only the parts of the DOM that have changed.</div>
+        </div>
+        <div class="qa">
+            <div class="question">5. What is the difference between a functional component and a class component?</div>
+            <div class="answer">
+                A functional component is a JavaScript function that accepts props as an argument and returns React elements. A class component is a ES6 class that extends from `React.Component` and can have lifecycle methods and state.
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">6. What is state in React?</div>
+            <div class="answer">State is a JavaScript object that holds dynamic data in a React component. The state can be changed, which causes the component to re-render.</div>
+        </div>
+        <div class="qa">
+            <div class="question">7. What is props in React?</div>
+            <div class="answer">Props (short for properties) are used to pass data from a parent component to a child component. Props are read-only and cannot be modified by the child component.</div>
+        </div>
+        <div class="qa">
+            <div class="question">8. What are lifecycle methods in React?</div>
+            <div class="answer">Lifecycle methods are special methods that allow you to run code at different stages of a component's life. Common lifecycle methods include `componentDidMount`, `shouldComponentUpdate`, and `componentWillUnmount`.</div>
+        </div>
+        <div class="qa">
+            <div class="question">9. What is the use of `componentDidMount` in React?</div>
+            <div class="answer">`componentDidMount` is a lifecycle method that is called once, immediately after a component is added to the DOM. It's commonly used to fetch data or perform other setup tasks.</div>
+        </div>
+        <div class="qa">
+            <div class="question">10. How do you handle events in React?</div>
+            <div class="answer">In React, events are handled using camelCase syntax. Event handlers are passed as props and written as functions, for example: 
+                <code>onClick={this.handleClick}</code> where `handleClick` is a function.</div>
+        </div>
+        <div class="qa">
+            <div class="question">11. What is `useState` hook in React?</div>
+            <div class="answer">The `useState` hook is used to add state to functional components. It returns an array with two elements: the current state value and a function to update it.</div>
+        </div>
+        <div class="qa">
+            <div class="question">12. What is `useEffect` hook in React?</div>
+            <div class="answer">The `useEffect` hook is used to perform side effects in functional components. It runs after render and can be used for tasks like fetching data, setting up subscriptions, and manually changing the DOM.</div>
+        </div>
+        <div class="qa">
+            <div class="question">13. What is the difference between `useEffect` and `componentDidMount`?</div>
+            <div class="answer">`useEffect` serves the same purpose as `componentDidMount` in class components, but it can also handle other lifecycle events, such as when the component updates or unmounts.</div>
+        </div>
+        <div class="qa">
+            <div class="question">14. What is the `useContext` hook in React?</div>
+            <div class="answer">The `useContext` hook allows you to access the value of a React context without the need for a consumer component. It is commonly used for sharing state across multiple components without having to prop-drill.</div>
+        </div>
+        <div class="qa">
+            <div class="question">15. What is `React Router`?</div>
+            <div class="answer">React Router is a standard library for routing in React applications. It allows you to define routes in your application and navigate between different components based on the URL.</div>
+        </div>
+        <div class="qa">
+            <div class="question">16. How do you pass data between components in React?</div>
+            <div class="answer">Data is passed between components in React using props. A parent component can pass data to a child component by including props in the child component's tag.</div>
+        </div>
+        <div class="qa">
+            <div class="question">17. What are keys in React?</div>
+            <div class="answer">Keys are unique identifiers used to help React identify which items in a list are changed, added, or removed. Keys should be stable, unique, and consistent between renders.</div>
+        </div>
+        <div class="qa">
+            <div class="question">18. What is the purpose of `shouldComponentUpdate`?</div>
+            <div class="answer">`shouldComponentUpdate` is a lifecycle method that allows you to optimize performance by determining whether a component should re-render when new props or state are received.</div>
+        </div>
+        <div class="qa">
+            <div class="question">19. What are React fragments?</div>
+            <div class="answer">React Fragments allow you to group a list of children without adding extra nodes to the DOM. You can use the `Fragment` component or the shorthand `<>...</>`. </div>
+        </div>
+        <div class="qa">
+            <div class="question">20. How can you update state in React?</div>
+            <div class="answer">State can be updated using the `setState` method in class components or the state updater function from the `useState` hook in functional components.</div>
+        </div>
+        <div class="qa">
+            <div class="question">21. What is React Context?</div>
+            <div class="answer">React Context is a way to share values like themes, authentication, or language preferences across multiple components without passing props manually through every level of the component tree.</div>
+        </div>
+        <div class="qa">
+            <div class="question">22. What is Redux in React?</div>
+            <div class="answer">Redux is a state management library that helps manage the state of an application in a predictable way. It uses a single global store and actions to update the state, making state management easier to handle in complex applications.</div>
+        </div>
+        <div class="qa">
+            <div class="question">23. What is a controlled component?</div>
+            <div class="answer">A controlled component is a component that takes its current value from React state and updates the value through `setState` or a state updater function.</div>
+        </div>
+        <div class="qa">
+            <div class="question">24. What is an uncontrolled component?</div>
+            <div class="answer">An uncontrolled component is a component that manages its own state internally, typically using the DOM to handle form elements. You can access the value of an uncontrolled component using a `ref`.</div>
+        </div>
+        <div class="qa">
+            <div class="question">25. What are React hooks?</div>
+            <div class="answer">React hooks are functions that allow you to use React features like state, lifecycle methods, and context in functional components. Common hooks include `useState`, `useEffect`, and `useContext`.</div>
+        </div>
+        <div class="qa">
+            <div class="question">26. What is the `useRef` hook in React?</div>
+            <div class="answer">The `useRef` hook is used to persist values across renders without causing re-renders. It is commonly used for referencing DOM elements and keeping mutable values.</div>
+        </div>
+        <div class="qa">
+            <div class="question">27. What is the `useMemo` hook in React?</div>
+            <div class="answer">The `useMemo` hook is used to memoize a calculation result so that it is recomputed only when the dependencies change, improving performance by preventing unnecessary re-calculations.</div>
+        </div>
+        <div class="qa">
+            <div class="question">28. What is `useCallback` in React?</div>
+            <div class="answer">The `useCallback` hook is used to memoize functions so that they are not recreated on each render unless the dependencies change.</div>
+        </div>
+        <div class="qa">
+            <div class="question">29. What is the `React.StrictMode`?</div>
+            <div class="answer">`React.StrictMode` is a development tool that helps identify potential problems in an application, such as unsafe lifecycle methods or deprecated APIs.</div>
+        </div>
+        <div class="qa">
+            <div class="question">30. How do you handle forms in React?</div>
+            <div class="answer">
+                Forms in React are typically handled using controlled components where the form element's value is stored in the component's state. On each change, the `setState` method is called to update the state.
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">31. What is the output of the following code?
+                <pre>
+                    <code>
+                    function Test() {
+                        const [count, setCount] = useState(0);
+                        return <button onClick={() => setCount(count + 1)}>{count}</button>;
+                    }
+                    </code>
+
+                </pre>
+            </div>
+            <div class="answer">The component renders a button that displays a count value. Each time the button is clicked, the count increases by 1.</div>
+        </div>
+        <div class="qa">
+            <div class="question">32. What is a higher-order component (HOC)?</div>
+            <div class="answer">A higher-order component (HOC) is a function that takes a component and returns a new component with additional props or logic. HOCs are commonly used for cross-cutting concerns like authentication, routing, etc.</div>
+        </div>
+        <div class="qa">
+            <div class="question">33. What is `React.createElement`?</div>
+            <div class="answer">`React.createElement` is a function used by React to create elements that can be rendered to the DOM. JSX is transpiled into `React.createElement` calls.</div>
+        </div>
+        <div class="qa">
+            <div class="question">34. What is the purpose of `key` prop in React?</div>
+            <div class="answer">The `key` prop is used to uniquely identify elements in a list of elements. React uses it to efficiently update and re-render components.</div>
+        </div>
+        <div class="qa">
+            <div class="question">35. What are React portals?</div>
+            <div class="answer">React portals allow you to render children components outside the parent component's DOM hierarchy, often used for modals, tooltips, and sidebars.</div>
+        </div>
+        <div class="qa">
+            <div class="question">36. What is the purpose of the `dangerouslySetInnerHTML` attribute in React?</div>
+            <div class="answer">`dangerouslySetInnerHTML` is used to set HTML content directly into the DOM, which can be risky because it opens the door to cross-site scripting (XSS) vulnerabilities. It should be used carefully and only when absolutely necessary.</div>
+        </div>
+        <div class="qa">
+            <div class="question">37. How can you optimize performance in React applications?</div>
+            <div class="answer">To optimize performance in React:
+                <ul>
+                    <li>Use `React.memo` for functional components to prevent unnecessary re-renders.</li>
+                    <li>Use `shouldComponentUpdate` in class components to avoid unnecessary re-renders.</li>
+                    <li…3210 tokens truncated…mount. `componentDidMount` is a class lifecycle method that runs only once after the component mounts. `useEffect` can handle a wider range of effects with more flexibility.</div>
+        </div>
+        <div class="qa">
+            <div class="question">66. How do you optimize the rendering of large lists in React?</div>
+            <div class="answer">To optimize the rendering of large lists in React, you can use techniques such as:
+                <ul>
+                    <li>Lazy loading data to render items as they come into view (e.g., using `react-window` or `react-virtualized`).</li>
+                    <li>Using `key` prop to avoid unnecessary re-renders.</li>
+                    <li>Implementing `React.memo` for components that do not need to re-render.</li>
+                    <li>Using the `useMemo` hook to memoize computed data.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">67. What is the `dangerouslySetInnerHTML` prop used for?</div>
+            <div class="answer">The `dangerouslySetInnerHTML` prop allows you to set HTML content inside a component. However, it should be used carefully as it bypasses React's built-in protection against XSS (cross-site scripting) attacks. It is typically used for rendering content from trusted sources, like rich text.</div>
+        </div>
+        <div class="qa">
+            <div class="question">68. What is `forwardRef` in React?</div>
+            <div class="answer">`forwardRef` is a higher-order component used to pass a ref from a parent component to a child component. It allows the parent to directly interact with a child component's DOM or instance.</div>
+        </div>
+        <div class="qa">
+            <div class="question">69. What are render props in React?</div>
+            <div class="answer">Render props are a pattern in React where a function is passed as a prop to a component. This function returns a React element that can be dynamically rendered, enabling code reuse across components.</div>
+        </div>
+        <div class="qa">
+            <div class="question">70. What is the purpose of `React.PureComponent`?</div>
+            <div class="answer">`React.PureComponent` is a base class for components that only re-render when the props or state have changed. It implements `shouldComponentUpdate` with a shallow prop and state comparison, which can improve performance by preventing unnecessary renders.</div>
+        </div>
+        <div class="qa">
+            <div class="question">71. How do you share state between sibling components in React?</div>
+            <div class="answer">You can share state between sibling components in React by lifting the state up to the closest common ancestor. The parent component can pass the state as props to the sibling components.</div>
+        </div>
+        <div class="qa">
+            <div class="question">72. What is the `useCallback` hook used for in React?</div>
+            <div class="answer">The `useCallback` hook is used to memoize functions, ensuring that the function reference stays the same between renders unless its dependencies change. This is useful to prevent unnecessary re-renders of components that depend on the function.</div>
+        </div>
+        <div class="qa">
+            <div class="question">73. How can you handle forms in React?</div>
+            <div class="answer">Forms in React can be handled using controlled components (where the form elements' values are managed by React state) or uncontrolled components (where the DOM itself handles the form state via `refs`). Controlled components provide a more consistent way to manage form data.</div>
+        </div>
+        <div class="qa">
+            <div class="question">74. What is the significance of `componentDidUpdate` in React?</div>
+            <div class="answer">`componentDidUpdate` is a lifecycle method in class components that is called after a componentâ€™s state or props have been updated. It allows you to perform side effects in response to prop or state changes.</div>
+        </div>
+        <div class="qa">
+            <div class="question">75. What is the difference between `React.createElement` and JSX?</div>
+            <div class="answer">`React.createElement` is the function that React uses under the hood to create elements from JSX. JSX is a syntax extension that looks like HTML, but it is transformed into `React.createElement` calls during compilation. JSX is more readable and convenient, while `React.createElement` is the raw way of defining React elements.</div>
+        </div>
+        <div class="qa">
+            <div class="question">76. How would you make a component lazy-loadable in React?</div>
+            <div class="answer">You can make a component lazy-loadable in React by using the `React.lazy` function. This function dynamically imports the component, allowing it to be loaded only when needed. You would typically pair `React.lazy` with the `Suspense` component to handle loading states.</div>
+        </div>
+        <div class="qa">
+            <div class="question">77. What are Hooks in React?</div>
+            <div class="answer">Hooks are functions that allow you to use state and other React features in functional components. Common hooks include `useState`, `useEffect`, `useContext`, `useReducer`, `useRef`, and `useMemo`.</div>
+        </div>
+        <div class="qa">
+            <div class="question">78. What is the `useEffect` cleanup function used for?</div>
+            <div class="answer">The `useEffect` cleanup function is used to clean up side effects when the component unmounts or when certain dependencies change. For example, you can clear timers, unsubscribe from services, or reset resources.</div>
+        </div>
+        <div class="qa">
+            <div class="question">79. What is React Router and how does it work?</div>
+            <div class="answer">React Router is a library used to handle routing in React applications. It allows you to define routes in your application and navigate between them. It uses components like `Route`, `Link`, `Switch`, and `BrowserRouter` to handle navigation.</div>
+        </div>
+        <div class="qa">
+            <div class="question">80. How do you pass data from parent to child components in React?</div>
+            <div class="answer">In React, you pass data from parent to child components through props. The parent component provides the data, and the child component accesses it via the `props` object.</div>
+        </div>
+        <div class="qa">
+            <div class="question">81. What is `useEffect` dependency array in React?</div>
+            <div class="answer">The dependency array of `useEffect` specifies when the effect should run. If the array is empty (`[]`), the effect runs only once after the initial render. If there are dependencies, the effect runs whenever any of the dependencies change.</div>
+        </div>
+        <div class="qa">
+            <div class="question">82. How would you share state across different pages in a React app?</div>
+            <div class="answer">You can share state across different pages by using the React Context API, Redux, or other state management libraries. React Router can also be used in conjunction with these solutions to manage state between different pages.</div>
+        </div>
+        <div class="qa">
+            <div class="question">83. What are some common performance optimizations for React?</div>
+            <div class="answer">Some common performance optimizations for React include:
+                <ul>
+                    <li>Using `React.memo` to memoize functional components.</li>
+                    <li>Using `useMemo` and `useCallback` hooks to memoize values and functions.</li>
+                    <li>Lazy loading components with `React.lazy`.</li>
+                    <li>Virtualizing large lists using libraries like `react-window`.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">84. What is the `useRef` hook in React?</div>
+            <div class="answer">The `useRef` hook allows you to persist values across renders without causing a re-render. It is commonly used to access DOM elements or store mutable values that do not trigger re-renders when updated.</div>
+        </div>
+        <div class="qa">
+            <div class="question">85. What is the purpose of `React.StrictMode`?</div>
+            <div class="answer">`React.StrictMode` is a development tool that helps identify potential problems in an application. It checks for deprecated APIs, unsafe lifecycle methods, and other issues during development without affecting the production build.</div>
+        </div>
+        <div class="qa">
+            <div class="question">86. How do you handle error boundaries in React?</div>
+            <div class="answer">Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI. You can implement an error boundary by creating a class component that implements `componentDidCatch` or `static getDerivedStateFromError` lifecycle methods.</div>
+        </div>
+        <div class="qa">
+            <div class="question">87. What is the `useLayoutEffect` hook in React?</div>
+            <div class="answer">The `useLayoutEffect` hook is similar to `useEffect`, but it runs synchronously after all DOM mutations. It is used to read and make changes to the DOM before the browser paints, allowing you to measure the layout and adjust before the screen updates.</div>
+        </div>
+        <div class="qa">
+            <div class="question">88. What is the difference between `useEffect` and `useLayoutEffect`?</div>
+            <div class="answer">`useEffect` runs asynchronously after the paint, while `useLayoutEffect` runs synchronously before the paint. `useLayoutEffect` is used for cases where you need to measure DOM or make layout changes before the user sees the updates, while `useEffect` is used for other side effects like fetching data.</div>
+        </div>
+        <div class="qa">
+            <div class="question">89. What is the purpose of `useImperativeHandle` in React?</div>
+            <div class="answer">`useImperativeHandle` is a hook that customizes the instance value that is exposed when using `React.forwardRef`. It allows you to modify the ref object, making it possible to expose specific methods to the parent component.</div>
+        </div>
+        <div class="qa">
+            <div class="question">90. How does `React.memo` optimize functional components?</div>
+            <div class="answer">`React.memo` is a higher-order component that prevents unnecessary re-renders of functional components by performing a shallow comparison of props. If the props havenâ€™t changed, it skips the render process and returns the previous output, improving performance.</div>
+        </div>
+        <div class="qa">
+            <div class="question">91. What is `React.Fragment` and why would you use it?</div>
+            <div class="answer">`React.Fragment` is a component that allows you to return multiple elements without adding extra nodes to the DOM. It is useful when you need to group elements for rendering purposes without introducing unnecessary wrapper elements.</div>
+        </div>
+        <div class="qa">
+            <div class="question">92. How do you handle prop types in React?</div>
+            <div class="answer">Prop types can be validated using the `prop-types` library in React. This library allows you to define the expected data types for props, providing runtime checks for type validation and improving the code quality.</div>
+        </div>
+        <div class="qa">
+            <div class="question">93. What is the `useState` hook and how do you use it?</div>
+            <div class="answer">`useState` is a hook that allows you to add state to functional components. You call `useState(initialValue)` to declare a state variable. The hook returns an array with the current state value and a function to update that value.</div>
+        </div>
+        <div class="qa">
+            <div class="question">94. What is the difference between `useState` and `useReducer`?</div>
+            <div class="answer">`useState` is best for managing simple states, while `useReducer` is more suitable for complex state logic or when the next state depends on the previous one. `useReducer` is inspired by Redux and allows you to handle state transitions through actions.</div>
+        </div>
+        <div class="qa">
+            <div class="question">95. What is Reactâ€™s reconciliation process?</div>
+            <div class="answer">Reconciliation is the process React uses to update the DOM by comparing the new virtual DOM with the previous one and applying the necessary updates efficiently. React uses an algorithm called the "diffing algorithm" to find the minimal set of changes.</div>
+        </div>
+        <div class="qa">
+            <div class="question">96. What is the purpose of `key` prop in React lists?</div>
+            <div class="answer">The `key` prop is used to uniquely identify elements in a list, enabling React to efficiently update and re-render the correct items when the list changes. This helps React to track changes, additions, or deletions in the list and optimize rendering.</div>
+        </div>
+        <div class="qa">
+            <div class="question">97. What is the difference between `Class components` and `Functional components` in React?</div>
+            <div class="answer">Class components are ES6 classes that extend `React.Component` and have access to lifecycle methods. Functional components are simpler and do not have lifecycle methods, but with the introduction of hooks, functional components can now manage state and side effects.</div>
+        </div>
+        <div class="qa">
+            <div class="question">98. How can you handle authentication in React?</div>
+            <div class="answer">Authentication in React is usually handled using a combination of React Router for routing and context or Redux for managing user state. You can store the authentication token in localStorage or sessionStorage and protect routes using a private route component.</div>
+        </div>
+        <div class="qa">
+            <div class="question">99. What is the `useEffect` hook's cleanup function and when should it be used?</div>
+            <div class="answer">The cleanup function inside `useEffect` is used to clean up resources like event listeners, timers, subscriptions, etc., before the component is removed or before the effect runs again. Itâ€™s important to prevent memory leaks and unwanted side effects.</div>
+        </div>
+        <div class="qa">
+            <div class="question">100. What are higher-order components (HOCs) in React?</div>
+            <div class="answer">Higher-order components (HOCs) are functions that take a component and return a new component with additional props or behavior. HOCs are used for code reuse, logic abstraction, and enhancing components with additional functionality, like authentication or logging.</div>
+        </div>
+
+    </div>
+
+    <footer id="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 footer-info">
+              <h4>TIT</h4>
+              <p>
+                With over 25 years of experience in IT training and development,
+                our institute is dedicated to empowering individuals with the
+                skills and knowledge required to excel in the rapidly evolving
+                tech industry. Led by an expert who has worked with top-tier
+                corporate companies, we offer comprehensive training in both Web
+                and Windows application development.
+              </p>
+            </div>
+
+            <div class="col-lg-6 col-md-6 footer-links">
+              <h4>Useful Links</h4>
+              <ul>
+                <li><i class="fa fa-angle-right"></i> <a href="index.html">Home</a></li>
+                <li>
+                  <i class="fa fa-angle-right"></i>
+                  <a href="about.html">About us</a>
+                </li>
+                <li>
+                  <i class="fa fa-angle-right"></i>
+                  <a href="#courses">Courses</a>
+                </li>
+                <li>
+                  <i class="fa fa-angle-right"></i>
+               <a href="terms.html">Terms of service</a>
+                </li>
+                <li>
+                  <i class="fa fa-angle-right"></i>
+                  <a href="privacy.html">Privacy policy</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h4>Contact Us</h4>
+              <p>
+                Ongole <br />
+                Andhrapradesh 523 002<br />
+                India <br />
+                <!-- <strong>Phone:</strong> +91 99999 99999<br> -->
+                <strong>Email:</strong>training@telugututorial.com<br />
+              </p>
+
+              <div class="social-links">
+                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="instagram"
+                  ><i class="fa fa-instagram"></i
+                ></a>
+                <a href="#" class="google-plus"
+                  ><i class="fa fa-google-plus"></i
+                ></a>
+                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong>TIT@2024</strong>. All Rights Reserved
+        </div>
+      </div>
+    </footer>
+    <!-- #footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery-migrate.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/superfish/hoverIntent.js"></script>
+    <script src="lib/superfish/superfish.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/venobox/venobox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Form JavaScript File -->
+    <script src="contactform/contactform.js"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="js/main.js"></script>
+  
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" style="position: fixed; bottom: 0; width: 100%; background: #222; color: #fff; padding: 15px; text-align: center; z-index: 9999; display: none;">
+  This website uses cookies to ensure you get the best experience. By continuing to use this site, you consent to our use of cookies. 
+  <a href="privacy.html" style="color: #4CAF50; text-decoration: underline; margin-left: 10px;">Learn More</a>
+  <button onclick="document.getElementById('cookie-banner').style.display='none'; localStorage.setItem('cookieAccepted', 'true');" style="margin-left: 15px; background: #4CAF50; border: none; color: white; padding: 5px 15px; cursor: pointer; border-radius: 3px;">Got it!</button>
+</div>
+<script>
+  if(!localStorage.getItem('cookieAccepted')) {
+    document.getElementById('cookie-banner').style.display = 'block';
+  }
+</script>
+
+  </body>
+</html>
+
+

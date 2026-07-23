@@ -1,0 +1,619 @@
+Exit code: 0
+Wall time: 3.1 seconds
+Total output lines: 697
+Output:
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Telugu It Tutorials.com JavaScript Interview Questions and Answers - A comprehensive guide for preparing for JavaScript developer interviews. Includes tricky coding challenges, core concepts, and more.">
+    <meta name="keywords" content="Telugu It Tutorials.com JavaScript interview questions, JavaScript coding questions, JavaScript developer interview, JavaScript technical interview, JavaScript coding challenges, JavaScript functions, JavaScript concepts, JavaScript arrays, JavaScript objects, JavaScript interview guide, JavaScript exam, JavaScript certification, JavaScript developer Q&A, JavaScript programming, JavaScript ES6, JavaScript closures, JavaScript promises">
+    <title>Telugu It Tutorials.com | JavaScript Interview Questions and Answers</title>
+<meta name="description" content="Telugu IT Tutorials offers live virtual full-stack development courses in Telugu (HTML, CSS, JavaScript, React, Node.js, SQL) with 100% job placement support and lifetime access." />
+<meta name="google-adsense-account" content="ca-pub-9880499509623369">
+  <!-- Primary Keywords -->
+  <meta name="keywords" content="Telugu IT Tutorials, IT training in Telugu, Telugu web development tutorials, Full stack development courses in Telugu, Online coding classes in Telugu, Programming tutorials Telugu, ReactJS tutorials in Telugu, Node.js course in Telugu, SpringBoot tutorials Telugu, Git and Docker training in Telugu, SQL courses for beginners Telugu, HTML CSS JavaScript in Telugu, Best Telugu online coding institute, Interview Q&A preparation Telugu" />
+
+  <!-- Open Graph (Facebook/LinkedIn) -->
+  <meta property="og:title" content="Telugu IT Tutorials â€” Learn Full Stack Development in Telugu" />
+  <meta property="og:description" content="Learn programming in Telugu with live virtual courses on React, Node.js, SQL, Git, Docker & more. Lifetime access + 100% job placement support." />
+  <meta property="og:url" content="https://teluguittutorials.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://teluguittutorials.com/images/banner.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Telugu IT Tutorials â€” Learn Full Stack Development in Telugu" />
+  <meta name="twitter:description" content="Master full-stack development in Telugu with lifetime access & job support. Courses include HTML, CSS, JavaScript, React, Node.js, SQL." />
+  <meta name="twitter:image" content="https://teluguittutorials.com/images/banner.jpg" />
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon" />
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Libraries CSS Files -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/venobox/venobox.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9880499509623369"
+     crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="./css/questions.css">
+     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(q => {
+                q.addEventListener('click', function () {
+                    const answer = this.nextElementSibling;
+                    answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
+  </head>
+
+  <body>
+    <header id="header" class="header-scrolled">
+      <div class="container">
+        <div id="logo" class="pull-left">
+        
+          <h2>
+            <a href="index.html">Telugu <span>IT</span> Tutorials</a>
+          </h2>
+       
+        </div>
+        <nav id="nav-menu-container">
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#speakers">Videos</a></li>
+               <li class="menu-has-children">
+      <a class="menu-active" href="articles.html">Interview Q&amp;A</a>
+      <ul>
+        <li><a href="htmlQA.html">HTML</a></li>
+  <li><a href="cssQA.html">CSS</a></li>
+  <li><a href="javascriptQA.html">JavaScript</a></li>
+   <li><a href="reactJsQA.html">ReactJs</a></li>
+     <li><a href="javaQA.html">Java</a></li>
+      </ul>
+    </li>
+                <li class="menu-has-children">
+              <a href="javascript:void(0)">Code Snipets</a>
+              <ul>
+                <li><a href="c_programs.html">C Language</a></li>
+                <li><a href="java_programs.html">Java</a></li>
+                <li><a href="python_programs.html">Python</a></li>
+                <li><a href="javascript_programs.html">JavaScript</a></li>
+              </ul>
+            </li>
+            <li><a href="index.html#courses">Courses</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+
+          </ul>
+        </nav>
+
+      </div>
+    </header>
+
+    <main id="main" style=" padding:10%;">
+         <h1>JavaScript Interview QA</h1>
+<div class="container mb-5" style="background: #f9f9f9; padding: 20px; border-radius: 5px;"><p style="font-size:1.1rem; line-height: 1.6; text-align: justify; color: #444;">Prepare for your next technical interview with our extensive JavaScript Q&A. JavaScript is the most popular programming language in the world, powering the interactive logic of the web. Interviewers heavily focus on JavaScript concepts such as the event loop, closures, scope, prototypal inheritance, and ES6+ features like Promises and async/await. This guide is designed to test your core understanding of the language, ensuring you don't just know how to write code, but understand how it executes under the hood.</p></div>
+        <div class="qa">
+            <div class="question">1. What are JavaScript data types?</div>
+            <div class="answer">JavaScript has 6 primitive data types: string, number, boolean, undefined, null, and symbol. It also has non-primitive types like objects and arrays.</div>
+        </div>
+        <div class="qa">
+            <div class="question">2. What is a closure in JavaScript?</div>
+            <div class="answer">A closure is a function that retains access to its lexical scope, even when the function is executed outside that scope.</div>
+        </div>
+        <div class="qa">
+            <div class="question">3. What is the difference between var, let, and const?</div>
+            <div class="answer">
+                <strong>var</strong> has function scope and is hoisted.<br>
+                <strong>let</strong> has block scope and is not hoisted in the same way.<br>
+                <strong>const</strong> is similar to let, but its value cannot be reassigned.
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">4. What is the output of the following code? <code>console.log([] + []);</code></div>
+            <div class="answer">The output is an empty string: <strong>""</strong>. When two arrays are added together, they are implicitly converted to strings and concatenated.</div>
+        </div>
+        <div class="qa">
+            <div class="question">5. What is the difference between == and === in JavaScript?</div>
+            <div class="answer">== compares values after converting them to a common type (type coercion), while === compares both value and type (strict equality).</div>
+        </div>
+        <div class="qa">
+            <div class="question">6. What are JavaScript callback functions?</div>
+            <div class="answer">A callback function is a function passed into another function as an argument to be executed later, typically after an asynchronous operation.</div>
+        </div>
+        <div class="qa">
+            <div class="question">7. What is the output of the following code? <code>console.log(1 + '1');</code></div>
+            <div class="answer">The output is <strong>"11"</strong>, because JavaScript converts the number to a string and concatenates.</div>
+        </div>
+        <div class="qa">
+            <div class="question">8. What is the purpose of the this keyword in JavaScript?</div>
+            <div class="answer">The <strong>this</strong> keyword refers to the context or object in which a function is called. It changes its value depending on how the function is invoked.</div>
+        </div>
+        <div class="qa">
+            <div class="question">9. What is event delegation in JavaScript?</div>
+            <div class="answer">Event delegation is a technique where you attach a single event listener to a parent element instead of multiple listeners to child elements. This improves performance and simplifies handling dynamic elements.</div>
+        </div>
+        <div class="qa">
+            <div class="question">10. What is the output of the following code? <code>console.log(2 & 1);</code></div>
+            <div class="answer">The output is <strong>0</strong>. This is the result of performing a bitwise AND operation between 2 and 1.</div>
+        </div>
+        <div class="qa">
+            <div class="question">11. What is a JavaScript promise?</div>
+            <div class="answer">A JavaScript promise is an object representing the eventual completion (or failure) of an asynchronous operation and its resulting value.</div>
+        </div>
+        <div class="qa">
+            <div class="question">12. What is the difference between a function declaration and a function expression?</div>
+            <div class="answer">
+                <strong>Function declaration</strong> is hoisted and can be called before it appears in the code.<br>
+                <strong>Function expression</strong> is not hoisted and can only be called after it is defined.
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">13. What is the output of the following code? <code>console.log(typeof null);</code></div>
+            <div class="answer">The output is <strong>"object"</strong>. This is a known bug in JavaScript, where the type of null is mistakenly returned as object.</div>
+        </div>
+        <div class="qa">
+            <div class="question">14. How does the setTimeout function work in JavaScript?</div>
+            <div class="answer">The <strong>setTimeout</strong> function executes a function after a specified delay (in milliseconds). It only runs once after the delay.</div>
+        </div>
+        <div class="qa">
+            <div class="question">15. What is a JavaScript closure example?</div>
+            <div class="answer">
+                <code>
+                    function outer() {<br>
+                    &nbsp;&nbsp;let counter = 0;<br>
+                    &nbsp;&nbsp;function inner() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;counter++;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return counter;<br>
+                    &nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;return inner;<br>
+                    }<br>
+                    const increment = outer();<br>
+                    console.log(increment()); // 1<br>
+                </code>
+                <p>The function <code>increment</code> is a closure that retains access to the <code>counter</code> variable defined in the outer function.</p>
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">16. What is hoisting in JavaScript?</div>
+            <div class="answer">Hoisting is JavaScript's default behavior of moving declarations (but not initializations) to the top of the code during execution.</div>
+        </div>
+        <div class="qa">
+            <div class="question">17. What is the difference between an array and an object in JavaScript?</div>
+            <div class="answer">An array is an ordered list of values, while an object is a collection of key-value pairs. Arrays have numeric indices, and objects use strings as keys.</div>
+        </div>
+        <div class="qa">
+            <div class="question">18. What is the difference between apply() and call() methods?</div>
+            <div class="answer">Both <code>apply()</code> and <code>call()</code> are used to invoke a function with a specific <strong>this</strong> context. The difference is that <code>apply()</code> takes an array of arguments, while <code>call()</code> takes individual arguments.</div>
+        </div>
+        <div class="qa">
+            <div class="question">19. What is the output of the following code? <code>console.log([] == []);</code></div>
+            <div class="answer">The output is <strong>false</strong>. In JavaScript, objects (including arrays) are compared by reference, not by value.</div>
+        </div>
+        <div class="qa">
+            <div class="question">20. What is the event loop in JavaScript?</div>
+            <div class="answer">The event loop is the mechanism that handles asynchronous operations in JavaScript. It allows non-blocking code execution and handles tasks like I/O, timers, and user interactions.</div>
+        </div>
+        <div class="qa">
+            <div class="question">21. What is the difference between `undefined` and `null` in JavaScript?</div>
+            <div class="answer">`undefined` means a variable has been declared but has not yet been assigned a value. `null` is an assignment value that represents "no value" or "empty."</div>
+        </div>
+        <div class="qa">
+            <div class="question">22. What is the output of the following code? <code>console.log('5' - 3);</code></div>
+            <div class="answer">The output is <strong>2</strong>, because JavaScript performs type coercion and converts the string to a number before performing the subtraction.</div>
+        </div>
+        <div class="qa">
+            <div class="question">23. What are the different types of loops in JavaScript?</div>
+            <div class="answer">The common loops in JavaScript are `for`, `while`, `do...while`, and `for...in` (for iterating over object properties), `for...of` (for iterating over iterable objects like arrays).</div>
+        </div>
+        <div class="qa">
+            <div class="question">24. What is the output of the following code? <code>console.log(1 + '1');</code></div>
+            <div class="answer">The output is <strong>'11'</strong>. The `+` operator triggers string concatenation when one operand is a string.</div>
+        </div>
+        <div class="qa">
+            <div class="question">25. What is a JavaScript module?</div>
+            <div class="answer">A module in JavaScript is a file that contains reusable code, and it can export functions, objects, or values for use in other files. Modules are used to maintain code modularity and improve maintainability.</div>
+        </div>
+        <div class="qa">
+            <div class="question">26. What is the purpose of `async` and `await` in JavaScript?</div>
+            <div class="answer">`async` and `await` are used to handle asynchronous code in a more readable manner. `async` defines a function that returns a promise, and `await` pauses execution until the promise resolves.</div>
+        </div>
+        <div class="qa">
+            <div class="question">27. What is the difference between `setTimeout()` and `setInterval()`?</div>
+            <div class="answer">`setTimeout()` runs a function once after a specified delay, while `setInterval()` executes a function repeatedly at regular intervals.</div>
+        </div>
+        <div class="qa">
+            <div class="question">28. What is a `Map` in JavaScript?</div>
+            <div class="answer">A `Map` is a collection of key-value pairs where both keys and values can be any type (objects, functions, etc.), unlike objects where keys are always strings or symbols.</div>
+        </div>
+        <div class="qa">
+            <div class="question">29. What is the output of the following code? <code>console.log([] + []);</code></div>
+            <div class="answer">The output is an empty string: <strong>""</strong>, because adding two empty arrays results in an empty string due to type coercion.</div>
+        </div>
+        <div class="qa">
+            <div class="question">30. What is the difference between `map()` and `forEach()` in JavaScript?</div>
+            <div class="answer">
+                <strong>map()</strong> creates a new array with the results of calling a function on every element of the array.<br>
+                <strong>forEach()</strong> executes a provided function once for each array element but does not return a new array.
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">31. How do you create a deep copy of an object in JavaScript?</div>
+            <div class="answer">
+                One way to create a deep copy of an object is by using <code>JSON.parse(JSON.stringify(obj))</code>, though this method doesn't copy functions or special objects like Date.
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">32. What is the output of the following code? <code>console.log(0 == false);</code></div>
+            <div class="answer">The output is <strong>true</strong>, because 0 and false are considered equal in JavaScript due to type coercion.</div>
+        </div>
+        <div class="qa">
+            <div class="question">33. What is an IIFE (Immediately Invoked Function Expression)?</div>
+            <div class="answer">
+                An IIFE is a function that is defined and executed immediately after its declaration. It is commonly used to create a private scope to avoid polluting the global namespace.<br>
+                Example:
+                <code>
+                    (function() {<br>
+                    &nbsp;&nbsp;console.log("I am an IIFE!");<br>
+                    })();
+                </code>
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">34. What is the purpose of the `bind()` method in JavaScript?</div>
+            <div class="answer">The `bind()` method creates a new function that, when called, has its `this` keyword set to the provided value, and prepends any given arguments to the function's arguments.</div>
+        </div>
+        <div class="qa">
+            <div class="question">35. What is a `Promise` chain?</div>
+            <div class="answer">A promise chain is a sequence of promises where each promise is executed in sequence, allowing you to handle asynchronous tasks step by step. Each `.then()` returns a new promise.</div>
+        </div>
+        <div class="qa">
+            <div class="question">36. What is the difference between `slice()` and `splice()` in JavaScript?</div>
+            <div class="answer">
+                <strong>slice()</strong> returns a shallow copy of a portion of an array without modifying the origina…1355 tokens truncated…e difference between `==` and `===` in JavaScript?</div>
+            <div class="answer">`==` compares values with type coercion, while `===` compares both values and types, meaning it checks for strict equality.</div>
+        </div>
+        <div class="qa">
+            <div class="question">52. What is the output of the following code? <code>console.log([] == ![]);</code></div>
+            <div class="answer">The output is <strong>true</strong>, because `[]` is falsy and `![]` is also falsy. Thus, `==` compares both to be equal.</div>
+        </div>
+        <div class="qa">
+            <div class="question">53. What is `closure` in JavaScript?</div>
+            <div class="answer">A closure is a function that "remembers" its lexical scope, even when the function is executed outside of that scope.</div>
+        </div>
+        <div class="qa">
+            <div class="question">54. What is the `this` keyword in JavaScript?</div>
+            <div class="answer">`this` refers to the context in which a function is called, pointing to the object that called the function (or `undefined` in strict mode).</div>
+        </div>
+        <div class="qa">
+            <div class="question">55. What is the event loop in JavaScript?</div>
+            <div class="answer">The event loop is the mechanism that handles the execution of multiple code statements in an asynchronous, non-blocking manner in JavaScript.</div>
+        </div>
+        <div class="qa">
+            <div class="question">56. What is the output of the following code? <code>console.log('0' == []);</code></div>
+            <div class="answer">The output is <strong>true</strong>, because JavaScript converts both the string `'0'` and the array `[]` to falsy values during comparison.</div>
+        </div>
+        <div class="qa">
+            <div class="question">57. What is a `prototype` in JavaScript?</div>
+            <div class="answer">A `prototype` is an object that is associated with every JavaScript function and object, allowing inheritance of properties and methods.</div>
+        </div>
+        <div class="qa">
+            <div class="question">58. What is the purpose of the `call()` method in JavaScript?</div>
+            <div class="answer">The `call()` method is used to invoke a function with a specific `this` value and arguments provided individually.</div>
+        </div>
+        <div class="qa">
+            <div class="question">59. What is the `apply()` method in JavaScript?</div>
+            <div class="answer">The `apply()` method is similar to `call()`, but the arguments are passed as an array or array-like object.</div>
+        </div>
+        <div class="qa">
+            <div class="question">60. What is a `debounce` function in JavaScript?</div>
+            <div class="answer">A debounce function ensures that a function is not executed too frequently by delaying its execution until a specified amount of time has passed since its last call.</div>
+        </div>
+        <div class="qa">
+            <div class="question">61. What is a `throttle` function in JavaScript?</div>
+            <div class="answer">A throttle function limits the execution of a function to once every specified amount of time, ensuring it doesnâ€™t execute too frequently.</div>
+        </div>
+        <div class="qa">
+            <div class="question">62. What is the `new` keyword in JavaScript?</div>
+            <div class="answer">The `new` keyword is used to create an instance of a constructor function or a class. It creates a new object, sets the constructor's `this`, and runs the constructor function.</div>
+        </div>
+        <div class="qa">
+            <div class="question">63. What is the output of the following code? <code>console.log(typeof null);</code></div>
+            <div class="answer">The output is <strong>object</strong>, which is a quirk of JavaScript's type system.</div>
+        </div>
+        <div class="qa">
+            <div class="question">64. What is a `setTimeout` callback function in JavaScript?</div>
+            <div class="answer">The `setTimeout` function accepts a callback function to be executed after a specified delay. Itâ€™s often used to introduce delay or delay the execution of a function.</div>
+        </div>
+        <div class="qa">
+            <div class="question">65. What is the `typeof` operator in JavaScript?</div>
+            <div class="answer">The `typeof` operator is used to determine the type of a given operand. It returns a string representing the type (e.g., "number", "string", "object").</div>
+        </div>
+        <div class="qa">
+            <div class="question">66. What is the `instanceof` operator in JavaScript?</div>
+            <div class="answer">The `instanceof` operator checks if an object is an instance of a specific class or constructor function.</div>
+        </div>
+        <div class="qa">
+            <div class="question">67. What is `setInterval()` in JavaScript?</div>
+            <div class="answer">`setInterval()` is used to repeatedly execute a function at a specified interval in milliseconds until cleared.</div>
+        </div>
+        <div class="qa">
+            <div class="question">68. What is the output of the following code? <code>console.log([1] + [1]);</code></div>
+            <div class="answer">The output is <strong>'1,1'</strong>, because JavaScript converts both arrays into strings and joins them with a comma.</div>
+        </div>
+        <div class="qa">
+            <div class="question">69. How can you add an element to the beginning of an array in JavaScript?</div>
+            <div class="answer">You can use the `unshift()` method to add an element to the beginning of an array.</div>
+        </div>
+        <div class="qa">
+            <div class="question">70. How can you add an element to the end of an array in JavaScript?</div>
+            <div class="answer">You can use the `push()` method to add an element to the end of an array.</div>
+        </div>
+        <div class="qa">
+            <div class="question">71. What is a `getter` and `setter` in JavaScript?</div>
+            <div class="answer">
+                Getters and setters are methods used to access or set the value of an object's properties. They allow you to control access to object properties.<br>
+                Example:
+                <code>
+                    class Person {<br>
+                    &nbsp;&nbsp;get name() { return this._name; }<br>
+                    &nbsp;&nbsp;set name(value) { this._name = value; }<br>
+                    }
+                </code>
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">72. What is the `delete` operator in JavaScript?</div>
+            <div class="answer">The `delete` operator is used to remove a property from an object or an element from an array.</div>
+        </div>
+        <div class="qa">
+            <div class="question">73. What is a `weakMap` in JavaScript?</div>
+            <div class="answer">
+                A `WeakMap` is similar to a `Map`, but the keys are weakly held. This means that if the key object is garbage-collected, the entry will be removed from the map automatically.
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">74. What is `strict mode` in JavaScript?</div>
+            <div class="answer">
+                Strict mode is a way to opt into a restricted version of JavaScript. It prevents the use of certain dangerous language features and makes debugging easier by throwing errors for unsafe operations.
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">75. What is the output of the following code? <code>console.log([1, 2, 3] == [1, 2, 3]);</code></div>
+            <div class="answer">The output is <strong>false</strong>, because arrays are reference types, and the references are not the same.</div>
+        </div>
+        <div class="qa">
+            <div class="question">76. What is a `symbol` in JavaScript?</div>
+            <div class="answer">A `symbol` is a unique and immutable primitive value used to create object property keys that are guaranteed to be unique.</div>
+        </div>
+        <div class="qa">
+            <div class="question">77. What is the `navigator` object in JavaScript?</div>
+            <div class="answer">The `navigator` object provides information about the user's browser, operating system, and other environment details.</div>
+        </div>
+        <div class="qa">
+            <div class="question">78. How can you check if a value is an array in JavaScript?</div>
+            <div class="answer">You can use the `Array.isArray()` method to check if a value is an array.</div>
+        </div>
+        <div class="qa">
+            <div class="question">79. What is the difference between `var`, `let`, and `const`?</div>
+            <div class="answer">
+                `var` is function-scoped and can be re-declared, while `let` and `const` are block-scoped. `const` cannot be reassigned, whereas `let` can.
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">80. What is the output of the following code? <code>console.log(1 + '1');</code></div>
+            <div class="answer">The output is <strong>'11'</strong>, because JavaScript performs string concatenation when one operand is a string.</div>
+        </div>
+        <div class="qa">
+            <div class="question">81. What is the `globalThis` object in JavaScript?</div>
+            <div class="answer">The `globalThis` object provides a standard way to access the global object across different environments (browser, Node.js, etc.).</div>
+        </div>
+        <div class="qa">
+            <div class="question">82. What is an event delegation in JavaScript?</div>
+            <div class="answer">Event delegation is a technique in which you attach a single event listener to a parent element and handle events for child elements via event propagation.</div>
+        </div>
+        <div class="qa">
+            <div class="question">83. How do you handle errors in JavaScript?</div>
+            <div class="answer">Errors in JavaScript can be handled using `try...catch` blocks, where the code that may throw an error is placed inside the `try` block, and the error is caught in the `catch` block.</div>
+        </div>
+        <div class="qa">
+            <div class="question">84. What is the `fetch()` API in JavaScript?</div>
+            <div class="answer">The `fetch()` API is used to make asynchronous requests to retrieve or send data from/to a server. It returns a promise that resolves to the response object.</div>
+        </div>
+        <div class="qa">
+            <div class="question">85. How can you check if a property exists in an object in JavaScript?</div>
+            <div class="answer">You can use the `in` operator or the `hasOwnProperty()` method to check if a property exists in an object.</div>
+        </div>
+        <div class="qa">
+            <div class="question">86. What is `super()` in JavaScript?</div>
+            <div class="answer">`super()` is used to call the constructor of a parent class from a child class or to call methods from a parent class.</div>
+        </div>
+        <div class="qa">
+            <div class="question">87. What is destructuring in JavaScript?</div>
+            <div class="answer">Destructuring allows you to unpack values from arrays or properties from objects into distinct variables.</div>
+        </div>
+        <div class="qa">
+            <div class="question">88. What is the `concat()` method in JavaScript?</div>
+            <div class="answer">The `concat()` method is used to join two or more arrays into a new array.</div>
+        </div>
+        <div class="qa">
+            <div class="question">89. What is the `filter()` method in JavaScript?</div>
+            <div class="answer">The `filter()` method creates a new array with all elements that pass a given test function.</div>
+        </div>
+        <div class="qa">
+            <div class="question">90. What is the `find()` method in JavaScript?</div>
+            <div class="answer">The `find()` method returns the first element in an array that satisfies the provided testing function.</div>
+        </div>
+        <div class="qa">
+            <div class="question">91. What is the `flat()` method in JavaScript?</div>
+            <div class="answer">The `flat()` method is used to flatten an array of arrays into a single array.</div>
+        </div>
+        <div class="qa">
+            <div class="question">92. What is the `reduceRight()` method in JavaScript?</div>
+            <div class="answer">The `reduceRight()` method applies a function against an accumulator and each element in an array (from right to left) to reduce it to a single value.</div>
+        </div>
+        <div class="qa">
+            <div class="question">93. What is the `every()` method in JavaScript?</div>
+            <div class="answer">The `every()` method checks if all elements in an array pass the test implemented by the provided function.</div>
+        </div>
+        <div class="qa">
+            <div class="question">94. What is the `some()` method in JavaScript?</div>
+            <div class="answer">The `some()` method checks if at least one element in an array passes the test implemented by the provided function.</div>
+        </div>
+        <div class="qa">
+            <div class="question">95. What is the `join()` method in JavaScript?</div>
+            <div class="answer">The `join()` method is used to join all elements of an array into a single string, separated by a specified delimiter.</div>
+        </div>
+        <div class="qa">
+            <div class="question">96. How can you check if a variable is NaN in JavaScript?</div>
+            <div class="answer">You can use the `isNaN()` function to check if a variable is `NaN` (Not a Number).</div>
+        </div>
+        <div class="qa">
+            <div class="question">97. What is `window` in JavaScript?</div>
+            <div class="answer">`window` is the global object in a browser environment. It represents the browser's window or frame.</div>
+        </div>
+        <div class="qa">
+            <div class="question">98. How can you create a deep copy of an array in JavaScript?</div>
+            <div class="answer">
+                You can use the `JSON.parse(JSON.stringify(arr))` method to create a deep copy of an array, although this does not copy methods or special objects like `Date`.
+            </div>
+        </div>
+        <div class="qa">
+            <div class="question">99. How can you find the index of an element in an array in JavaScript?</div>
+            <div class="answer">You can use the `indexOf()` method to find the index of an element in an array.</div>
+        </div>
+        <div class="qa">
+            <div class="question">100. How do you create an object in JavaScript?</div>
+            <div class="answer">
+                You can create an object using object literal notation: <code>const obj = { key: 'value' }</code> or using the `new Object()` constructor.
+            </div>
+        </div>
+
+    </div>
+
+    <footer id="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 footer-info">
+              <h4>TIT</h4>
+              <p>
+                With over 25 years of experience in IT training and development,
+                our institute is dedicated to empowering individuals with the
+                skills and knowledge required to excel in the rapidly evolving
+                tech industry. Led by an expert who has worked with top-tier
+                corporate companies, we offer comprehensive training in both Web
+                and Windows application development.
+              </p>
+            </div>
+
+            <div class="col-lg-6 col-md-6 footer-links">
+              <h4>Useful Links</h4>
+              <ul>
+                <li><i class="fa fa-angle-right"></i> <a href="index.html">Home</a></li>
+                <li>
+                  <i class="fa fa-angle-right"></i>
+                  <a href="about.html">About us</a>
+                </li>
+                <li>
+                  <i class="fa fa-angle-right"></i>
+                  <a href="#courses">Courses</a>
+                </li>
+                <li>
+                  <i class="fa fa-angle-right"></i>
+             <a href="terms.html">Terms of service</a>
+                </li>
+                <li>
+                  <i class="fa fa-angle-right"></i>
+                  <a href="privacy.html">Privacy policy</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h4>Contact Us</h4>
+              <p>
+                Ongole <br />
+                Andhrapradesh 523 002<br />
+                India <br />
+                <!-- <strong>Phone:</strong> +91 99999 99999<br> -->
+                <strong>Email:</strong>training@telugututorial.com<br />
+              </p>
+
+              <div class="social-links">
+                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="instagram"
+                  ><i class="fa fa-instagram"></i
+                ></a>
+                <a href="#" class="google-plus"
+                  ><i class="fa fa-google-plus"></i
+                ></a>
+                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong>TIT@2024</strong>. All Rights Reserved
+        </div>
+      </div>
+    </footer>
+    <!-- #footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery-migrate.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/superfish/hoverIntent.js"></script>
+    <script src="lib/superfish/superfish.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/venobox/venobox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Form JavaScript File -->
+    <script src="contactform/contactform.js"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="js/main.js"></script>
+  
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" style="position: fixed; bottom: 0; width: 100%; background: #222; color: #fff; padding: 15px; text-align: center; z-index: 9999; display: none;">
+  This website uses cookies to ensure you get the best experience. By continuing to use this site, you consent to our use of cookies. 
+  <a href="privacy.html" style="color: #4CAF50; text-decoration: underline; margin-left: 10px;">Learn More</a>
+  <button onclick="document.getElementById('cookie-banner').style.display='none'; localStorage.setItem('cookieAccepted', 'true');" style="margin-left: 15px; background: #4CAF50; border: none; color: white; padding: 5px 15px; cursor: pointer; border-radius: 3px;">Got it!</button>
+</div>
+<script>
+  if(!localStorage.getItem('cookieAccepted')) {
+    document.getElementById('cookie-banner').style.display = 'block';
+  }
+</script>
+
+  </body>
+</html>
+
+
