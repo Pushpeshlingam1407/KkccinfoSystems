@@ -1,4 +1,4 @@
-@reference "../app/globals.css";
+@reference "tailwindcss";
 .footer {
   @apply bg-white border-t border-slate-200 py-7 mt-auto;
 }

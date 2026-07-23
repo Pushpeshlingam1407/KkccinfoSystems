@@ -44,7 +44,7 @@ export default function Contact() {
               src="https://www.google.com/maps/embed?pb=!1s0x3a4bb4ca660d37bb%3A0xc3ce1a5e1eb2586!2sCanara%20Bank!5e0!3m2!1sen!2sin!4v1709664426868!5m2!1sen!2sin"
               width="100%"
               height="450"
-              style={{ border: 0, borderRadius: "1rem" }}
+              className={styles.mapFrame}
               allowFullScreen={true}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

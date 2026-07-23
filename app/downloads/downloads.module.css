@@ -1,4 +1,4 @@
-@reference "../globals.css";
+@reference "tailwindcss";
 
 .marketingContainer {
   @apply container mx-auto px-4 mt-8;

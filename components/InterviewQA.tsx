@@ -32,12 +32,11 @@ export default function InterviewQA() {
   const [questions, setQuestions] = useState<QA[]>([]);
   const [open, setOpen] = useState(0);
   const [query, setQuery] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loadedTopic, setLoadedTopic] = useState("");
   const active = topics.find(([id]) => id === topic) || topics[0];
 
   useEffect(() => {
     let current = true;
-    setLoading(true);
     fetch(`/reference-source/${active[2]}`)
       .then((response) => response.text())
       .then((html) => {
@@ -45,14 +44,15 @@ export default function InterviewQA() {
           setQuestions(parseQuestions(html));
           setOpen(0);
           setQuery("");
-          setLoading(false);
+          setLoadedTopic(topic);
         }
       })
-      .catch(() => current && setLoading(false));
+      .catch(() => current && setLoadedTopic(topic));
     return () => {
       current = false;
     };
   }, [active]);
+  const loading = loadedTopic !== topic;
   const filtered = useMemo(
     () =>
       questions.filter((item) =>

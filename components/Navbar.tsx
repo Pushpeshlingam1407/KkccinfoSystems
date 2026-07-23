@@ -85,41 +85,22 @@ export default function Navbar() {
                 {qaDropdownOpen && (
                   <div className={styles.dropdownMenu}>
                     <div className={styles.dropdownMenuInner}>
-                      <Link
-                        href="/interview-qa?tech=javascript"
-                        onClick={() => setQaDropdownOpen(false)}
-                        className={styles.dropdownItem}
-                      >
-                        JavaScript
-                      </Link>
-                      <Link
-                        href="/interview-qa?tech=react"
-                        onClick={() => setQaDropdownOpen(false)}
-                        className={styles.dropdownItem}
-                      >
-                        React
-                      </Link>
-                      <Link
-                        href="/interview-qa?tech=next"
-                        onClick={() => setQaDropdownOpen(false)}
-                        className={styles.dropdownItem}
-                      >
-                        Next.js
-                      </Link>
-                      <Link
-                        href="/interview-qa?tech=typescript"
-                        onClick={() => setQaDropdownOpen(false)}
-                        className={styles.dropdownItem}
-                      >
-                        TypeScript
-                      </Link>
-                      <Link
-                        href="/interview-qa?tech=api"
-                        onClick={() => setQaDropdownOpen(false)}
-                        className={styles.dropdownItem}
-                      >
-                        APIs
-                      </Link>
+                      {[
+                        ["html", "HTML"],
+                        ["css", "CSS"],
+                        ["javascript", "JavaScript"],
+                        ["react", "React JS"],
+                        ["java", "Java"],
+                      ].map(([tech, label]) => (
+                        <Link
+                          key={tech}
+                          href={`/interview-qa?tech=${tech}`}
+                          onClick={() => setQaDropdownOpen(false)}
+                          className={styles.dropdownItem}
+                        >
+                          {label}
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -154,55 +135,21 @@ export default function Navbar() {
                 {dropdownOpen && (
                   <div className={styles.dropdownMenu}>
                     <div className={styles.dropdownMenuInner}>
-                      <Link
-                        href="/code-snippets?tech=javascript"
-                        onClick={() => setDropdownOpen(false)}
-                        className={styles.dropdownItem}
-                      >
-                        JavaScript
-                      </Link>
-                      <Link
-                        href="/code-snippets?tech=typescript"
-                        onClick={() => setDropdownOpen(false)}
-                        className={styles.dropdownItem}
-                      >
-                        TypeScript
-                      </Link>
-                      <Link
-                        href="/code-snippets?tech=react"
-                        onClick={() => setDropdownOpen(false)}
-                        className={styles.dropdownItem}
-                      >
-                        React
-                      </Link>
-                      <Link
-                        href="/code-snippets?tech=next"
-                        onClick={() => setDropdownOpen(false)}
-                        className={styles.dropdownItem}
-                      >
-                        Next.js
-                      </Link>
-                      <Link
-                        href="/code-snippets?tech=api"
-                        onClick={() => setDropdownOpen(false)}
-                        className={styles.dropdownItem}
-                      >
-                        APIs
-                      </Link>
-                      <Link
-                        href="/code-snippets?tech=css"
-                        onClick={() => setDropdownOpen(false)}
-                        className={styles.dropdownItem}
-                      >
-                        CSS
-                      </Link>
-                      <Link
-                        href="/code-snippets?tech=git"
-                        onClick={() => setDropdownOpen(false)}
-                        className={styles.dropdownItem}
-                      >
-                        Git
-                      </Link>
+                      {[
+                        ["c", "C Language"],
+                        ["java", "Java"],
+                        ["python", "Python"],
+                        ["javascript", "JavaScript"],
+                      ].map(([tech, label]) => (
+                        <Link
+                          key={tech}
+                          href={`/code-snippets?tech=${tech}`}
+                          onClick={() => setDropdownOpen(false)}
+                          className={styles.dropdownItem}
+                        >
+                          {label}
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -277,10 +224,8 @@ export default function Navbar() {
               </Link>
 
               {/* Interview Q&A section */}
-              <div className="border-t border-slate-700 pt-2 pb-1 mt-2">
-                <span className="block px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
-                  Interview Q&A
-                </span>
+              <div className={styles.mobileSection}>
+                <span className={styles.mobileSectionTitle}>Interview Q&A</span>
                 <Link
                   href="/interview-qa?tech=html"
                   onClick={() => setIsOpen(false)}
@@ -340,10 +285,8 @@ export default function Navbar() {
               </div>
 
               {/* Code Snippets section */}
-              <div className="border-t border-slate-700 pt-2 pb-1 mt-2">
-                <span className="block px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
-                  Code Snippets
-                </span>
+              <div className={styles.mobileSection}>
+                <span className={styles.mobileSectionTitle}>Code Snippets</span>
                 <Link
                   href="/code-snippets?tech=html"
                   onClick={() => setIsOpen(false)}

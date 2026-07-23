@@ -1,4 +1,4 @@
-@reference "./globals.css";
+@reference "tailwindcss";
 .pageContainer {
   @apply container mx-auto px-4 mt-8;
 }
@@ -50,6 +50,11 @@
 
 .contactLink {
   @apply text-indigo-600 hover:text-indigo-700 hover:underline transition-colors;
+}
+
+.mapFrame {
+  border: 0;
+  border-radius: 1rem;
 }
 
 /* Privacy specific */

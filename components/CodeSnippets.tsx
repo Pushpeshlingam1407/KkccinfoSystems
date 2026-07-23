@@ -42,25 +42,25 @@ export default function CodeSnippets() {
   const [snippets, setSnippets] = useState<Snippet[]>([]);
   const [query, setQuery] = useState("");
   const [copied, setCopied] = useState<number | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loadedCategory, setLoadedCategory] = useState("");
   const active = categories.find(([id]) => id === category) || categories[0];
   useEffect(() => {
     let current = true;
-    setLoading(true);
     fetch(`/reference-source/${active[2]}`)
       .then((response) => response.text())
       .then((html) => {
         if (current) {
           setSnippets(parseSnippets(html));
           setQuery("");
-          setLoading(false);
+          setLoadedCategory(category);
         }
       })
-      .catch(() => current && setLoading(false));
+      .catch(() => current && setLoadedCategory(category));
     return () => {
       current = false;
     };
   }, [active]);
+  const loading = loadedCategory !== category;
   const results = useMemo(
     () =>
       snippets.filter((item) =>
