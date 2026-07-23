@@ -42,7 +42,19 @@
   color: var(--color-brand);
 }
 
-.footer { margin-top: 0; }.content { min-height: 30px; }.backToTop { border-radius: 7px; padding: 7px 9px; }.backToTop:hover { background: rgba(255,255,255,.68); }
+.footer {
+  margin-top: 0;
+}
+.content {
+  min-height: 30px;
+}
+.backToTop {
+  border-radius: 7px;
+  padding: 7px 9px;
+}
+.backToTop:hover {
+  background: rgba(255, 255, 255, 0.68);
+}
 
 .footerIcon {
   @apply w-4 h-4;

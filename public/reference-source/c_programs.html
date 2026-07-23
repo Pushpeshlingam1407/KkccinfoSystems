@@ -257,9 +257,9 @@ int main()
     int a,b,c;
     float amount=4500.50;
     printf("Enter a,b,c values"); //prompt message
-    scanf("%d",&a); //reading data
-    scanf("%d",&b);
-    scanf("%d",&c);
+    scanf("%d",&amp;a); //reading data
+    scanf("%d",&amp;b);
+    scanf("%d",&amp;c);
     printf("A=%d B=%d C=%d",a,b,c); //out put
     printf("\nAmount=%.2f",amount); //.2f means it shows only 2 decimals
     return 0;
@@ -291,7 +291,7 @@ int main()
 {
     float r,area,peri;
     printf("Enter radius value");
-    scanf("%f",&r);
+    scanf("%f",&amp;r);
     area=PI*r*r;
     peri=2*PI*r;
     printf("\n%.2f Radius, Area is %.2f and Its Perimeter is %.2f",r,area,peri);
@@ -326,7 +326,7 @@ int main()
 {
     float r,area,peri;
     P("Enter radius value");
-    S("%f",&r);
+    S("%f",&amp;r);
     area=PI*r*r;
     peri=2*PI*r;
     P("\n%.2f Radius, Area is %.2f and Its Perimeter is %.2f",r,area,peri);
@@ -358,11 +358,11 @@ int main()
 {
     float capital,intrest_rate,no_of_years,simple_intreset,si;
     printf("Enter Capital");
-    scanf("%f",&capital);
+    scanf("%f",&amp;capital);
     printf("Enter Intreset Rate");
-    scanf("%f", & intrest_rate);
+    scanf("%f", &amp; intrest_rate);
     printf("Enter No of Years");
-    scanf("%f",&no_of_years);
+    scanf("%f",&amp;no_of_years);
     si=(capital*intrest_rate*no_of_years)/100;
     printf("\nCapital:%.2f",capital);
     printf("\nInterest Rate:%.2f",intrest_rate);
@@ -397,7 +397,7 @@ int main()
 {
     int age;
     printf("Enter Age");
-    scanf("%d",&age);
+    scanf("%d",&amp;age);
     //printf("%s",age>17 ? "Eligible" : "Not Eligible");
     if(age>17)
       printf("Eligible");
@@ -412,7 +412,7 @@ int main()
     {
     int age;
     printf("Enter Age");
-    scanf("%d",&age);
+    scanf("%d",&amp;age);
     //printf("%s",age>17 ? "Eligible" : "Not Eligible");
     if(age>17) 
       printf("Eligible");
@@ -449,12 +449,12 @@ int main()
     printf("Enter Player Name");
     scanf("%s",name);
     printf("Enter Score");
-    scanf("%d",&score);
+    scanf("%d",&amp;score);
     if(score==0)
     {
         printf("%s Plays %d and he is  Dock Out",name,score);
     }
-    else if(score>0 && score<50)
+    else if(score>0 &amp;&amp; score&lt;50)
     {
         printf("%s Plays %d and he is  Below Half Century",name,score);
     }
@@ -462,7 +462,7 @@ int main()
     {
         printf("%s Plays %d and he is  Half Century",name,score);
     }
-    else if(score>50 && score<100)
+    else if(score>50 &amp;&amp; score&lt;100)
     {
         printf("%s Plays %d and he is  Above Half Century",name,score);
     }
@@ -470,7 +470,7 @@ int main()
     {
         printf("%s Plays %d and he is  Century",name,score);
     }
-    else if(score>100 && score<150)
+    else if(score>100 &amp;&amp; score&lt;150)
     {
         printf("%s Plays %d and he is  Above Century",name,score);
     }
@@ -478,7 +478,7 @@ int main()
     {
         printf("%s Plays %d and he is  One and Half Century",name,score);
     }
-    else if(score>150 && score<200)
+    else if(score>150 &amp;&amp; score&lt;200)
     {
         printf("%s Plays %d and he is  Above One and Half Century",name,score);
     }
@@ -520,14 +520,14 @@ int main()
     printf("Enter Player Name");
     scanf("%s",name);
     printf("Enter Score");
-    scanf("%d",&score);
+    scanf("%d",&amp;score);
     if(score==0)
     {
         printf("%s Plays %d and he is  Dock Out",name,score);
     }
     else 
     {
-        if(score>0 && score<50)
+        if(score>0 &amp;&amp; score&lt;50)
         {
         printf("%s Plays %d and he is  Below Half Century",name,score);
         }
@@ -539,7 +539,7 @@ int main()
             }
             else
             {
-                if(score>50 && score<100)
+                if(score>50 &amp;&amp; score&lt;100)
                 {
                 printf("%s Plays %d and he is  Above Half Century",name,score);
                 }
@@ -551,7 +551,7 @@ int main()
                     }
                     else
                     {
-                        if(score>100 && score<150)
+                        if(score>100 &amp;&amp; score&lt;150)
                         {
                         printf("%s Plays %d and he is  Above Century",name,score);
                          }
@@ -563,7 +563,7 @@ int main()
                             }
                             else
                             {
-                                if(score>150 && score<200)
+                                if(score>150 &amp;&amp; score&lt;200)
                                 {
                                 printf("%s Plays %d and he is  Above One and Half Century",name,score);
                                 }
@@ -620,9 +620,9 @@ int main()
 {
    int n,i;
    printf("Enter n value");
-   scanf("%d",&n);
+   scanf("%d",&amp;n);
    i=1;
-   while(i<=10)
+   while(i&lt;=10)
    {
        printf("\n%dX%d=%d",n,i,n*i);
        i++;
@@ -656,11 +656,11 @@ int main()
 {
    int low,high,i;
    printf("Enter low,high value");
-   scanf("%d%d",&low,&high);
-   while(low<=high)
+   scanf("%d%d",&amp;low,&amp;high);
+   while(low&lt;=high)
    {
        i=1;
-       while(i<=10)
+       while(i&lt;=10)
        {
            printf("\n%dX%d=%d",low,i,low*i);
            i++;
@@ -697,8 +697,8 @@ int main()
 {
    int low,high,i;
    printf("Enter low,high value");
-   scanf("%d%d",&low,&high);
-   while(low<=high)
+   scanf("%d%d",&amp;low,&amp;high);
+   while(low&lt;=high)
    {
         if(low==5 || low==8)
         {
@@ -706,7 +706,7 @@ int main()
            continue;
         }
        i=1;
-       while(i<=10)
+       while(i&lt;=10)
        {
            printf("\n%dX%d=%d",low,i,low*i);
            i++;
@@ -743,8 +743,8 @@ int main()
 {
    int low,high,i;
    printf("Enter low,high value");
-   scanf("%d%d",&low,&high);
-   while(low<=high)
+   scanf("%d%d",&amp;low,&amp;high);
+   while(low&lt;=high)
    {
         if(low==5)
         {
@@ -752,7 +752,7 @@ int main()
           break;
         }
        i=1;
-       while(i<=10)
+       while(i&lt;=10)
        {
            printf("\n%dX%d=%d",low,i,low*i);
            i++;
@@ -791,7 +791,7 @@ int main()
     int amount,total_amount=0;
     do{
         printf("\nEnter Amount");
-        scanf("%d",&amount);
+        scanf("%d",&amp;amount);
         if(amount>0)
         {
             total_amount=total_amount+amount;
@@ -828,14 +828,14 @@ int main()
 
     int size_of_line,i;
     printf("Enter size_of_line value");
-    scanf("%d",&size_of_line);
+    scanf("%d",&amp;size_of_line);
    /* i=1;
-    while(i<=size_of_line)
+    while(i&lt;=size_of_line)
     {
         printf("-");
         i++;
     }*/
-    for(i=1;i<=size_of_line;i++)
+    for(i=1;i&lt;=size_of_line;i++)
     {
        printf("-"); 
     }
@@ -870,8 +870,8 @@ int main()
 
     int isPrime=0,num,i;
     printf("Enter any number");
-    scanf("%d",&num);
-    for(i=1;i<=num;i++)
+    scanf("%d",&amp;num);
+    for(i=1;i&lt;=num;i++)
     {
         if(num%i==0)
         {
@@ -914,7 +914,7 @@ int main()
 {
     int isPrime=0,num,i;
     printf("Enter any number");
-    scanf("%d",&num);
+    scanf("%d",&amp;num);
     for(i=2;i&lt;num;i++)
     {
         if(num%i==0)
@@ -966,10 +966,10 @@ int main()
 {
   int n,i,j;
   printf("Enter n value");
-  scanf("%d",&n);
-  for(i=1;i<=n;i++)
+  scanf("%d",&amp;n);
+  for(i=1;i&lt;=n;i++)
   {
-      for(j=1;j<=i;j++)
+      for(j=1;j&lt;=i;j++)
       {
           //printf("%2d",i);//it set 2 digits width
           printf("* ");
@@ -1017,10 +1017,10 @@ int main()
 {
   int n,i,j;
   printf("Enter n value");
-  scanf("%d",&n);
-  for(i=1;i<=n;i++)
+  scanf("%d",&amp;n);
+  for(i=1;i&lt;=n;i++)
   {
-      for(j=1;j<=i;j++)
+      for(j=1;j&lt;=i;j++)
       {
           //printf("%2d",i);//it set 2 digits width
           printf("* ");
@@ -1029,7 +1029,7 @@ int main()
   }
   for(i=n-1;i>=1;i--)
   {
-      for(j=1;j<=i;j++)
+      for(j=1;j&lt;=i;j++)
       {
           //printf("%2d",i);//it set 2 digits width
           printf("* ");
@@ -1065,14 +1065,14 @@ int main()
 {
   int a[20],n,i;
   printf("Enter n values");
-  scanf("%d",&n);
+  scanf("%d",&amp;n);
   printf("Enter %d elements",n);
-  for(i=0;i<n;i++)
+  for(i=0;i&lt;n;i++)
   {
-      scanf("%d",&a[i]);
+      scanf("%d",&amp;a[i]);
   }
   printf("\nThe Elements are in Original Order ");
-  for(i=0;i<n;i++)
+  for(i=0;i&lt;n;i++)
   {
       printf("%2d",a[i]);
   }
@@ -1110,11 +1110,11 @@ int main()
 {
   int a[20],n,i,sum=0,avg;
   printf("Enter n values");
-  scanf("%d",&n);
+  scanf("%d",&amp;n);
   printf("Enter %d elements",n);
   for(i=0;i&lt;n;i++)
   {
-      scanf("%d",&a[i]);
+      scanf("%d",&amp;a[i]);
       sum=sum+a[i];
   }
   printf("\nThe Given Numbers are ");
@@ -1162,13 +1162,13 @@ int main()
 {
  int mat[5][5],r,c,i,j;
  printf("Enter row and columns values");
- scanf("%d%d",&r,&c);
+ scanf("%d%d",&amp;r,&amp;c);
  printf("Enter %dX%d Matrix values",r,c);
  for(i=0;i&lt;r;i++)
  {
      for(j=0;j&lt;c;j++)
      {
-         scanf("%d",&mat[i][j]);
+         scanf("%d",&amp;mat[i][j]);
      }
  }
   printf("\nThe Matrix is \n");
@@ -1209,12 +1209,12 @@ int main()
 {
 int n,i;
 printf("Enter n value");
-scanf("%d",&n);
+scanf("%d",&amp;n);
 i=1;
 A:
 printf("\n%dX%d=%d",n,i,n*i);
 i++;
-if(i<=10) goto A;
+if(i&lt;=10) goto A;
 
     return 0;
 }
@@ -1244,15 +1244,15 @@ int main()
 {
 int min,max,i;
 printf("Enter min,max value");
-scanf("%d%d",&min,&max);
+scanf("%d%d",&amp;min,&amp;max);
 
 A:   i=1;
 B:   printf("\n%dX%d=%d",min,i,min*i);
      i++;
-     if(i<=10) goto B;
+     if(i&lt;=10) goto B;
 C:   min++;
      if(min%2==0) goto C;
-if(min<=max) goto A;
+if(min&lt;=max) goto A;
 
     return 0;
 }
@@ -1283,7 +1283,7 @@ int main()
 
 int a,b,c;
 printf("Enter a,b values");
-scanf("%d%d",&a,&b);
+scanf("%d%d",&amp;a,&amp;b);
 printf("\n1.Addition");
 printf("\n2.Subtraction");
 printf("\n3.Multiplication");
@@ -1291,7 +1291,7 @@ printf("\n4.Division");
 printf("\n5.Modulus");
 printf("\n6.Exit");
 printf("\nEnter your choice ..");
-scanf("%d",&c);
+scanf("%d",&amp;c);
 switch(c)
 {
     case 1:
@@ -1342,7 +1342,7 @@ int main()
 {
 int a,b,c;
 printf("Enter a,b values");
-scanf("%d%d",&a,&b);
+scanf("%d%d",&amp;a,&amp;b);
 printf("\n1.Addition");
 printf("\n2.Subtraction");
 printf("\n3.Multiplication");
@@ -1351,7 +1351,7 @@ printf("\n5.Modulus");
 printf("\n6.Exit");
 A:
 printf("\nEnter your choice ..");
-scanf("%d",&c);
+scanf("%d",&amp;c);
 switch(c)
 {
     case 1:
@@ -1446,7 +1446,7 @@ int main()
 int n,i;
 char names[30][20];
     printf("\nEnter n value");
-    scanf("%d",&n);
+    scanf("%d",&amp;n);
     for(i=0;i&lt;n;i++)
     {
         scanf("%s",names[i]);
@@ -1528,9 +1528,9 @@ int main()
     int a,b,c;
     float amount=4500.50;
     printf("Enter a,b,c values"); //prompt message
-    scanf("%d",&a); //reading data
-    scanf("%d",&b);
-    scanf("%d",&c);
+    scanf("%d",&amp;a); //reading data
+    scanf("%d",&amp;b);
+    scanf("%d",&amp;c);
     printf("A=%d B=%d C=%d",a,b,c); //out put
     printf("\nAmount=%.2f",amount); //.2f means it shows only 2 decimals
     return 0;
@@ -1563,8 +1563,8 @@ int main()
 {
  int n,i;
  printf("Enter n value");
- scanf("%d",&n);
- for(i=1;i<=n;i++)
+ scanf("%d",&amp;n);
+ for(i=1;i&lt;=n;i++)
  {
  area();   
  }
@@ -1575,7 +1575,7 @@ area()
 {
     float r,a;
     printf("\nEnter radius value");
-    scanf("%f",&r);
+    scanf("%f",&amp;r);
     a=PI*r*r;
     printf("\n%f area is %f",r,a);
 }
@@ -1608,7 +1608,7 @@ int main()
 {
  float r;
  printf("Enter radius value");
- scanf("%f",&r);
+ scanf("%f",&amp;r);
  area(r);
     return 0;
 }
@@ -1647,11 +1647,11 @@ int main()
  float r;
  int n,i;
  printf("Enter n value");
- scanf("%d",&n);
- for(i=1;i<=n;i++)
+ scanf("%d",&amp;n);
+ for(i=1;i&lt;=n;i++)
  {
  printf("\nEnter radius value");
- scanf("%f",&r);
+ scanf("%f",&amp;r);
  area(r);   
  }
 
@@ -1693,8 +1693,8 @@ int main()
     float area,cal_area();
     int n,i;
     printf("Enter n value");
-    scanf("%d",&n);
-    for(i=1;i<=n;i++)
+    scanf("%d",&amp;n);
+    for(i=1;i&lt;=n;i++)
     {
         area=cal_area();
         printf(" area is %f",area);
@@ -1706,7 +1706,7 @@ float cal_area()
 {
     float a,r;
     printf("\nEnter radius value");
-    scanf("%f",&r);
+    scanf("%f",&amp;r);
     a=PI*r*r;
     printf("\n%f",r);
     return(a);
@@ -1738,7 +1738,7 @@ int main()
 {
     int a[20],n,read_array(),display_array();
     printf("enter n value");
-    scanf("%d",&n);
+    scanf("%d",&amp;n);
     read_array(a,n);
     display_array(a,n);
     
@@ -1750,7 +1750,7 @@ int read_array(int x[20],int size)
  for(i=0;i&lt;size;i++)
  {
      printf("\nEnter %d value",i+1);
-     scanf("%d",&x[i]);
+     scanf("%d",&amp;x[i]);
  }
 return 0;
 }
@@ -1790,7 +1790,7 @@ int main()
 {
     int a[20][20],r,c,read_array(),display_array();
     printf("enter row and column value");
-    scanf("%d%d",&r,&c);
+    scanf("%d%d",&amp;r,&amp;c);
     read_array(a,r,c);
     display_array(a,r,c);
     
@@ -1804,7 +1804,7 @@ int read_array(int a[20][20],int r,int c)
  {
      for(j=0;j&lt;c;j++)
      {
-         scanf("%d",&a[i][j]);
+         scanf("%d",&amp;a[i][j]);
      }
      
  }
@@ -1938,9 +1938,9 @@ int main()
 {
     struct Student stu1,stu2;
     printf("enter stu1 code name course");
-    scanf("%d%s%s",&stu1.code,stu1.name,stu1.course);
+    scanf("%d%s%s",&amp;stu1.code,stu1.name,stu1.course);
     printf("enter stu2 code name course");
-    scanf("%d%s%s",&stu2.code,stu2.name,stu2.course);
+    scanf("%d%s%s",&amp;stu2.code,stu2.name,stu2.course);
     printf("\nStudent 1 Details:");
     printf("\nCode:%d",stu1.code);
     printf("\nName:%s",stu1.name);
@@ -1987,11 +1987,11 @@ int main()
     struct Student student[20];
     int n,i;
     printf("Enter how many memeber data you want to enter");
-    scanf("%d",&n);
+    scanf("%d",&amp;n);
     for(i=0;i&lt;n;i++)
     {
     printf("enter stu%d code name course",i+1);
-    scanf("%d%s%s",&student[i].code,student[i].name,student[i].course); 
+    scanf("%d%s%s",&amp;student[i].code,student[i].name,student[i].course); 
     }
     printf("\nCode Name               Course");
     for(i=0;i&lt;n;i++)
@@ -2039,7 +2039,7 @@ int main()
 {
     struct Student student;
     printf("Enter code name course");
-    scanf("%d%s%s",&student.code,student.name,student.course);
+    scanf("%d%s%s",&amp;student.code,student.name,student.course);
     printf("Enter area,city,state");
     scanf("%s%s%s",student.address.area,student.address.city,student.address.state);
     printf("\nCode:%d",student.code);
@@ -2074,7 +2074,7 @@ int main()
 //Structures Using Functions
 #include &lt;stdio.h&gt;
 
-#include <stdio.h>
+#include &lt;stdio.h>
 struct Employee
 {
     int code;
@@ -2085,7 +2085,7 @@ int main()
 {
     struct Employee emp,updateSal();
     printf("Enter employee Code Name Salary");
-    scanf("%d%s%f",&emp.code,emp.name,&emp.salary);
+    scanf("%d%s%f",&amp;emp.code,emp.name,&amp;emp.salary);
     printf("\nCode;%d\nName:%s\nSalary:%.2f",emp.code,emp.name,emp.salary);
     emp=updateSal(emp);
     printf("\nCode;%d\nName:%s\nSalary:%.2f",emp.code,emp.name,emp.salary);
@@ -2097,7 +2097,7 @@ struct Employee temp_emp;
 {
     float salary;
     printf("How much salary you want add ");
-    scanf("%f",&salary);
+    scanf("%f",&amp;salary);
     temp_emp.salary=temp_emp.salary+salary;
     return (temp_emp);
 }
@@ -2129,14 +2129,14 @@ int main()
 {
 int a,b,*p,*q;
 printf("Enter a,b values");
-scanf("%d%d",&a,&b);
+scanf("%d%d",&amp;a,&amp;b);
 printf("\nA=%d B=%d",a,b);
 p=&a;
 q=&b;
 printf("\nA=%d B=%d ",p,q);
-printf("\nP=%d Q=%d ",&p,&q);
+printf("\nP=%d Q=%d ",&amp;p,&amp;q);
 printf("\nA=%d B=%d ",*p,*q);
-printf("\nA=%d B=%d ",&a,&b);
+printf("\nA=%d B=%d ",&amp;a,&amp;b);
 printf("\nP=%d Q=%d ",p,q);
    return 0;
 }
@@ -2167,7 +2167,7 @@ int main()
 {
 int a,b,*p,*q;
 printf("Enter a,b values");
-scanf("%d%d",&a,&b);
+scanf("%d%d",&amp;a,&amp;b);
 p=&a;
 q=&b;
 printf("\nA+B=%d",(*p)+(*q));
@@ -2206,7 +2206,7 @@ struct
     char name[20];
 }*emp;
 printf("Enter Code Name");
-scanf("%d%s",&emp->code,emp->name);
+scanf("%d%s",&amp;emp->code,emp->name);
 printf("\nCode:%d\nName:%s",emp->code,emp->name);
 return 0;
 }
@@ -2236,7 +2236,7 @@ int main()
 {
 int *a,n,i;
 printf("Enter n value");
-scanf("%d",&n);
+scanf("%d",&amp;n);
 for(i=0;i&lt;n;i++)
 {
     scanf("%d",(a+i));
@@ -2275,7 +2275,7 @@ int main()
 {
 int *a[10][10],r,c,i,j;
 printf("Enter r,c value");
-scanf("%d%d",&r,&c);
+scanf("%d%d",&amp;r,&amp;c);
 for(i=0;i&lt;r;i++)
 {
     for(j=0;j&lt;c;j++)
@@ -2451,12 +2451,12 @@ fp=fopen(fname,"w");
 do
 {
 printf("\nEnter Code");
-scanf("%d",&emp.code);
+scanf("%d",&amp;emp.code);
 if(emp.code>0)
 {
 printf("\nEnter Name and Salary");
 scanf("%s",emp.name);
-scanf("%ld",&emp.salary);
+scanf("%ld",&amp;emp.salary);
 fprintf(fp,"\n%-5d%-20s%-10ld",emp.code,emp.name,emp.salary);
 }
 }while(emp.code>0);
@@ -2500,7 +2500,7 @@ clrscr();
 printf("Enter your file name");
 scanf("%s",fname);
 fp=fopen(fname,"r");
-while((fscanf(fp,"%d%s%ld",&emp.code,emp.name,&emp.salary))!=EOF)
+while((fscanf(fp,"%d%s%ld",&amp;emp.code,emp.name,&amp;emp.salary))!=EOF)
 {
 printf("\n%-5d%-20s%-10ld",emp.code,emp.name,emp.salary);
 }
@@ -2548,12 +2548,12 @@ fp=fopen(fname,"r");
 do
 {
 printf("\nEnter Code");
-scanf("%d",&emp.code);
+scanf("%d",&amp;emp.code);
 if(emp.code>0)
 {
 printf("\nEnter Name and Salary");
 scanf("%s",emp.name);
-scanf("%ld",&emp.salary);
+scanf("%ld",&amp;emp.salary);
 fprintf(fp,"\n%-5d%-20s%-10ld",emp.code,emp.name,emp.salary);
 }
 }while(emp.code>0);
@@ -2588,7 +2588,7 @@ int main()
 {
     int n,count=0;
     printf("etner any number");
-    scanf("%d",&n);
+    scanf("%d",&amp;n);
     while(n!=0)
     {
        count++;
@@ -2633,7 +2633,7 @@ int main()
 {
   int n;
   printf("Enter n value");
-  scanf("%d",&n);
+  scanf("%d",&amp;n);
   printf("\n%dact is %d",n,fact(n));
     
     return 0;
@@ -2670,7 +2670,7 @@ int main()
 {
   int n,a=0,b=1,c,i;
   printf("Enter n value");
-  scanf("%d",&n);
+  scanf("%d",&amp;n);
   for(i=1;i&lt;=n;i++)
   {
       printf("%d ",a);
@@ -2708,11 +2708,11 @@ int main()
 {
     int a[100],n,max,smax,i;
     printf("Enter n value");
-    scanf("%d",&n);
+    scanf("%d",&amp;n);
     printf("Enter %d Numbers",n);
     for(i=0;i&lt;n;i++)
     {
-        scanf("%d",&a[i]);
+        scanf("%d",&amp;a[i]);
     }
     max=smax=-9999;
     for(i=0;i&lt;n;i++)
@@ -2722,7 +2722,7 @@ int main()
             smax=max;
             max=a[i];
         }
-        else if(a[i]>smax && a[i]!=max)
+        else if(a[i]>smax &amp;&amp; a[i]!=max)
         {
             smax=a[i];
         }
@@ -2755,7 +2755,7 @@ int main()
 {
     int n,count=0,i;
     printf("etner any number");
-    scanf("%d",&n);
+    scanf("%d",&amp;n);
    for(i=2;i&lt;n;i++)
     {
        if(n%i==0)
@@ -2799,7 +2799,7 @@ int main()
 {
     int n,rev=0,r;
     printf("etner any number");
-    scanf("%d",&n);
+    scanf("%d",&amp;n);
     while(n!=0)
     {
         r=n%10;

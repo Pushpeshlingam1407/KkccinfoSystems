@@ -10,21 +10,33 @@ export default function Home() {
       {/* Hero Section */}
       <section className={styles.heroSection}>
         <div className={styles.heroContainer}>
-          <h1 className={styles.heroTitle}>
-            Professional Software Training & Development
-          </h1>
-          <p className={styles.heroDescription}>
-            With over 20 years of experience, KKCC Info Systems provides
-            comprehensive training in modern software engineering, from
-            fundamentals to advanced full-stack development.
-          </p>
-          <div className={styles.heroActions}>
-            <Link href="/training" className={styles.primaryButton}>
-              Explore Training Programs
-            </Link>
-            <Link href="/contact" className={styles.secondaryButton}>
-              Contact Us
-            </Link>
+          <div className={styles.heroCopy}>
+            <h1 className={styles.heroTitle}>
+              Professional Software Training & Development
+            </h1>
+            <p className={styles.heroDescription}>
+              With over 20 years of experience, KKCC Info Systems provides
+              comprehensive training in modern software engineering, from
+              fundamentals to advanced full-stack development.
+            </p>
+            <div className={styles.heroActions}>
+              <Link href="/training" className={styles.primaryButton}>
+                Explore Training Programs
+              </Link>
+              <Link href="/contact" className={styles.secondaryButton}>
+                Contact Us
+              </Link>
+            </div>
+          </div>
+          <div className={styles.heroVisual}>
+            <Image
+              src="/images/InstituteImage.jpg"
+              alt="KKCC Info Systems software training"
+              fill
+              priority
+              sizes="(max-width: 900px) 100vw, 40vw"
+              className={styles.heroImage}
+            />
           </div>
         </div>
       </section>

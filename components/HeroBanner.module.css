@@ -11,4 +11,9 @@
   @apply object-cover;
 }
 
-.bannerWrapper { @apply pt-0; }.bannerContainer { @apply h-[130px] rounded-none shadow-none border-b border-(--color-border); }
+.bannerWrapper {
+  @apply pt-0;
+}
+.bannerContainer {
+  @apply h-[130px] rounded-none shadow-none border-b border-(--color-border);
+}

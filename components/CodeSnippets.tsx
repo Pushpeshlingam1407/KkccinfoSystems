@@ -39,9 +39,7 @@ function formatCode(code: string, language: string): string {
   if (sourceLines.length) {
     const nonBlankLines = sourceLines.filter((line) => line.trim());
     const sharedIndent = Math.min(
-      ...nonBlankLines.map(
-        (line) => line.match(/^[\t ]*/)?.[0].length || 0,
-      ),
+      ...nonBlankLines.map((line) => line.match(/^[\t ]*/)?.[0].length || 0),
     );
 
     return sourceLines
@@ -201,12 +199,16 @@ function sourceHeadingFromCode(code: string): string {
     const line = raw.trim();
     if (/^#(?:include|define|pragma)\b/.test(line)) continue;
 
-    const heading = line.match(
-      /^(?:\/\/|#|\/\*+|\*)\s*(?:\d+\s*[.)-]?\s*)?(.*?)(?:\s*\*\/)?$/,
-    )?.[1]?.trim();
+    const heading = line
+      .match(
+        /^(?:\/\/|#|\/\*+|\*)\s*(?:\d+\s*[.)-]?\s*)?(.*?)(?:\s*\*\/)?$/,
+      )?.[1]
+      ?.trim();
 
     if (heading && heading.length > 3 && !/^(or|start|end)$/i.test(heading)) {
-      return cleanLearningText(heading.replace(/\s+/g, " ").replace(/[.]+$/, ""));
+      return cleanLearningText(
+        heading.replace(/\s+/g, " ").replace(/[.]+$/, ""),
+      );
     }
   }
   return "";
@@ -230,7 +232,11 @@ function titleFromCode(code: string): string {
   );
 }
 
-function summaryFromCode(code: string, section: string, language: string): string {
+function summaryFromCode(
+  code: string,
+  section: string,
+  language: string,
+): string {
   const heading = sourceHeadingFromCode(code);
   if (heading) {
     return `Demonstrates ${heading.charAt(0).toLowerCase()}${heading.slice(1)}.`;
@@ -365,7 +371,9 @@ export default function CodeSnippets() {
         {categories.map((cat) => (
           <button
             key={cat.id}
-            onClick={() => router.replace(`/code-snippets?tech=${cat.id}`, { scroll: false })}
+            onClick={() =>
+              router.replace(`/code-snippets?tech=${cat.id}`, { scroll: false })
+            }
             className={`${styles.filterBtn} ${categoryId === cat.id ? styles.filterActive : ""}`}
             style={
               categoryId === cat.id
@@ -512,7 +520,9 @@ export default function CodeSnippets() {
                             <div className={styles.cardMetaLeft}>
                               <h2 className={styles.cardTitle}>{title}</h2>
                               <p className={styles.cardBrief}>
-                                <span className={styles.briefLabel}>What it does</span>
+                                <span className={styles.briefLabel}>
+                                  What it does
+                                </span>
                                 <span>{summary}</span>
                               </p>
                             </div>

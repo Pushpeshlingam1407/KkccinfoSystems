@@ -397,13 +397,13 @@ console.log("b===c",(c===d));//false
           <pre><code class="language-javascript">
 //Logical Operators
 let a=24,b=34,c=33;
-console.log(a>b && a>c)
+console.log(a>b &amp;&amp; a>c)
 console.log(a>b || a>c)
 console.log(a>b == a>c)
 
-console.log(b>a && b>c)
+console.log(b>a &amp;&amp; b>c)
 console.log(b>a || b>c)
-console.log(b>a != b<c)
+console.log(b>a != b&lt;c)
 
             </code></pre>
         </div>
@@ -489,7 +489,7 @@ console.log(i); //the previous operation effect this statement
         <div class="code-window-body">
           <pre><code class="language-javascript">
 //Bitwise Operators
-console.log(5&9);
+console.log(5&amp;9);
 console.log(5|9);
 console.log(5^9);
 console.log(5&lt;&lt;9);
@@ -876,7 +876,7 @@ nums?.forEach((element)=>console.log(element));
 var result=nums?.map((element)=>element>3 ? element : null)
 console.log(result)
 
-var result=nums?.filter((element)=>element>2 && element&lt;4);
+var result=nums?.filter((element)=>element>2 &amp;&amp; element&lt;4);
 console.log(result)
 
               </code></pre>
@@ -1572,7 +1572,7 @@ function fizzBuzz(input) {
   if (input &lt;0) 
   return "Negative values not Accepted";
 
-  if (input % 3 === 0 && input % 5 === 0) 
+  if (input % 3 === 0 &amp;&amp; input % 5 === 0) 
     return "FizzBuzz";
 
   if (input % 3 === 0) 
@@ -1697,7 +1697,7 @@ function countTruthy(array) {
   return count;
 }
 
-console.log(null && "True")
+console.log(null &amp;&amp; "True")
               </code></pre>
         </div>
       </div>
@@ -1767,7 +1767,7 @@ console.log(sum(10));
 
 function sum(limit) { 
   let sum = 0; 
-  for (let i = 0; i &lt= limit; i++)
+  for (let i = 0; i &amp;lt= limit; i++)
     if (i % 3 === 0 || i % 5 === 0)
       // sum += i;
     sum++;

@@ -226,7 +226,11 @@ export default function Navbar() {
                 >
                   Interview Q&A
                 </Link>
-                <Link href="/interview-qa?tech=html" onClick={() => setIsOpen(false)} className={styles.mobileNavLink}>
+                <Link
+                  href="/interview-qa?tech=html"
+                  onClick={() => setIsOpen(false)}
+                  className={styles.mobileNavLink}
+                >
                   HTML, CSS, JavaScript & React Q&A
                 </Link>
                 <Link
@@ -236,7 +240,11 @@ export default function Navbar() {
                 >
                   Code Snippets
                 </Link>
-                <Link href="/code-snippets?tech=python" onClick={() => setIsOpen(false)} className={styles.mobileNavLink}>
+                <Link
+                  href="/code-snippets?tech=python"
+                  onClick={() => setIsOpen(false)}
+                  className={styles.mobileNavLink}
+                >
                   C, Java, Python & JavaScript programs
                 </Link>
               </div>

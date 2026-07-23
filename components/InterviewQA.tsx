@@ -73,7 +73,9 @@ export default function InterviewQA() {
   const filtered = useMemo(
     () =>
       questions.filter((item) =>
-        `${item.question} ${item.answer}`.toLowerCase().includes(query.toLowerCase()),
+        `${item.question} ${item.answer}`
+          .toLowerCase()
+          .includes(query.toLowerCase()),
       ),
     [questions, query],
   );
@@ -83,16 +85,22 @@ export default function InterviewQA() {
     <section className={styles.page} aria-labelledby="qa-title">
       <div className={styles.heroWrap}>
         <header className={styles.hero}>
-          <div className={styles.crumb}>Resources <span>/</span> Interview preparation</div>
+          <div className={styles.crumb}>
+            Resources <span>/</span> Interview preparation
+          </div>
           <div className={styles.heroGrid}>
             <div>
               <p className={styles.eyebrow}>Interview Q&amp;A</p>
               <h1 id="qa-title">Walk into your next interview prepared.</h1>
               <p className={styles.heroCopy}>
-                Practical technical questions, clear answers, and the concepts recruiters expect you to explain with confidence.
+                Practical technical questions, clear answers, and the concepts
+                recruiters expect you to explain with confidence.
               </p>
             </div>
-            <div className={styles.heroStat} aria-label="Study resource information">
+            <div
+              className={styles.heroStat}
+              aria-label="Study resource information"
+            >
               <span className={styles.statIcon}>✦</span>
               <strong>Focused learning</strong>
               <p>Search every answer and revise one topic at a time.</p>
@@ -109,16 +117,28 @@ export default function InterviewQA() {
           </div>
           <nav className={styles.topicNav}>
             {topics.map(([id, label, detail]) => (
-              <Link key={id} href={`/interview-qa?tech=${id}`} className={topic === id ? styles.selected : ""}>
+              <Link
+                key={id}
+                href={`/interview-qa?tech=${id}`}
+                className={topic === id ? styles.selected : ""}
+              >
                 <span className={styles.topicMark}>{label.slice(0, 1)}</span>
-                <span><strong>{label}</strong><small>{detail}</small></span>
-                <span className={styles.arrow} aria-hidden="true">→</span>
+                <span>
+                  <strong>{label}</strong>
+                  <small>{detail}</small>
+                </span>
+                <span className={styles.arrow} aria-hidden="true">
+                  →
+                </span>
               </Link>
             ))}
           </nav>
           <div className={styles.tip}>
             <span>✦</span>
-            <p><strong>Study tip</strong> Read an answer, then try to explain it out loud in your own words.</p>
+            <p>
+              <strong>Study tip</strong> Read an answer, then try to explain it
+              out loud in your own words.
+            </p>
           </div>
         </aside>
 
@@ -126,33 +146,99 @@ export default function InterviewQA() {
           <div className={styles.contentTop}>
             <div>
               <p className={styles.eyebrow}>{active[1]} interview guide</p>
-              <h2>{loading ? "Loading questions..." : `${filtered.length} questions to practise`}</h2>
+              <h2>
+                {loading
+                  ? "Loading questions..."
+                  : `${filtered.length} questions to practise`}
+              </h2>
             </div>
             <label className={styles.search}>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6" /><path d="m16 16 4 4" /></svg>
-              <input value={query} onChange={(event) => { setQuery(event.target.value); setShowingAll(true); }} placeholder={`Search ${active[1]} questions`} aria-label={`Search ${active[1]} questions`} />
-              {query && <button type="button" onClick={() => setQuery("")} aria-label="Clear search">×</button>}
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="6" />
+                <path d="m16 16 4 4" />
+              </svg>
+              <input
+                value={query}
+                onChange={(event) => {
+                  setQuery(event.target.value);
+                  setShowingAll(true);
+                }}
+                placeholder={`Search ${active[1]} questions`}
+                aria-label={`Search ${active[1]} questions`}
+              />
+              {query && (
+                <button
+                  type="button"
+                  onClick={() => setQuery("")}
+                  aria-label="Clear search"
+                >
+                  ×
+                </button>
+              )}
             </label>
           </div>
 
-          {loading ? <div className={styles.loading}><span /><span /><span /></div> : (
+          {loading ? (
+            <div className={styles.loading}>
+              <span />
+              <span />
+              <span />
+            </div>
+          ) : (
             <>
               <div className={styles.list}>
                 {visible.map((item, index) => {
                   const itemIndex = questions.indexOf(item);
                   const expanded = open === itemIndex;
-                  return <article className={`${styles.item} ${expanded ? styles.expanded : ""}`} key={item.question}>
-                    <button className={styles.question} type="button" onClick={() => setOpen(expanded ? null : itemIndex)} aria-expanded={expanded}>
-                      <span className={styles.number}>{String(index + 1).padStart(2, "0")}</span>
-                      <span className={styles.questionText}>{item.question}</span>
-                      <span className={styles.toggle} aria-hidden="true">{expanded ? "−" : "+"}</span>
-                    </button>
-                    {expanded && <div className={styles.answer}><span className={styles.answerLabel}>Answer</span><p>{item.answer}</p></div>}
-                  </article>;
+                  return (
+                    <article
+                      className={`${styles.item} ${expanded ? styles.expanded : ""}`}
+                      key={item.question}
+                    >
+                      <button
+                        className={styles.question}
+                        type="button"
+                        onClick={() => setOpen(expanded ? null : itemIndex)}
+                        aria-expanded={expanded}
+                      >
+                        <span className={styles.number}>
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span className={styles.questionText}>
+                          {item.question}
+                        </span>
+                        <span className={styles.toggle} aria-hidden="true">
+                          {expanded ? "−" : "+"}
+                        </span>
+                      </button>
+                      {expanded && (
+                        <div className={styles.answer}>
+                          <span className={styles.answerLabel}>Answer</span>
+                          <p>{item.answer}</p>
+                        </div>
+                      )}
+                    </article>
+                  );
                 })}
               </div>
-              {!filtered.length && <div className={styles.empty}><strong>No matches found</strong><p>Try a different keyword or clear your search.</p><button type="button" onClick={() => setQuery("")}>Clear search</button></div>}
-              {filtered.length > 12 && !showingAll && <button type="button" className={styles.showMore} onClick={() => setShowingAll(true)}>Show all {filtered.length} questions <span>↓</span></button>}
+              {!filtered.length && (
+                <div className={styles.empty}>
+                  <strong>No matches found</strong>
+                  <p>Try a different keyword or clear your search.</p>
+                  <button type="button" onClick={() => setQuery("")}>
+                    Clear search
+                  </button>
+                </div>
+              )}
+              {filtered.length > 12 && !showingAll && (
+                <button
+                  type="button"
+                  className={styles.showMore}
+                  onClick={() => setShowingAll(true)}
+                >
+                  Show all {filtered.length} questions <span>↓</span>
+                </button>
+              )}
             </>
           )}
         </main>

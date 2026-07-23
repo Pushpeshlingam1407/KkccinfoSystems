@@ -554,7 +554,7 @@ a=45
 b=35
 print(a==b) # false
 print(a>b)  # True
-print(a<b) #false
+print(a&lt;b) #false
 print(a>=b) #True
 print(a&lt;=b) #false
 print(a!=b) #true
@@ -563,7 +563,7 @@ print(a!=b) #true
 c=55
 print(a>b and a>c) #false
 print(a&lt;b and a&lt;c)  #false
-print(a>b or a<c) #true
+print(a>b or a&lt;c) #true
 print(a>b != a>c) #false
             </code></pre>
         </div>
@@ -680,7 +680,7 @@ print("Eligible" if age>=16 else "Not Eligible")
           <pre><code class="language-python">
 #chaining operators
 age=34
-if age>= 18  and age<65:
+if age>= 18  and age&lt;65:
     print("Eligible")
 
 #or
@@ -714,7 +714,7 @@ a = 10
 b = 4
 
 # Print bitwise AND operation
-print("a & b =", a & b)
+print("a &amp; b =", a &amp; b)
 # Print bitwise OR operation
 print("a | b =", a | b)
 # Print bitwise NOT operation

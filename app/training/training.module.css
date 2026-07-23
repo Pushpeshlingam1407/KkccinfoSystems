@@ -249,7 +249,165 @@
 }
 
 /* Keep the syllabus features, but make the screen read like a course catalogue. */
-.pageWrapper { @apply pb-16; }.marketingContainer { @apply mt-8; }.heroSection { @apply rounded-none p-0 bg-transparent border-0 border-b mb-12 pb-12; }.heroHeaderTag,.syllabusBadge,.durationPill,.moduleIndex,.moduleCountTag { @apply rounded-sm; }.heroTitle { @apply text-3xl lg:text-4xl mb-4; }.heroText { @apply text-base mb-6; }.heroImageWrapper { @apply rounded-none shadow-none; }.sectionHeaderGroup { @apply text-left mx-0 mb-10; }.coursesTitle { @apply text-3xl; }.coursesGrid { @apply gap-8; }.tabsList { @apply gap-0 border border-(--color-border); }.tabButton { @apply rounded-none border-l-2 border-b border-r-0 border-t-0; }.tabInactive { @apply hover:bg-(--color-bg-secondary) hover:border-(--color-border); }.contentContainer { @apply rounded-none shadow-none p-6 lg:p-8 min-h-0; }.syllabusMainView { @apply gap-8; }.syllabusHeader { @apply gap-6 pb-6; }.courseHeader { @apply text-2xl mb-3; }.courseDescription { @apply text-base; }.overviewBox,.prereqBox { @apply rounded-none; }.modulesGrid { @apply gap-0 border-t border-l border-(--color-border); }.moduleCard { @apply rounded-none border-t-0 border-l-0 p-5; }.moduleCard:hover,.projectCard:hover { @apply border-(--color-border) bg-(--color-bg-secondary); }.projectsGrid { @apply gap-0 border-t border-l border-(--color-border); }.projectCard { @apply rounded-none border-t-0 border-l-0; }
+.pageWrapper {
+  @apply pb-16;
+}
+.marketingContainer {
+  @apply mt-8;
+}
+.heroSection {
+  @apply rounded-none p-0 bg-transparent border-0 border-b mb-12 pb-12;
+}
+.heroHeaderTag,
+.syllabusBadge,
+.durationPill,
+.moduleIndex,
+.moduleCountTag {
+  @apply rounded-sm;
+}
+.heroTitle {
+  @apply text-3xl lg:text-4xl mb-4;
+}
+.heroText {
+  @apply text-base mb-6;
+}
+.heroImageWrapper {
+  @apply rounded-none shadow-none;
+}
+.sectionHeaderGroup {
+  @apply text-left mx-0 mb-10;
+}
+.coursesTitle {
+  @apply text-3xl;
+}
+.coursesGrid {
+  @apply gap-8;
+}
+.tabsList {
+  @apply gap-0 border border-(--color-border);
+}
+.tabButton {
+  @apply rounded-none border-l-2 border-b border-r-0 border-t-0;
+}
+.tabInactive {
+  @apply hover:bg-(--color-bg-secondary) hover:border-(--color-border);
+}
+.contentContainer {
+  @apply rounded-none shadow-none p-6 lg:p-8 min-h-0;
+}
+.syllabusMainView {
+  @apply gap-8;
+}
+.syllabusHeader {
+  @apply gap-6 pb-6;
+}
+.courseHeader {
+  @apply text-2xl mb-3;
+}
+.courseDescription {
+  @apply text-base;
+}
+.overviewBox,
+.prereqBox {
+  @apply rounded-none;
+}
+.modulesGrid {
+  @apply gap-0 border-t border-l border-(--color-border);
+}
+.moduleCard {
+  @apply rounded-none border-t-0 border-l-0 p-5;
+}
+.moduleCard:hover,
+.projectCard:hover {
+  @apply border-(--color-border) bg-(--color-bg-secondary);
+}
+.projectsGrid {
+  @apply gap-0 border-t border-l border-(--color-border);
+}
+.projectCard {
+  @apply rounded-none border-t-0 border-l-0;
+}
 
-.heroSection { background:linear-gradient(135deg, rgba(226,241,245,.8), rgba(255,255,255,.25)); border:1px solid rgba(183,209,219,.75); border-radius:18px; padding:36px; position:relative; overflow:hidden; }.heroSection::after { background:radial-gradient(circle, rgba(0,123,158,.11) 0, transparent 66%); content:""; height:300px; pointer-events:none; position:absolute; right:-120px; top:-170px; width:300px; }.heroContent,.heroImageContainer { position:relative; z-index:1; }.heroImageWrapper { border-radius:12px; box-shadow:var(--shadow-subtle); }.tabsList { background:rgba(255,255,255,.7); border-radius:12px; box-shadow:0 10px 28px rgba(20,52,72,.05); overflow:hidden; }.tabButton { transition:background-color .2s ease,color .2s ease,border-color .2s ease; }.tabActive { background:var(--color-brand-subtle); }.contentContainer { background:rgba(255,255,255,.76); border-radius:14px; box-shadow:var(--shadow-subtle); }.overviewBox,.prereqBox { background:linear-gradient(135deg, #f6fafb, #eef5f7); border-radius:10px; }.modulesGrid,.projectsGrid { border-radius:10px; overflow:hidden; }.moduleCard,.projectCard { transition:background-color .2s ease; }.moduleCard:hover,.projectCard:hover { background:#f7fbfc; border-color:var(--color-border); }
-@media (max-width: 768px) { .heroSection { border-radius:12px; padding:24px; }.contentContainer { border-radius:10px; } }
+.heroSection {
+  background: linear-gradient(
+    135deg,
+    rgba(226, 241, 245, 0.8),
+    rgba(255, 255, 255, 0.25)
+  );
+  border: 1px solid rgba(183, 209, 219, 0.75);
+  border-radius: 18px;
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+}
+.heroSection::after {
+  background: radial-gradient(
+    circle,
+    rgba(0, 123, 158, 0.11) 0,
+    transparent 66%
+  );
+  content: "";
+  height: 300px;
+  pointer-events: none;
+  position: absolute;
+  right: -120px;
+  top: -170px;
+  width: 300px;
+}
+.heroContent,
+.heroImageContainer {
+  position: relative;
+  z-index: 1;
+}
+.heroImageWrapper {
+  border-radius: 12px;
+  box-shadow: var(--shadow-subtle);
+}
+.tabsList {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(20, 52, 72, 0.05);
+  overflow: hidden;
+}
+.tabButton {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+.tabActive {
+  background: var(--color-brand-subtle);
+}
+.contentContainer {
+  background: rgba(255, 255, 255, 0.76);
+  border-radius: 14px;
+  box-shadow: var(--shadow-subtle);
+}
+.overviewBox,
+.prereqBox {
+  background: linear-gradient(135deg, #f6fafb, #eef5f7);
+  border-radius: 10px;
+}
+.modulesGrid,
+.projectsGrid {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.moduleCard,
+.projectCard {
+  transition: background-color 0.2s ease;
+}
+.moduleCard:hover,
+.projectCard:hover {
+  background: #f7fbfc;
+  border-color: var(--color-border);
+}
+@media (max-width: 768px) {
+  .heroSection {
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .contentContainer {
+    border-radius: 10px;
+  }
+}
