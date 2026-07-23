@@ -132,7 +132,9 @@
   margin-left: 0.35rem;
   width: 0.875rem;
   height: 0.875rem;
-  transition: transform 0.25s ease-in-out, color 0.25s ease-in-out;
+  transition:
+    transform 0.25s ease-in-out,
+    color 0.25s ease-in-out;
   color: #64748b;
 }
 
@@ -147,7 +149,10 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(8px);
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s ease;
   pointer-events: none;
 }
 
@@ -155,7 +160,9 @@
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 0.75rem;
-  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.12), 0 4px 10px -4px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 12px 30px -5px rgba(0, 0, 0, 0.12),
+    0 4px 10px -4px rgba(0, 0, 0, 0.06);
   overflow: hidden;
   padding: 0.35rem 0;
 }
@@ -199,4 +206,3 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
-

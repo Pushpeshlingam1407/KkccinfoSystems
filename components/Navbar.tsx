@@ -58,10 +58,7 @@ export default function Navbar() {
 
               {/* ── Interview Q&A Dropdown ── */}
               <div className={styles.dropdownContainer}>
-                <Link
-                  href="/interview-qa"
-                  className={styles.dropdownButton}
-                >
+                <Link href="/interview-qa" className={styles.dropdownButton}>
                   Interview Q&A
                   <svg
                     className={styles.dropdownIcon}
@@ -104,10 +101,7 @@ export default function Navbar() {
 
               {/* ── Code Snippets Dropdown ── */}
               <div className={styles.dropdownContainer}>
-                <Link
-                  href="/code-snippets"
-                  className={styles.dropdownButton}
-                >
+                <Link href="/code-snippets" className={styles.dropdownButton}>
                   Code Snippets
                   <svg
                     className={styles.dropdownIcon}
