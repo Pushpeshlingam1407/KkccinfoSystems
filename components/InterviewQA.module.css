@@ -31,3 +31,5 @@
 .heroStat { border-left-color:#dbe5eb; }.heroStat strong { color:#25465b; }.heroStat p { color:#667f90; }.statIcon { color:#1682b5; }
 .sidebar { border-radius:8px; box-shadow:none; }
 .item:hover,.expanded { box-shadow:none; }
+.search { border-radius:9px; min-height:44px; }
+.showMore,.empty button { border-radius:9px; min-height:40px; }

@@ -25,6 +25,10 @@ const categories = [
 
 type CategoryId = (typeof categories)[number]["id"];
 
+function cleanLearningText(value: string): string {
+  return value.replace(/`/g, "");
+}
+
 function formatCode(code: string, language: string): string {
   // Keep the source's relative indentation intact. Reconstructing indentation
   // from braces/colons breaks valid nested Python and multiline statements.
@@ -167,10 +171,14 @@ function formatCode(code: string, language: string): string {
 
 function parseSnippets(markup: string): Snippet[] {
   const doc = new DOMParser().parseFromString(markup, "text/html");
-  let section = doc.querySelector("main h1")?.textContent?.trim() || "Programs";
+  let section = cleanLearningText(
+    doc.querySelector("main h1")?.textContent?.trim() || "Programs",
+  );
   const snippets: Snippet[] = [];
   doc.querySelectorAll("main h1, .code-window").forEach((el) => {
-    if (el.tagName === "H1") section = el.textContent?.trim() || section;
+    if (el.tagName === "H1") {
+      section = cleanLearningText(el.textContent?.trim() || section);
+    }
     if (el.classList.contains("code-window")) {
       const code = el.querySelector("code")?.textContent?.trim();
       if (code) {
@@ -198,7 +206,7 @@ function sourceHeadingFromCode(code: string): string {
     )?.[1]?.trim();
 
     if (heading && heading.length > 3 && !/^(or|start|end)$/i.test(heading)) {
-      return heading.replace(/\s+/g, " ").replace(/[.]+$/, "");
+      return cleanLearningText(heading.replace(/\s+/g, " ").replace(/[.]+$/, ""));
     }
   }
   return "";
@@ -208,7 +216,7 @@ function titleFromCode(code: string): string {
   const heading = sourceHeadingFromCode(code);
   if (heading) return heading;
 
-  return (
+  return cleanLearningText(
     code
       .split("\n")
       .map((line) => line.trim())
@@ -218,7 +226,7 @@ function titleFromCode(code: string): string {
           !line.startsWith("#include") &&
           !line.startsWith("import ") &&
           !line.startsWith("from "),
-      ) || "Code example"
+      ) || "Code example",
   );
 }
 
@@ -228,7 +236,7 @@ function summaryFromCode(code: string, section: string, language: string): strin
     return `Demonstrates ${heading.charAt(0).toLowerCase()}${heading.slice(1)}.`;
   }
 
-  const statement = titleFromCode(code);
+  const statement = cleanLearningText(titleFromCode(code));
   return statement !== "Code example"
     ? `Runs the statement: ${statement.slice(0, 72)}${statement.length > 72 ? "…" : ""}`
     : `${language} example from ${section}.`;

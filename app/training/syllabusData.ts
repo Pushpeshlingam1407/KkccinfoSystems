@@ -72,7 +72,7 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
           "2D Arrays & Matrices (Multiplication, Transposition)",
           "Searching Algorithms (Linear Search, Binary Search)",
           "Sorting Algorithms (Bubble Sort, Selection Sort, Insertion Sort)",
-          "String Handling, Null Terminator, Standard Library `<string.h>` Functions",
+          "String Handling, Null Terminator, Standard Library <string.h> Functions",
         ],
       },
       {
@@ -82,7 +82,7 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
           "Pointer Arithmetic & Array-Pointer Relationship",
           "Pointers to Pointers (Double Pointers)",
           "Function Pointers and Callback Functions",
-          "Dynamic Memory Allocation: `malloc()`, `calloc()`, `realloc()`, `free()`, and Memory Leaks",
+          "Dynamic Memory Allocation: malloc(), calloc(), realloc(), free(), and Memory Leaks",
         ],
       },
       {
@@ -92,15 +92,15 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
           "Array of Structures & Nested Structures",
           "Structure Padding, Alignment, and Bit Fields",
           "Unions vs Structures (Memory Sharing)",
-          "Enumerated Types (`enum`) and `typedef`",
+          "Enumerated Types (enum) and typedef",
         ],
       },
       {
         title: "Module 8: File Handling & Preprocessor Directives",
         topics: [
-          "File Operations: Opening (`fopen`), Reading (`fgetc`, `fgets`, `fread`), Writing (`fputc`, `fputs`, `fwrite`), and Closing (`fclose`)",
+          "File Operations: Opening (fopen), Reading (fgetc, fgets, fread), Writing (fputc, fputs, fwrite), and Closing (fclose)",
           "Text Files vs Binary Files",
-          "File Pointers & Random Access (`fseek`, `ftell`, `rewind`)",
+          "File Pointers & Random Access (fseek, ftell, rewind)",
           "Macros (#define), Conditional Compilation (#ifdef, #ifndef), Header Files",
         ],
       },
@@ -126,8 +126,8 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         title: "Module 1: Introduction to C++ & Modern Features",
         topics: [
           "Difference between C and C++",
-          "Input/Output Streams (`cin`, `cout`, `cerr`, `clog`, `iomanip`)",
-          "Namespaces and Scope Resolution Operator (`::`)",
+          "Input/Output Streams (cin, cout, cerr, clog, iomanip)",
+          "Namespaces and Scope Resolution Operator (::)",
           "Reference Variables vs Pointers",
           "Inline Functions, Default Arguments, and Const Expressions",
         ],
@@ -156,17 +156,17 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
       {
         title: "Module 4: Standard Template Library (STL) - Containers",
         topics: [
-          "Sequence Containers: `std::vector`, `std::list`, `std::deque`, `std::array`",
-          "Container Adapters: `std::stack`, `std::queue`, `std::priority_queue`",
-          "Associative Containers: `std::set`, `std::multiset`, `std::map`, `std::multimap`",
-          "Unordered Containers: `std::unordered_map`, `std::unordered_set` (Hash Tables)",
+          "Sequence Containers: std::vector, std::list, std::deque, std::array",
+          "Container Adapters: std::stack, std::queue, std::priority_queue",
+          "Associative Containers: std::set, std::multiset, std::map, std::multimap",
+          "Unordered Containers: std::unordered_map, std::unordered_set (Hash Tables)",
         ],
       },
       {
         title: "Module 5: STL Algorithms, Iterators & Lambda Expressions",
         topics: [
           "Iterators: Input, Output, Forward, Bidirectional, Random Access",
-          "STL Algorithms: `std::sort`, `std::binary_search`, `std::find`, `std::reverse`, `std::accumulate`",
+          "STL Algorithms: std::sort, std::binary_search, std::find, std::reverse, std::accumulate",
           "Custom Comparators & Functors (Function Objects)",
           "Lambda Expressions in Modern C++ (Capture Lists, Syntax)",
         ],
@@ -174,10 +174,10 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
       {
         title: "Module 6: Exception Handling & File I/O",
         topics: [
-          "Exception Handling: `try`, `catch`, `throw`, and Custom Exception Classes",
-          "File Streams: `ifstream`, `ofstream`, `fstream`",
+          "Exception Handling: try, catch, throw, and Custom Exception Classes",
+          "File Streams: ifstream, ofstream, fstream",
           "Binary File Read/Write Operations",
-          "Smart Pointers (`std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr`)",
+          "Smart Pointers (std::unique_ptr, std::shared_ptr, std::weak_ptr)",
         ],
       },
     ],
@@ -214,45 +214,45 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
           "Access Modifiers (private, default, protected, public)",
           "Encapsulation, Inheritance, Polymorphism (Overloading & Overriding)",
           "Abstract Classes vs Interfaces (Default and Static Methods)",
-          "Keyword Deep Dive: `this`, `super`, `final`, `static`, `instanceof`",
+          "Keyword Deep Dive: this, super, final, static, instanceof",
         ],
       },
       {
         title: "Module 3: Exception Handling & Strings",
         topics: [
           "Throwable Hierarchy: Checked vs Unchecked Exceptions",
-          "`try-catch-finally`, Multiple Catches, Try-with-Resources",
+          "try-catch-finally, Multiple Catches, Try-with-Resources",
           "Custom Exception Handling",
-          "Immutable Strings (`String`) vs Mutable Strings (`StringBuilder`, `StringBuffer`)",
+          "Immutable Strings (String) vs Mutable Strings (StringBuilder, StringBuffer)",
           "String Constant Pool (SCP) Interning Mechanism",
         ],
       },
       {
         title: "Module 4: Java Collections Framework & Generics",
         topics: [
-          "Generics: Type Parameters, Wildcards (`? extends T`, `? super T`)",
-          "List Interface: `ArrayList`, `LinkedList`, `Vector`",
-          "Set Interface: `HashSet`, `LinkedHashSet`, `TreeSet`",
-          "Map Interface: `HashMap`, `LinkedHashMap`, `TreeMap`, `ConcurrentHashMap`",
-          "`Comparable` vs `Comparator` Interfaces",
+          "Generics: Type Parameters, Wildcards (? extends T, ? super T)",
+          "List Interface: ArrayList, LinkedList, Vector",
+          "Set Interface: HashSet, LinkedHashSet, TreeSet",
+          "Map Interface: HashMap, LinkedHashMap, TreeMap, ConcurrentHashMap",
+          "Comparable vs Comparator Interfaces",
         ],
       },
       {
         title: "Module 5: Java 8+ Features (Modern Java)",
         topics: [
-          "Lambda Expressions and Functional Interfaces (`Predicate`, `Function`, `Consumer`, `Supplier`)",
-          "Stream API: `map`, `filter`, `reduce`, `collect`, `sorted`, `parallelStream`",
+          "Lambda Expressions and Functional Interfaces (Predicate, Function, Consumer, Supplier)",
+          "Stream API: map, filter, reduce, collect, sorted, parallelStream",
           "Optional Class for Null Safety",
-          "Date & Time API (`java.time.*`)",
+          "Date & Time API (java.time.*)",
         ],
       },
       {
         title: "Module 6: Multithreading & Concurrency",
         topics: [
-          "Thread Lifecycle and Creation (Extending `Thread` vs Implementing `Runnable`)",
+          "Thread Lifecycle and Creation (Extending Thread vs Implementing Runnable)",
           "Thread Synchronization, Locks, and Deadlocks",
-          "Inter-Thread Communication (`wait()`, `notify()`, `notifyAll()`)",
-          "Executor Framework, Thread Pools, `Callable` & `Future`",
+          "Inter-Thread Communication (wait(), notify(), notifyAll())",
+          "Executor Framework, Thread Pools, Callable & Future",
         ],
       },
       {
@@ -288,8 +288,8 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
           "Installing Python & IDEs (VS Code, PyCharm, Jupyter Notebook)",
           "Python Interpreter & Execution Workflow",
           "Variables, Dynamic Typing, and Type Casting",
-          "Input/Output Formatting (`f-strings`, `.format()`)",
-          "Operators: Arithmetic, Comparison, Logical, Bitwise, Membership (`in`), Identity (`is`)",
+          "Input/Output Formatting (f-strings, .format())",
+          "Operators: Arithmetic, Comparison, Logical, Bitwise, Membership (in), Identity (is)",
         ],
       },
       {
@@ -304,31 +304,31 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
       {
         title: "Module 3: Control Flow & Functions",
         topics: [
-          "Conditional Logic: `if`, `elif`, `else`",
-          "Loops: `for`, `while`, `range()`, `enumerate()`, `zip()`",
-          "Function Definitions, Positional vs Keyword Arguments, `*args` and `**kwargs`",
-          "Lambda Functions, `map()`, `filter()`, `reduce()`",
-          "Decorators, Generators, and `yield` Keyword",
+          "Conditional Logic: if, elif, else",
+          "Loops: for, while, range(), enumerate(), zip()",
+          "Function Definitions, Positional vs Keyword Arguments, *args and **kwargs",
+          "Lambda Functions, map(), filter(), reduce()",
+          "Decorators, Generators, and yield Keyword",
         ],
       },
       {
         title: "Module 4: Object-Oriented Python",
         topics: [
-          "Classes, Objects, and the `self` Parameter",
-          "Constructors (`__init__`) and Destructors (`__del__`)",
-          "Instance vs Class Variables and Methods (`@classmethod`, `@staticmethod`)",
+          "Classes, Objects, and the self Parameter",
+          "Constructors (__init__) and Destructors (__del__)",
+          "Instance vs Class Variables and Methods (@classmethod, @staticmethod)",
           "Inheritance, Method Overriding, MRO (Method Resolution Order)",
-          "Dunder (Magic) Methods (`__str__`, `__len__`, `__add__`)",
+          "Dunder (Magic) Methods (__str__, __len__, __add__)",
         ],
       },
       {
         title: "Module 5: Modules, Packages & File I/O",
         topics: [
-          "Built-in Modules (`os`, `sys`, `math`, `random`, `datetime`, `json`)",
-          "Creating Custom Modules and Packages (`__init__.py`)",
-          "Virtual Environments (`venv`, `pip`, `requirements.txt`)",
+          "Built-in Modules (os, sys, math, random, datetime, json)",
+          "Creating Custom Modules and Packages (__init__.py)",
+          "Virtual Environments (venv, pip, requirements.txt)",
           "File Handling: Reading/Writing Text, CSV, and JSON Files",
-          "Exception Handling: `try`, `except`, `else`, `finally`, Raising Exceptions",
+          "Exception Handling: try, except, else, finally, Raising Exceptions",
         ],
       },
       {
@@ -336,7 +336,7 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         topics: [
           "SQLite3 Integration & Execution of SQL queries in Python",
           "Connecting Python to MySQL / PostgreSQL with DB-API drivers",
-          "REST API Consumption using `requests` Library",
+          "REST API Consumption using requests Library",
           "Overview of Web Frameworks (Flask / Django introduction)",
         ],
       },
@@ -370,19 +370,19 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
       {
         title: "Module 2: Control Structures & Arrays",
         topics: [
-          "Conditional Logic: `if`, `else`, `elseif`, `switch`",
-          "Loops: `for`, `while`, `do-while`, `foreach`",
+          "Conditional Logic: if, else, elseif, switch",
+          "Loops: for, while, do-while, foreach",
           "Indexed Arrays, Associative Arrays, and Multidimensional Arrays",
-          "Array Functions (`array_push`, `array_merge`, `array_keys`, `in_array`)",
+          "Array Functions (array_push, array_merge, array_keys, in_array)",
         ],
       },
       {
         title: "Module 3: Functions, Forms & Web Security",
         topics: [
           "User-Defined Functions, Type Hinting, Return Types",
-          "Superglobals: `$_GET`, `$_POST`, `$_REQUEST`, `$_SERVER`",
-          "Form Validation & Sanitization (`filter_var`, `htmlspecialchars`)",
-          "File Upload Handling (`$_FILES`) & Security Checks",
+          "Superglobals: $_GET, $_POST, $_REQUEST, $_SERVER",
+          "Form Validation & Sanitization (filter_var, htmlspecialchars)",
+          "File Upload Handling ($_FILES) & Security Checks",
         ],
       },
       {
@@ -390,7 +390,7 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         topics: [
           "Cookies: Setting, Reading, Deleting Cookies",
           "Sessions: Starting Session, Session Variables, Destroying Sessions",
-          "File Reading and Writing (`fopen`, `fread`, `file_get_contents`, `file_put_contents`)",
+          "File Reading and Writing (fopen, fread, file_get_contents, file_put_contents)",
           "Date and Time Operations in PHP",
         ],
       },
@@ -398,9 +398,9 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         title: "Module 5: Object-Oriented PHP (OOP)",
         topics: [
           "Classes, Objects, Properties, and Methods",
-          "Access Modifiers, Constructors (`__construct`), Destructors",
+          "Access Modifiers, Constructors (__construct), Destructors",
           "Inheritance, Abstract Classes, and Interfaces",
-          "Namespaces and Autoloading with Composer (`PSR-4`)",
+          "Namespaces and Autoloading with Composer (PSR-4)",
         ],
       },
       {
@@ -409,7 +409,7 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
           "Connecting to Database using PDO (PHP Data Objects)",
           "Prepared Statements to Prevent SQL Injection",
           "Executing CRUD Operations (Create, Read, Update, Delete)",
-          "User Authentication (Password Hashing `password_hash()` and Login Logic)",
+          "User Authentication (Password Hashing password_hash() and Login Logic)",
         ],
       },
     ],
@@ -435,7 +435,7 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         topics: [
           "Composer Dependency Manager & Installing Laravel",
           "Laravel Directory Structure & Request Lifecycle",
-          "Configuration & Environment Variables (`.env`)",
+          "Configuration & Environment Variables (.env)",
           "Artisan CLI Commands Overview",
         ],
       },
@@ -444,7 +444,7 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         topics: [
           "Basic Routing, Route Parameters, Named Routes, Route Groups",
           "Controllers: Single Action, Resource Controllers",
-          "Blade Templating Engine: Directives (`@if`, `@foreach`, `@extends`, `@section`)",
+          "Blade Templating Engine: Directives (@if, @foreach, @extends, @section)",
           "Component-based Views & Layout Master Files",
         ],
       },
@@ -461,7 +461,7 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         title: "Module 4: Forms, Validation & Middleware",
         topics: [
           "Handling Form Submissions & Request Object",
-          "CSRF Protection (`@csrf`)",
+          "CSRF Protection (@csrf)",
           "Form Request Validation Rules & Custom Error Messages",
           "Middleware Concept, Global vs Route Middleware, Creating Custom Middleware",
         ],
@@ -470,7 +470,7 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         title: "Module 5: Authentication & REST APIs",
         topics: [
           "Laravel Breeze / Jetstream / Starter Kits Authentication",
-          "API Controllers & API Routing (`routes/api.php`)",
+          "API Controllers & API Routing (routes/api.php)",
           "Building RESTful APIs & API Resource Transformers",
           "API Token Authentication with Laravel Sanctum",
         ],
@@ -498,8 +498,8 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         topics: [
           ".NET Ecosystem (.NET SDK, CLR, CTS, CLI, Visual Studio / VS Code)",
           "C# Syntax, Primitive Types, Value Types vs Reference Types",
-          "Control Flow, Arrays, Collections (`List<T>`, `Dictionary<TKey, TValue>`)",
-          "Methods, Parameters (`ref`, `out`, `params`), Properties (Auto-implemented)",
+          "Control Flow, Arrays, Collections (List<T>, Dictionary<TKey, TValue>)",
+          "Methods, Parameters (ref, out, params), Properties (Auto-implemented)",
         ],
       },
       {
@@ -509,13 +509,13 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
           "Encapsulation, Inheritance, Interfaces, and Abstract Classes",
           "Delegates, Events, and Lambda Expressions",
           "LINQ (Language Integrated Query): Method Syntax & Query Syntax",
-          "Asynchronous Programming (`async` / `await`, `Task`, `Task<T>`)",
+          "Asynchronous Programming (async / await, Task, Task<T>)",
         ],
       },
       {
         title: "Module 3: ASP.NET Core MVC Architecture",
         topics: [
-          "ASP.NET Core Project Structure & `Program.cs`",
+          "ASP.NET Core Project Structure & Program.cs",
           "Dependency Injection (DI) Container & Service Lifetimes (Transient, Scoped, Singleton)",
           "Routing, Controllers, Action Results",
           "Razor Views, Tag Helpers, ViewComponents, Model Binding",
@@ -525,7 +525,7 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         title: "Module 4: Entity Framework Core (EF Core)",
         topics: [
           "ORM Concepts & Database-First vs Code-First Approach",
-          "`DbContext` Configuration & Connection Strings",
+          "DbContext Configuration & Connection Strings",
           "EF Core Migrations & Database Updating",
           "LINQ to Entities: Querying, Filtering, Include (Eager Loading), Lazy Loading",
           "CRUD Operations & Transaction Handling",
@@ -534,7 +534,7 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
       {
         title: "Module 5: ASP.NET Core Web API & Security",
         topics: [
-          "Building RESTful Web APIs with `[ApiController]`",
+          "Building RESTful Web APIs with [ApiController]",
           "HTTP Verbs (GET, POST, PUT, DELETE, PATCH)",
           "Authentication & Authorization: JWT (JSON Web Tokens) & ASP.NET Core Identity",
           "Swagger / OpenAPI Integration for API Documentation",
@@ -564,7 +564,7 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
           "HTML Document Structure, Headings, Paragraphs, Formatting Tags",
           "Lists (Ordered, Unordered, Definition), Links & Anchor Tags",
           "Images, Audio, Video, and Multimedia Embedding",
-          "Tables, Semantic HTML5 Elements (`<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`)",
+          "Tables, Semantic HTML5 Elements (<header>, <nav>, <main>, <section>, <footer>)",
           "HTML Forms: Input Types, Attributes, Validation Controls",
         ],
       },
@@ -583,7 +583,7 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
       {
         title: "Module 3: JavaScript Core & DOM Manipulation",
         topics: [
-          "JavaScript Variables (`var`, `let`, `const`), Data Types, Operators",
+          "JavaScript Variables (var, let, const), Data Types, Operators",
           "Functions, Arrow Functions, Scope & Hoisting",
           "DOM (Document Object Model) Selection, Content Manipulation, Attribute Changes",
           "Event Handling (Click, Input, Submit, Keyup, Event Bubbling)",
@@ -603,8 +603,8 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         topics: [
           "React Library Overview & JSX Syntax",
           "Components (Functional Components) & Props",
-          "State Management with `useState` Hook",
-          "Side Effects with `useEffect` Hook",
+          "State Management with useState Hook",
+          "Side Effects with useEffect Hook",
           "Building Interactive Single Page Applications (SPA)",
         ],
       },
@@ -638,17 +638,17 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         title:
           "Module 2: Data Definition & Data Manipulation Language (DDL & DML)",
         topics: [
-          "DDL Commands: `CREATE`, `ALTER`, `DROP`, `TRUNCATE` Databases and Tables",
-          "Constraints: `NOT NULL`, `UNIQUE`, `CHECK`, `DEFAULT`, `FOREIGN KEY` (ON DELETE CASCADE)",
-          "DML Commands: `INSERT`, `UPDATE`, `DELETE` Data",
+          "DDL Commands: CREATE, ALTER, DROP, TRUNCATE Databases and Tables",
+          "Constraints: NOT NULL, UNIQUE, CHECK, DEFAULT, FOREIGN KEY (ON DELETE CASCADE)",
+          "DML Commands: INSERT, UPDATE, DELETE Data",
         ],
       },
       {
         title: "Module 3: Data Query Language (DQL) & SQL Functions",
         topics: [
-          "Selecting & Filtering: `SELECT`, `WHERE`, `LIKE`, `IN`, `BETWEEN`, `ORDER BY`, `LIMIT`",
-          "Aggregate Functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`",
-          "Grouping Data: `GROUP BY` and `HAVING` Clauses",
+          "Selecting & Filtering: SELECT, WHERE, LIKE, IN, BETWEEN, ORDER BY, LIMIT",
+          "Aggregate Functions: COUNT, SUM, AVG, MIN, MAX",
+          "Grouping Data: GROUP BY and HAVING Clauses",
           "Built-in Functions: String Functions, Date/Time Functions, Numeric Functions",
         ],
       },
@@ -657,7 +657,7 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         topics: [
           "Inner Join, Left Join, Right Join, Cross Join, Self Join",
           "Subqueries: Single Row, Multi-Row, Correlated Subqueries",
-          "Set Operations: `UNION`, `UNION ALL`",
+          "Set Operations: UNION, UNION ALL",
         ],
       },
       {
@@ -665,10 +665,10 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
           "Module 5: Advanced MySQL: Indexes, Transactions & Stored Programs",
         topics: [
           "Database Indexes: Clustered vs Non-Clustered Indexes, Performance Optimization",
-          "ACID Properties & Transaction Control (`COMMIT`, `ROLLBACK`, `SAVEPOINT`)",
+          "ACID Properties & Transaction Control (COMMIT, ROLLBACK, SAVEPOINT)",
           "Database Views: Creating and Modifying Virtual Tables",
           "Stored Procedures & User Defined Functions (UDF)",
-          "Triggers: `BEFORE/AFTER INSERT`, `UPDATE`, `DELETE`",
+          "Triggers: BEFORE/AFTER INSERT, UPDATE, DELETE",
         ],
       },
     ],
@@ -700,27 +700,27 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
       {
         title: "Module 2: T-SQL Queries, Joins & Grouping",
         topics: [
-          "T-SQL Data Retrieval: `SELECT TOP`, `OFFSET-FETCH`, `WHERE`",
+          "T-SQL Data Retrieval: SELECT TOP, OFFSET-FETCH, WHERE",
           "Multi-table Joins (INNER, LEFT, RIGHT, FULL OUTER, CROSS)",
-          "Aggregation and Grouping (`GROUP BY`, `HAVING`, `GROUPING SETS`, `CUBE`, `ROLLUP`)",
+          "Aggregation and Grouping (GROUP BY, HAVING, GROUPING SETS, CUBE, ROLLUP)",
         ],
       },
       {
         title: "Module 3: Advanced T-SQL & Analytical Functions",
         topics: [
-          "Window Functions: `ROW_NUMBER()`, `RANK()`, `DENSE_RANK()`, `NTILE()`, `LEAD()`, `LAG()`",
+          "Window Functions: ROW_NUMBER(), RANK(), DENSE_RANK(), NTILE(), LEAD(), LAG()",
           "Common Table Expressions (CTEs) & Recursive CTEs",
-          "`PIVOT` and `UNPIVOT` Operations",
-          "Subqueries, Derived Tables, and `APPLY` (`CROSS APPLY`, `OUTER APPLY`) Operators",
+          "PIVOT and UNPIVOT Operations",
+          "Subqueries, Derived Tables, and APPLY (CROSS APPLY, OUTER APPLY) Operators",
         ],
       },
       {
         title: "Module 4: Programmability & Error Handling",
         topics: [
-          "T-SQL Variables, Control Flow (`IF...ELSE`, `WHILE`)",
+          "T-SQL Variables, Control Flow (IF...ELSE, WHILE)",
           "Stored Procedures with Input/Output Parameters",
           "Scalar and Table-Valued User Defined Functions (UDFs)",
-          "Exception Handling using `TRY...CATCH` Block and `RAISERROR` / `THROW`",
+          "Exception Handling using TRY...CATCH Block and RAISERROR / THROW",
           "DML Triggers & DDL Triggers",
         ],
       },
@@ -728,8 +728,8 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         title: "Module 5: Performance Tuning & Security",
         topics: [
           "Indexes: Clustered, Non-Clustered, Filtered Indexes, Execution Plans Analysis",
-          "Database Transactions & Isolation Levels (`READ COMMITTED`, `SERIALIZABLE`, `SNAPSHOT`)",
-          "Security: Roles, Users, Permissions (`GRANT`, `REVOKE`, `DENY`)",
+          "Database Transactions & Isolation Levels (READ COMMITTED, SERIALIZABLE, SNAPSHOT)",
+          "Security: Roles, Users, Permissions (GRANT, REVOKE, DENY)",
         ],
       },
     ],
@@ -755,16 +755,16 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         topics: [
           "Oracle Database Architecture Overview & SQL Developer / SQL*Plus",
           "Data Types, Constraints (Primary, Foreign Key, Check, Unique)",
-          "SQL Operators, Functions (`NVL`, `NVL2`, `COALESCE`, `DECODE`, `CASE`)",
+          "SQL Operators, Functions (NVL, NVL2, COALESCE, DECODE, CASE)",
           "Oracle Joins & ANSI Standard Joins",
         ],
       },
       {
         title: "Module 2: Advanced Oracle SQL",
         topics: [
-          "Hierarchical Queries (`CONNECT BY PRIOR`, `START WITH`)",
+          "Hierarchical Queries (CONNECT BY PRIOR, START WITH)",
           "Subqueries, Inline Views, Correlation Queries",
-          "Oracle Analytic Functions (`OVER()`, `PARTITION BY`)",
+          "Oracle Analytic Functions (OVER(), PARTITION BY)",
           "Managing Database Objects: Tables, Sequences, Synonyms, Views, Indexes",
         ],
       },
@@ -772,16 +772,16 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         title: "Module 3: PL/SQL Basics & Control Structures",
         topics: [
           "PL/SQL Block Structure (DECLARE, BEGIN, EXCEPTION, END)",
-          "Variables, Constants, Datatypes (`%TYPE`, `%ROWTYPE`)",
-          "Conditional Logic & Loops (`SIMPLE LOOP`, `WHILE LOOP`, `FOR LOOP`)",
+          "Variables, Constants, Datatypes (%TYPE, %ROWTYPE)",
+          "Conditional Logic & Loops (SIMPLE LOOP, WHILE LOOP, FOR LOOP)",
         ],
       },
       {
         title: "Module 4: Cursors & Exception Handling in PL/SQL",
         topics: [
-          "Implicit Cursors vs Explicit Cursors (`OPEN`, `FETCH`, `CLOSE`)",
+          "Implicit Cursors vs Explicit Cursors (OPEN, FETCH, CLOSE)",
           "Cursor FOR Loops & Parameterized Cursors",
-          "Predefined Exceptions, User-defined Exceptions, `PRAGMA EXCEPTION_INIT`",
+          "Predefined Exceptions, User-defined Exceptions, PRAGMA EXCEPTION_INIT",
         ],
       },
       {
@@ -789,8 +789,8 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
         topics: [
           "Stored Procedures and Functions (IN, OUT, IN OUT parameters)",
           "PL/SQL Packages: Specification & Body",
-          "Database Triggers: Statement vs Row Level, `BEFORE`, `AFTER`, `INSTEAD OF`",
-          "Dynamic SQL with `EXECUTE IMMEDIATE`",
+          "Database Triggers: Statement vs Row Level, BEFORE, AFTER, INSTEAD OF",
+          "Dynamic SQL with EXECUTE IMMEDIATE",
         ],
       },
     ],
@@ -827,9 +827,9 @@ export const SYLLABUS_DATA: Record<string, CourseSyllabus> = {
           "Module 2: Microsoft Excel (Data Analysis & Spreadsheet Mastery)",
         topics: [
           "Worksheet Layout, Data Input, Cell Formatting, Data Types",
-          "Formulas & Operators: Relative, Absolute (`$`), and Mixed Referencing",
-          "Mathematical, Logical & Text Functions (`SUM`, `AVERAGE`, `COUNT`, `IF`, `AND`, `OR`, `CONCAT`)",
-          "Lookup & Reference Functions (`VLOOKUP`, `HLOOKUP`, `INDEX & MATCH`, `XLOOKUP`)",
+          "Formulas & Operators: Relative, Absolute ($), and Mixed Referencing",
+          "Mathematical, Logical & Text Functions (SUM, AVERAGE, COUNT, IF, AND, OR, CONCAT)",
+          "Lookup & Reference Functions (VLOOKUP, HLOOKUP, INDEX & MATCH, XLOOKUP)",
           "Data Analysis: Sorting, Multi-level Filtering, Conditional Formatting",
           "Pivot Tables & Pivot Charts for Data Summarization",
           "Chart Creation (Bar, Line, Pie, Combination Charts) & Customization",

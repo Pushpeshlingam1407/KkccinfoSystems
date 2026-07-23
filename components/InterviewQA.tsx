@@ -7,6 +7,10 @@ import styles from "./InterviewQA.module.css";
 
 type QA = { question: string; answer: string };
 
+function cleanLearningText(value: string): string {
+  return value.replace(/`/g, "");
+}
+
 const topics = [
   ["html", "HTML", "Markup & structure", "htmlQA.html"],
   ["css", "CSS", "Layouts & styling", "cssQA.html"],
@@ -19,8 +23,12 @@ function parseQuestions(markup: string): QA[] {
   const document = new DOMParser().parseFromString(markup, "text/html");
   return Array.from(document.querySelectorAll(".qa"))
     .map((item) => ({
-      question: item.querySelector(".question")?.textContent?.trim() || "",
-      answer: item.querySelector(".answer")?.textContent?.trim() || "",
+      question: cleanLearningText(
+        item.querySelector(".question")?.textContent?.trim() || "",
+      ),
+      answer: cleanLearningText(
+        item.querySelector(".answer")?.textContent?.trim() || "",
+      ),
     }))
     .filter((item) => item.question && item.answer);
 }

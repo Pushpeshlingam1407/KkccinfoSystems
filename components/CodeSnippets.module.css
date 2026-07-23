@@ -29,3 +29,5 @@
 .pre,.lineCode { color:#284557; }
 .lineNum { border-right-color:#dce7ec; color:#849ba9; }
 .codeLine:hover .lineCode,.codeLine:hover .lineNum { background:#eef5f8; }
+.copyBtn { border-radius:8px; min-height:30px; padding-inline:11px; }
+.filterBtn { border-radius:9px; min-height:38px; padding-inline:14px; }
